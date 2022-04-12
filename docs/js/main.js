@@ -6,7 +6,7 @@ let isShiftKeyPressed = key => key === "Shift";
 let isAltKeyHeld = e => e.altKey;
 let isAltKeyPressed = key => key === "Alt";
 
-onload = function() {
+onload = function () {
 
     // Detect mobile or Ipad beforing booting
     var ua = navigator.userAgent;
@@ -55,7 +55,7 @@ onload = function() {
 
     boot();
 
-    document.addEventListener("beforeunload", function(eve) {
+    document.addEventListener("beforeunload", function (eve) {
         eve.returnValue = "Move page.";
     }, { passive: false });
 
@@ -141,7 +141,7 @@ onload = function() {
                 var obj = coord_point(event, 'flex');
             } else {
                 if (((pu.mode[pu.mode.qa].edit_mode === "combi") && (pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0] === "yajilin" ||
-                        pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0] === "akari"))) {
+                    pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0] === "akari"))) {
                     var obj = coord_point(event, 'flex');
                 } else {
                     var obj = coord_point(event);
@@ -871,7 +871,7 @@ onload = function() {
         // Improving starbattle composite mode, left click
         if (fittype === 'flex') {
             if (((pu.mode[pu.mode.qa].edit_mode === "combi") &&
-                    (improve_modes.includes(pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0]))) ||
+                (improve_modes.includes(pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0]))) ||
                 (pu.mode[pu.mode.qa].edit_mode === "sudoku")) {
                 type = pu.type;
                 pu.type = [0];
@@ -891,7 +891,7 @@ onload = function() {
         // resetting the type for starbattle composite mode
         if (fittype === 'flex') {
             if (((pu.mode[pu.mode.qa].edit_mode === "combi") &&
-                    (improve_modes.includes(pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0]))) ||
+                (improve_modes.includes(pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0]))) ||
                 (pu.mode[pu.mode.qa].edit_mode === "sudoku")) {
                 pu.type = type;
             }
@@ -1046,7 +1046,7 @@ onload = function() {
                     e.preventDefault();
                 }
                 break;
-                //top/bottom button
+            //top/bottom button
             case "newboard":
                 newboard();
                 e.preventDefault();
@@ -1098,7 +1098,7 @@ onload = function() {
                 e.preventDefault();
                 break;
 
-                //panel_menu
+            //panel_menu
             case "panel_1_lbmenu":
                 panel_pu.mode_set('number');
                 panel_pu.select_close();
@@ -1187,7 +1187,7 @@ onload = function() {
                     e.preventDefault();
                 }
                 break;
-                //savetext
+            //savetext
             case "saveinfogenre":
                 show_genretags();
                 e.preventDefault();
@@ -1618,7 +1618,7 @@ onload = function() {
                 document.getElementById('modal-rotate').style.display = 'none';
                 e.preventDefault();
                 break;
-                //saveimage
+            //saveimage
             case "nb_margin1_lb":
                 document.getElementById("nb_margin1").checked = true;
                 e.preventDefault();
@@ -1637,7 +1637,7 @@ onload = function() {
                 document.getElementById('modal-image').style.display = 'none';
                 e.preventDefault();
                 break;
-                //newboard
+            //newboard
             case "nb_size1":
             case "nb_size2":
             case "nb_size3":
@@ -1676,7 +1676,7 @@ onload = function() {
                 document.getElementById('modal').style.display = 'none';
                 e.preventDefault();
                 break;
-                //newsize
+            //newsize
             case "nb_size3_r":
                 return;
             case "closeBtn_size1":
@@ -1719,8 +1719,8 @@ onload = function() {
                 // if user clicks on Check Solution button
                 if (pu.solution && pu.sol_flag === 0) {
                     Swal.fire({
-                        title: '<h3>Your solution is incorrect.</h3>',
-                        html: '<h2>Keep trying 🙂</h2>',
+                        title: '<h3>你的解答不正确.</h3>',
+                        html: '<h2>继续尝试</h2>',
                         icon: 'error',
                         confirmButtonText: 'ok',
                     })
@@ -1952,7 +1952,7 @@ onload = function() {
     liteModeButton.addEventListener('click', advancecontrol_toggle);
     selectContainer.appendChild(liteModeButton);
 
-    window.addEventListener('beforeunload', function(e) {
+    window.addEventListener('beforeunload', function (e) {
         if (UserSettings.reload_button === 1) {
             // Cancel the event
             e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
@@ -1978,17 +1978,17 @@ onload = function() {
 
     // Adding on change events for general settings
     // Theme Setting
-    document.getElementById("theme_mode_opt").onchange = function() {
+    document.getElementById("theme_mode_opt").onchange = function () {
         UserSettings.color_theme = this.value;
     }
 
     // Toggle responsiveness
-    document.getElementById("responsive_settings_opt").onchange = function() {
+    document.getElementById("responsive_settings_opt").onchange = function () {
         UserSettings.responsive_mode = this.value;
     }
 
     // Custom Color Setting
-    document.getElementById("custom_color_opt").onchange = function() {
+    document.getElementById("custom_color_opt").onchange = function () {
         if (document.getElementById("custom_color_opt").value === "1") {
             document.getElementById('style_special').style.display = 'none';
             pu.redraw();
@@ -2003,40 +2003,40 @@ onload = function() {
     }
 
     // Save Setting
-    document.getElementById("save_settings_opt").onchange = function() {
+    document.getElementById("save_settings_opt").onchange = function () {
         UserSettings.save_settings = this.value;
     }
 
     // Save Setting
-    document.getElementById("mousemiddle_settings_opt").onchange = function() {
+    document.getElementById("mousemiddle_settings_opt").onchange = function () {
         UserSettings.mousemiddle_button = this.value;
     }
 
-    document.getElementById("starbattle_settings_opt").onchange = function() {
+    document.getElementById("starbattle_settings_opt").onchange = function () {
         UserSettings.starbattle_dots = this.value;
     }
 
-    document.getElementById("secondcolor_settings_opt").onchange = function() {
+    document.getElementById("secondcolor_settings_opt").onchange = function () {
         UserSettings.secondcolor = this.value;
     }
 
-    document.getElementById("sudoku_settings_normal_opt").onchange = function() {
+    document.getElementById("sudoku_settings_normal_opt").onchange = function () {
         UserSettings.sudoku_normal_size = this.value;
     }
 
-    document.getElementById("sudoku_settings_opt").onchange = function() {
+    document.getElementById("sudoku_settings_opt").onchange = function () {
         UserSettings.sudoku_centre_size = this.value;
     }
 
-    document.getElementById("reload_button").onchange = function() {
+    document.getElementById("reload_button").onchange = function () {
         UserSettings.reload_button = this.value;
     }
 
-    document.getElementById("clear_storage_opt").onchange = function() {
+    document.getElementById("clear_storage_opt").onchange = function () {
         UserSettings.local_storage = this.value;
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         if (pu.mmode !== "solve" && (pu.gridtype === "square" || pu.gridtype === "sudoku" || pu.gridtype === "kakuro")) {
             $('#constraints_settings_opt').select2({
                 'width': "resolve" // 25% was used before
@@ -2044,13 +2044,13 @@ onload = function() {
         }
     });
 
-    $.fn.toggleSelect2 = function(state) {
-        return this.each(function() {
+    $.fn.toggleSelect2 = function (state) {
+        return this.each(function () {
             $.fn[state ? 'show' : 'hide'].apply($(this).next('.select2-container'));
         });
     };
 
-    document.getElementById("constraints_settings_opt").onchange = function() {
+    document.getElementById("constraints_settings_opt").onchange = function () {
         let current_constraint = document.getElementById("constraints_settings_opt").value;
         if (current_constraint === "all") {
             // Display the mode break line if min-width greater than 850px (defined in base-structure.css media)
@@ -2123,7 +2123,7 @@ onload = function() {
             if (penpa_constraints["border"].includes(current_constraint) && pu.borderwarning) {
                 pu.borderwarning = false;
                 Swal.fire({
-                    html: '<h2 class="info">To place clues on grid border/edges and corners:<br> Turn Border: ON</h2>',
+                    html: '<h2 class="info">在网格边界/边缘和角落放置线索:<br> 面板需要开启</h2>',
                     timer: 8000,
                     icon: 'info'
                 })
@@ -2132,7 +2132,7 @@ onload = function() {
         pu.redraw();
     }
 
-    document.getElementById("mode_choices").onchange = function() {
+    document.getElementById("mode_choices").onchange = function () {
         UserSettings.tab_settings = getValues('mode_choices');
 
         if (can_use_lite()) {
@@ -2153,26 +2153,26 @@ onload = function() {
     }
 
     // Panel Setting
-    document.getElementById("panel_button").onchange = function() {
+    document.getElementById("panel_button").onchange = function () {
         panel_onoff();
     }
 
     // Conflict detection
-    document.getElementById("conflict_detection_opt").onchange = function() {
+    document.getElementById("conflict_detection_opt").onchange = function () {
         UserSettings.conflict_detection = this.value;
         pu.redraw();
     }
 
     // Timer Bar Setting
-    document.getElementById("timer_bar_opt").onchange = function() {
+    document.getElementById("timer_bar_opt").onchange = function () {
         UserSettings.timerbar_status = this.value;
     }
 
     // Shorten links setting
-    document.getElementById("shorten_links_dropdown").onchange = function() {
+    document.getElementById("shorten_links_dropdown").onchange = function () {
         UserSettings.shorten_links = String(this.value) === "1";
     }
-    document.getElementById("auto_shorten_chk").onchange = function() {
+    document.getElementById("auto_shorten_chk").onchange = function () {
         UserSettings.shorten_links = this.checked;
     }
 
@@ -2198,7 +2198,7 @@ function clear_storage_one() {
         let hash = "penpa_" + md5(pu.url);
         localStorage.removeItem(hash);
         Swal.fire({
-            html: '<h2 class="info">Local Storage is Cleared</h2>',
+            html: '<h2 class="info">本地存储已清除</h2>',
             icon: 'info'
         });
     }
@@ -2215,7 +2215,7 @@ function clear_storage_all() {
     }
     // localStorage.clear(); for all clear
     Swal.fire({
-        html: '<h2 class="info">Local Storage is Cleared</h2>',
+        html: '<h2 class="info">本地存储已清除</h2>',
         icon: 'info'
     });
 }

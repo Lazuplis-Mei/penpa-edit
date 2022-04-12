@@ -78,11 +78,11 @@ function create() {
 
 function add_constraints() {
     let constraints = document.getElementById('constraints_settings_opt');
-    penpa_constraints['options_groups'].forEach(function(element, index) {
+    penpa_constraints['options_groups'].forEach(function (element, index) {
         let optgroup = document.createElement("optgroup");
         optgroup.label = element;
 
-        penpa_constraints['options'][element].forEach(function(subelement, subindex) {
+        penpa_constraints['options'][element].forEach(function (subelement, subindex) {
             let opt = document.createElement("option");
             opt.value = subelement;
             opt.innerHTML = subelement;
@@ -98,11 +98,11 @@ function add_constraints() {
 
 function add_genre_tags(user_tags) {
     let genre_tags = document.getElementById('genre_tags_opt');
-    penpa_tags['options_groups'].forEach(function(element, index) {
+    penpa_tags['options_groups'].forEach(function (element, index) {
         let optgroup = document.createElement("optgroup");
         optgroup.label = element;
 
-        penpa_tags['options'][element].forEach(function(subelement, subindex) {
+        penpa_tags['options'][element].forEach(function (subelement, subindex) {
             let opt = document.createElement("option");
             opt.value = subelement;
             opt.innerHTML = subelement;
@@ -151,8 +151,8 @@ function create_newboard() {
         }
     } else {
         Swal.fire({
-            title: 'Swaroop says:',
-            html: 'Display size must be in the range <h2 class="warn">12-90</h2>',
+            title: 'Swaroop:',
+            html: '显示尺寸必须在此范围:<h2 class="warn">12-90</h2>',
             icon: 'error',
             confirmButtonText: 'ok 🙂',
         })
@@ -194,13 +194,13 @@ function make_class(gridtype, loadtype = 'new') {
                 document.getElementById(i).style.display = "none";
             }
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the row/column size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从行/列中减少";
             if (nx <= gridmax['square'] && nx > 0 && ny <= gridmax['square'] && ny > 0 && space1 + space2 < ny && space3 + space4 < nx) {
                 pu = new Puzzle_square(nx, ny, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Rows/Columns Size must be in the range <h2 class="warn">1-' + gridmax['square'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '行/列尺寸必须在此范围:<h2 class="warn">1-' + gridmax['square'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -210,13 +210,13 @@ function make_class(gridtype, loadtype = 'new') {
             var n0 = parseInt(document.getElementById("nb_size1").value, 10);
             var space1 = parseInt(document.getElementById("nb_space1").value, 10);
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the Side size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从行/列中减少";
             if (n0 <= gridmax['hex'] && n0 > 0 && space1 < n0) {
                 pu = new Puzzle_hex(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['hex'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['hex'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -226,13 +226,13 @@ function make_class(gridtype, loadtype = 'new') {
             var n0 = parseInt(document.getElementById("nb_size1").value, 10);
             var space1 = parseInt(document.getElementById("nb_space1").value, 10);
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the Side size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从行/列中减少";
             if (n0 <= gridmax['tri'] && n0 > 0 && space1 < n0 / 3) {
                 pu = new Puzzle_tri(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['tri'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['tri'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -247,8 +247,8 @@ function make_class(gridtype, loadtype = 'new') {
                 pu = new Puzzle_pyramid(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['pyramid'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['pyramid'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -260,8 +260,8 @@ function make_class(gridtype, loadtype = 'new') {
                 pu = new Puzzle_iso(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['iso'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['iso'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -437,8 +437,8 @@ function make_class(gridtype, loadtype = 'new') {
                 }
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Rows/Columns Size must be in the range <h2 class="warn">1-' + gridmax['kakuro'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '行列尺寸必须在此范围:<h2 class="warn">1-' + gridmax['kakuro'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -450,8 +450,8 @@ function make_class(gridtype, loadtype = 'new') {
                 pu = new Puzzle_truncated_square(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['truncated'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['truncated'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -463,8 +463,8 @@ function make_class(gridtype, loadtype = 'new') {
                 pu = new Puzzle_tetrakis_square(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['tetrakis'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['tetrakis'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -476,8 +476,8 @@ function make_class(gridtype, loadtype = 'new') {
                 pu = new Puzzle_snub_square(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['snub'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['snub'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -489,8 +489,8 @@ function make_class(gridtype, loadtype = 'new') {
                 pu = new Puzzle_cairo_pentagonal(n0, n0, size);
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Side Size must be in the range <h2 class="warn">1-' + gridmax['cairo'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['cairo'] + '</h2>',
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 })
@@ -531,10 +531,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Columns：";
-            document.getElementById("name_space1").innerHTML = "Over：";
+            document.getElementById("name_size1").innerHTML = "列数:";
+            document.getElementById("name_space1").innerHTML = "上方:";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the row/column size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从行/列中减少";
             document.getElementById("nb_size1").value = 10;
             document.getElementById("nb_size2").value = 10;
             document.getElementById("nb_size3").value = 38;
@@ -556,10 +556,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
-            document.getElementById("name_space1").innerHTML = "Side: ";
+            document.getElementById("name_size1").innerHTML = "边长:";
+            document.getElementById("name_space1").innerHTML = "大小:";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the Side size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从边长中减少";
             document.getElementById("nb_size1").value = 5;
             document.getElementById("nb_size3").value = 40;
             document.getElementById("nb_space1").value = 0;
@@ -577,10 +577,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
-            document.getElementById("name_space1").innerHTML = "Border: ";
+            document.getElementById("name_size1").innerHTML = "边长:";
+            document.getElementById("name_space1").innerHTML = "边界:";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the Side size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从边长中减少";
             document.getElementById("nb_size1").value = 6;
             document.getElementById("nb_size3").value = 60;
             document.getElementById("nb_space1").value = 0;
@@ -598,10 +598,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
-            document.getElementById("name_space1").innerHTML = "Border：";
+            document.getElementById("name_size1").innerHTML = "边长:";
+            document.getElementById("name_space1").innerHTML = "边界:";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "*White space is subtracted from the Side size";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "*扩展空间会从边长中减少";
             document.getElementById("nb_size1").value = 6;
             document.getElementById("nb_size3").value = 50;
             document.getElementById("nb_space1").value = 0;
@@ -619,7 +619,7 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
+            document.getElementById("name_size1").innerHTML = "边长:";
             document.getElementById("nb_space_lb").style.display = "none";
             document.getElementById("nb_size1").value = 5;
             document.getElementById("nb_size3").value = 34;
@@ -637,8 +637,8 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "inline";
             }
-            document.getElementById("nb_sudoku3_lb").innerHTML = "Outside clues (top/left)";
-            document.getElementById("nb_sudoku7_lb").innerHTML = "*Default size is 9x9";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "外部线索空间(左上)";
+            document.getElementById("nb_sudoku7_lb").innerHTML = "*默认为九宫数独";
             document.getElementById("nb_sudoku1").checked = false;
             document.getElementById("nb_sudoku2").checked = false;
             document.getElementById("nb_sudoku3").checked = false;
@@ -663,7 +663,7 @@ function changetype() {
             for (var i of type5) {
                 document.getElementById(i).style.display = "inline";
             }
-            document.getElementById("name_size1").innerHTML = "Columns：";
+            document.getElementById("name_size1").innerHTML = "列数:";
             document.getElementById("nb_size1").value = 10;
             document.getElementById("nb_size2").value = 10;
             break;
@@ -680,10 +680,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
+            document.getElementById("name_size1").innerHTML = "边长:";
             document.getElementById("nb_space_lb").style.display = "none";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha Version - It's under development and currently has limited functionality</span>";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha版本 - 正在开发中，目前功能有限。</span>";
             document.getElementById("nb_size1").value = 4;
             document.getElementById("nb_size3").value = 38;
         case "tetrakis_square":
@@ -699,10 +699,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
+            document.getElementById("name_size1").innerHTML = "边长:";
             document.getElementById("nb_space_lb").style.display = "none";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha Version - It's under development and currently has limited functionality</span>";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha 版本 - 它正在开发中，目前功能有限</span>";
             document.getElementById("nb_size1").value = 4;
             document.getElementById("nb_size3").value = 38;
             break;
@@ -719,10 +719,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
+            document.getElementById("name_size1").innerHTML = "边长:";
             document.getElementById("nb_space_lb").style.display = "none";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha Version - It's under development and currently has limited functionality</span>";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha 版本 - 它正在开发中，目前功能有限</span>";
             document.getElementById("nb_size1").value = 4;
             document.getElementById("nb_size3").value = 38;
         case "cairo_pentagonal":
@@ -738,10 +738,10 @@ function changetype() {
             for (var i of type4) {
                 document.getElementById(i).style.display = "none";
             }
-            document.getElementById("name_size1").innerHTML = "Side：";
+            document.getElementById("name_size1").innerHTML = "边长:";
             document.getElementById("nb_space_lb").style.display = "none";
             document.getElementById("nb_sudoku3_lb").style.display = "inline";
-            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha Version - It's under development and currently has limited functionality</span>";
+            document.getElementById("nb_sudoku3_lb").innerHTML = "<span style='color: red;'>**Alpha 版本 - 它正在开发中，目前功能有限</span>";
             document.getElementById("nb_size1").value = 4;
             document.getElementById("nb_size3").value = 38;
     }
@@ -757,13 +757,13 @@ function rotation() {
 
 function CreateCheck() {
     Swal.fire({
-        title: 'Are you sure want to reset the current board? To only change display size and grid lines use "Update display" button',
-        html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+        title: '确定要重置当前面板吗？要更改显示大小和网格线，请使用更新显示”按钮。',
+        html: '<h4 class="warn">此操作无法还原！</h4>',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: Color.BLUE_SKY,
         cancelButtonColor: Color.RED,
-        confirmButtonText: 'Yes, Reset it!'
+        confirmButtonText: '是的，重置！'
     }).then((result) => {
         if (result.isConfirmed) {
             // Save grid size setting
@@ -796,7 +796,7 @@ function newsize() {
 
 function display_rules() {
     Swal.fire({
-        title: 'Rules:',
+        title: '规则:',
         html: '<h5 class="info">' + pu.rules + '</h5>'
     })
 }
@@ -816,7 +816,7 @@ function replay_choice() {
 
         // Live replay only if within time limit and there is timestamp data
         if ((pu.puzzleinfo.totalMS <= pu.replaycutoff) && ((redo_len > 0 && typeof pu[pu.mode.qa]["command_redo"].__a[redo_len - 1][5] != "undefined") ||
-                (undo_len > 0 && typeof pu[pu.mode.qa]["command_undo"].__a[undo_len - 1][5] != "undefined"))) {
+            (undo_len > 0 && typeof pu[pu.mode.qa]["command_undo"].__a[undo_len - 1][5] != "undefined"))) {
 
             // hide forward, backward and speed buttons
             document.getElementById("replay_forward").style.display = "none";
@@ -843,7 +843,7 @@ function replay_choice() {
                 });
             }
 
-            pu.live_replay = function() {
+            pu.live_replay = function () {
                 // If daily puzzles then enable time for first click, not needed for regular contests
                 if (undo_len === 0 && pu.first_click) {
                     // get time-stamp (ts) of next action
@@ -927,7 +927,7 @@ function replay_choice() {
 
             // Display message - Live replay not available for this solve.
             document.getElementById("replay_message").style.display = "";
-            document.getElementById("replay_message").innerHTML = "Live Replay N/A"
+            document.getElementById("replay_message").innerHTML = "实时回放(不适用) N/A"
         }
     } else if (document.getElementById("replay_choice").value == "1") {
         // reset live_replay function
@@ -1050,7 +1050,7 @@ function panel_onoff() {
         // Show Mode info on Panel Header
         let modes_mapping = ['Surface', 'Line', 'Edge', 'Wall', 'Number', 'Shape', 'Special', 'Cage', 'Composite', 'Sudoku', 'Box', 'Move'];
         let mode_loc = penpa_modes["square"]["mode"].indexOf(pu.mode[pu.mode.qa].edit_mode);
-        document.getElementById('float-key-header-lb').innerHTML = "Mode: " + modes_mapping[mode_loc];
+        document.getElementById('float-key-header-lb').innerHTML = "模式: " + modes_mapping[mode_loc];
         // document.getElementById('toggle_panel_visibility').style.opacity = .3;
     } else {
         document.getElementById('float-key').style.display = "none";
@@ -1094,7 +1094,7 @@ function advancecontrol_off(loadtype) {
     var user_choices = (loadtype === "url") ? UserSettings.tab_settings : getValues('mode_choices');
 
     if (document.getElementById('tab-dropdown-lite-btn')) {
-        document.getElementById('tab-dropdown-lite-btn').innerText = "Disable Penpa Lite";
+        document.getElementById('tab-dropdown-lite-btn').innerText = "禁用Penpa Lite";
     }
 
     if (user_choices.indexOf("Surface") === -1) {
@@ -1169,7 +1169,7 @@ function advancecontrol_off(loadtype) {
 
 function advancecontrol_on() {
     if (document.getElementById('tab-dropdown-lite-btn')) {
-        document.getElementById('tab-dropdown-lite-btn').innerText = "Enable Penpa Lite";
+        document.getElementById('tab-dropdown-lite-btn').innerText = "启用Penpa Lite";
     }
     pu.erase_buttons();
 
@@ -1190,16 +1190,20 @@ function advancecontrol_on() {
 }
 
 function ResetCheck() {
+    var cnDict = {
+        'SURFACE': '表面', 'WALL': '墙壁', 'BOARD': '格子', 'MOVE': '移动', 'NUMBER': '数字',
+        'SUDOKU': '数独', 'SPECIAL': '特殊'
+    };
     if (pu.mode[pu.mode.qa].edit_mode.toUpperCase() === "LINE") {
         if (pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0] === '4') {
             Swal.fire({
-                title: 'Erase/Clear all Helper (x) - Crosses in Line Mode?',
-                html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+                title: '清除所有[线段]模式下的(x)辅助标记?',
+                html: '<h4 class="warn">此操作无法还原！</h4>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: 'Yes, Erase it!'
+                confirmButtonText: '是的，清除！'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1207,13 +1211,13 @@ function ResetCheck() {
             })
         } else {
             Swal.fire({
-                title: 'Erase/Clear all LINE mode elements?',
-                html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+                title: '清除所有[线段]模式的元素?',
+                html: '<h4 class="warn">此操作无法还原！</h4>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: 'Yes, Erase it!'
+                confirmButtonText: '是的，清除！'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1223,13 +1227,13 @@ function ResetCheck() {
     } else if (pu.mode[pu.mode.qa].edit_mode.toUpperCase() === "LINEE") {
         if (pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0] === '4') {
             Swal.fire({
-                title: 'Erase/Clear all Helper (x) - Crosses in Edge Mode?',
-                html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+                title: '清除所有[边线]模式下的(x)辅助标记?',
+                html: '<h4 class="warn">此操作无法还原！</h4>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: 'Yes, Erase it!'
+                confirmButtonText: '是的，清除！'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1237,13 +1241,13 @@ function ResetCheck() {
             })
         } else if (pu.mode[pu.mode.qa][pu.mode[pu.mode.qa].edit_mode][0] === '5') {
             Swal.fire({
-                title: 'Reset Erased Edges in Edge Mode?',
-                html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+                title: '重置[边线]模式下的已擦除边线?',
+                html: '<h4 class="warn">此操作无法还原！</h4>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: 'Yes, Erase it!'
+                confirmButtonText: '是的，清除！'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1251,13 +1255,13 @@ function ResetCheck() {
             })
         } else {
             Swal.fire({
-                title: 'Erase/Clear all EDGE mode elements?',
-                html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+                title: '清除所有[边线]模式的元素?',
+                html: '<h4 class="warn">此操作无法还原！</h4>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: 'Yes, Erase it!'
+                confirmButtonText: '是的，清除！'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1266,13 +1270,13 @@ function ResetCheck() {
         }
     } else if (pu.mode[pu.mode.qa].edit_mode.toUpperCase() === "SYMBOL") {
         Swal.fire({
-            title: 'Erase/Clear all SHAPE mode elements?',
-            html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+            title: '清除所有[形状]模式的元素??',
+            html: '<h4 class="warn">此操作无法还原！</h4>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: Color.BLUE_SKY,
             cancelButtonColor: Color.RED,
-            confirmButtonText: 'Yes, Erase it!'
+            confirmButtonText: '是的，清除！'
         }).then((result) => {
             if (result.isConfirmed) {
                 pu.reset_selectedmode();
@@ -1280,13 +1284,13 @@ function ResetCheck() {
         })
     } else if (pu.mode[pu.mode.qa].edit_mode.toUpperCase() === "CAGE") {
         Swal.fire({
-            title: 'Erase/Clear all FRAME mode elements?',
-            html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+            title: '清除所有[线框]模式的元素?',
+            html: '<h4 class="warn">此操作无法还原！</h4>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: Color.BLUE_SKY,
             cancelButtonColor: Color.RED,
-            confirmButtonText: 'Yes, Erase it!'
+            confirmButtonText: '是的，清除！'
         }).then((result) => {
             if (result.isConfirmed) {
                 pu.reset_selectedmode();
@@ -1295,12 +1299,12 @@ function ResetCheck() {
     } else if (pu.mode[pu.mode.qa].edit_mode.toUpperCase() === "COMBI") {
         // Swal.fire({
         //     title: 'Erase/Clear all selected COMPOSITE mode elements?',
-        //     html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+        //     html: '<h4 class="warn">此操作无法还原！</h4>',
         //     icon: 'warning',
         //     showCancelButton: true,
         //     confirmButtonColor: Color.BLUE_SKY,
         //     cancelButtonColor: Color.RED,
-        //     confirmButtonText: 'Yes, Erase it!'
+        //     confirmButtonText: '是的，清除！'
         // }).then((result) => {
         //     if (result.isConfirmed) {
         //         pu.reset_selectedmode();
@@ -1308,13 +1312,13 @@ function ResetCheck() {
         // })
     } else {
         Swal.fire({
-            title: 'Erase/Clear all ' + pu.mode[pu.mode.qa].edit_mode.toUpperCase() + ' mode elements?',
-            html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+            title: '清除所有[' + cnDict[pu.mode[pu.mode.qa].edit_mode.toUpperCase()] + ']模式的元素?',
+            html: '<h4 class="warn">此操作无法还原！</h4>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: Color.BLUE_SKY,
             cancelButtonColor: Color.RED,
-            confirmButtonText: 'Yes, Erase it!'
+            confirmButtonText: '是的，清除！'
         }).then((result) => {
             if (result.isConfirmed) {
                 pu.reset_selectedmode();
@@ -1331,13 +1335,13 @@ function DeleteCheck() {
         text = "solution";
     }
     Swal.fire({
-        title: 'Erase/Clear all the elements in ' + text.toUpperCase() + ' mode?',
-        html: '<h4 class="warn">You won\'t be able to revert this!</h4>',
+        title: '清除所有[' + cnDict[text.toUpperCase()] + ']模式的元素?',
+        html: '<h4 class="warn">此操作无法还原！</h4>',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: Color.BLUE_SKY,
         cancelButtonColor: Color.RED,
-        confirmButtonText: 'Yes, Erase it!'
+        confirmButtonText: '是的，清除！'
     }).then((result) => {
         if (result.isConfirmed) {
             pu.reset_board(); // contains reset of undo/redo
@@ -1392,10 +1396,10 @@ function saveimage_download() {
                 downloadLink.click();
             } else {
                 Swal.fire({
-                    title: 'Unsupported Browser',
-                    html: 'Your browser does not appear to support the needed functionality for an SVG to be made.',
+                    title: '不支持的浏览器',
+                    html: '浏览器似乎不支持制作SVG所需的功能。',
                     icon: 'error',
-                    confirmButtonText: 'Close',
+                    confirmButtonText: '关闭',
                 });
             }
         } else {
@@ -1410,8 +1414,8 @@ function saveimage_download() {
         }
     } else {
         Swal.fire({
-            title: 'Swaroop says:',
-            html: 'The characters <h2 class="warn">\\ / : * ? \" < > |</h2> cannot be used in filename',
+            title: 'Swaroop:',
+            html: '文件名不能出现以下字符<h2 class="warn">\\ / : * ? \" < > |</h2>',
             icon: 'error',
             confirmButtonText: 'ok 🙂',
         })
@@ -1431,10 +1435,10 @@ function saveimage_window() {
             window.open(url);
         } else {
             Swal.fire({
-                title: 'Unsupported Browser',
-                html: 'Your browser does not appear to support the needed functionality for an SVG to be made.',
+                title: '不支持的浏览器',
+                html: '浏览器似乎不支持制作SVG所需的功能。',
                 icon: 'error',
-                confirmButtonText: 'Close',
+                confirmButtonText: '关闭',
             });
         }
     } else {
@@ -1450,12 +1454,12 @@ function savetext() {
 
 function io_sudoku() {
     document.getElementById("modal-input").style.display = 'block';
-    document.getElementById("iostring").placeholder = "Enter digits (0-9, 0 or . for an empty cell, no spaces). The number of digits entered should be a perfect square. Default expected length is 81 digits (9x9 sudoku)";
+    document.getElementById("iostring").placeholder = "输入数字(0-9其中0或.表示空(不包含空格))。\n输入长度应该是一个完全平方数。\n默认长度为81(九宫数独)";
 }
 
 function i_url() {
     document.getElementById("modal-load").style.display = 'block';
-    document.getElementById("urlstring").placeholder = "In case of \"URL too long Error\". Type/Paste Penpa-edit URL here and click on Load button. You can also load puzz.link puzzles here";
+    document.getElementById("urlstring").placeholder = "由于链接过长可能导致错误。\n可在这里输入Penpa-edit链接可以并载入(也可以输入puzz.link链接)";
 }
 
 function p_settings() {
@@ -1517,15 +1521,15 @@ function savetext_withreplay() {
 
 async function request_shortlink(url) {
     try {
-        return $.get('https://tinyurl.com/api-create.php?url=' + url, function(link, status) {
+        return $.get('https://tinyurl.com/api-create.php?url=' + url, function (link, status) {
             if (status === "success") {
                 return link;
             }
-            console.log('Error while creating tinyurl');
+            console.log('缩短链接失败');
             return null;
         });
     } catch (error) {
-        console.log('Error while creating tinyurl');
+        console.log('缩短链接失败');
         return null;
     }
 }
@@ -1554,8 +1558,8 @@ function make_gmpfile() {
 
 function savetext_copy() {
     Swal.fire({
-        title: 'Swaroop says:',
-        html: '<h2 class="info">URL is copied to clipboard</h2>',
+        title: 'Swaroop:',
+        html: '<h2 class="info">链接已复制到剪贴板</h2>',
         icon: 'info'
     })
     var textarea = document.getElementById("savetextarea");
@@ -1598,16 +1602,16 @@ function savetext_download() {
             downloadLink.click();
         } else {
             Swal.fire({
-                title: 'Unsupported Browser',
-                html: 'Your browser does not appear to support the needed functionality for an SVG to be made.',
+                title: '不支持的浏览器',
+                html: '浏览器似乎不支持制作SVG所需的功能。',
                 icon: 'error',
-                confirmButtonText: 'Close',
+                confirmButtonText: '关闭',
             });
         }
     } else {
         Swal.fire({
-            title: 'Swaroop says:',
-            html: 'The characters <h2 class="warn">\\ / : * ? \" < > |</h2> cannot be used in filename',
+            title: 'Swaroop:',
+            html: '文件名不能出现以下字符<h2 class="warn">\\ / : * ? \" < > |</h2>',
             icon: 'error',
             confirmButtonText: 'ok 🙂',
         });
@@ -1637,7 +1641,7 @@ function shorturl_tab() {
 function getValues(id) {
     let result = [];
     let collection = document.querySelectorAll("#" + id + " option");
-    collection.forEach(function(x) {
+    collection.forEach(function (x) {
         if (x.selected) {
             result.push(x.value);
         }
@@ -1666,13 +1670,13 @@ function import_sudoku() {
             if (size > 0 && size < 10) {
                 flag = pu.load_clues();
             } else {
-                document.getElementById("iostring").value = "Error: Min/Max Sudoku Size allowed is 1x1 to 9x9 (Default is 9x9). Update the input parameters below.";
+                document.getElementById("iostring").value = "错误:允许的最小/最大数独大小为1x1到9x9(默认为9x9)，请重新输入参数。";
             }
         } else {
-            document.getElementById("iostring").value = "Error: Grid size is smaller than the specified Sudoku size (Default is 9x9). Update the input parameters below.";
+            document.getElementById("iostring").value = "错误:网格大小小于指定的数独大小(默认为9x9)，请重新输入参数。";
         }
     } else {
-        document.getElementById("iostring").value = "Error: The canvas area should be a sudoku grid or square grid";
+        document.getElementById("iostring").value = "错误:面板区域应该是数独网格或方形网格。";
     }
 }
 
@@ -1689,13 +1693,13 @@ function export_sudoku() {
             if (size > 0 && size < 10) {
                 flag = pu.export_clues(size);
             } else {
-                document.getElementById("iostring").value = "Error: Min/Max Sudoku Size allowed is 1x1 to 9x9 (Default is 9x9). Update the input parameters below.";
+                document.getElementById("iostring").value = "错误:允许的最小/最大数独大小为1x1到9x9(默认为9x9)，请重新输入参数。";
             }
         } else {
-            document.getElementById("iostring").value = "Error: Grid size is smaller than the specified Sudoku size (Default is 9x9). Update the input parameters below.";
+            document.getElementById("iostring").value = "错误:网格大小小于指定的数独大小(默认为9x9)，请重新输入参数。";
         }
     } else {
-        document.getElementById("iostring").value = "Error: The canvas area should be a sudoku grid or square grid";
+        document.getElementById("iostring").value = "错误:面板区域应该是数独网格或方形网格。";
     }
 }
 
@@ -1713,17 +1717,17 @@ function import_url(urlstring) {
             decode_puzzlink(urlstring);
             document.getElementById("modal-load").style.display = 'none';
         } else {
-            document.getElementById("urlstring").value = "Error: Invalid URL";
+            document.getElementById("urlstring").value = "错误: 不正确的URL";
         }
     } else {
-        document.getElementById("urlstring").value = "Error: Invalid URL";
+        document.getElementById("urlstring").value = "错误: 不正确的URL";
     }
 }
 
 function load_feedback() {
     Swal.fire({
-        title: 'Feedback',
-        html: '<h2 class="info"><p>Any suggestions or improvements, send an email to <b> penpaplus@gmail.com </b> <br> or <br> Create an issue on github <a href="https://github.com/swaroopg92/penpa-edit/issues" target="_blank">here</a> <br> or <br> Join discussions in #penpa-plus channel in the Discord Server <a href="https://discord.gg/BbN89j5" target="_blank">here</a>.</p></h2>',
+        title: '反馈',
+        html: '<h2 class="info"><p>任何建议或改进，请发送电子邮件至<b> penpaplus@gmail.com </b> <br> 或 <br> 在github上创建issue <a href="https://github.com/swaroopg92/penpa-edit/issues" target="_blank"></a> <br> 或 <br> 在Discord服务器的#penpa-plus频道中加入讨论<a href="https://discord.gg/BbN89j5" target="_blank"></a>.</p></h2>',
         icon: 'info'
     })
 }
@@ -1787,7 +1791,7 @@ function load(urlParam, type = 'url', origurl = null) {
     }
     if (rtext_para[17] && rtext_para[17] !== "") {
         document.getElementById("puzzlesourcelink").href = rtext_para[17];
-        document.getElementById("puzzlesource").innerHTML = "Source";
+        document.getElementById("puzzlesource").innerHTML = "源地址";
         document.getElementById("saveinfosource").value = rtext_para[17];
     }
 
@@ -2242,9 +2246,6 @@ function load(urlParam, type = 'url', origurl = null) {
         // set the mode to surface, so that no cursor is shown
         pu.mode_set("surface"); //include redraw
 
-        // Turn Panel Off if its ON
-        panel_off();
-
         // hide everything except grid
         document.getElementById("top_button").style.display = "none";
         document.getElementById("buttons").style.display = "none";
@@ -2275,11 +2276,11 @@ function load(urlParam, type = 'url', origurl = null) {
         contestinfo.innerHTML = contents_choice + contents_play + contents_pause + contents_backward + contents_forward + contents_reset + contents_speed + contents_message;
         contestinfo.style.display = "block";
 
-        document.getElementById("replay_speed").onchange = function() {
+        document.getElementById("replay_speed").onchange = function () {
             replay_play();
         }
 
-        document.getElementById("replay_choice").onchange = function() {
+        document.getElementById("replay_choice").onchange = function () {
             replay_choice();
         }
 
@@ -2306,7 +2307,7 @@ function load(urlParam, type = 'url', origurl = null) {
         document.getElementById("puzzlerules").style.display = 'none';
 
         // Update title
-        document.getElementById("title").innerHTML = "Replay Mode"
+        document.getElementById("title").innerHTML = "回放模式"
 
         // Show Solver Name and his time
         if (paramArray.q) {
@@ -2772,7 +2773,7 @@ function loadqa_arrayver1(qa, rtext_qa) {
 function set_solvemode(type = "url") {
     pu.mmode = "solve";
     pu.mode.qa = "pu_a";
-    document.getElementById("title").innerHTML = "Solver Mode"
+    document.getElementById("title").innerHTML = "解题模式"
     document.getElementById("nb_size3_r").value = UserSettings.displaysize;
     document.getElementById("newsize").style.display = "inline";
     document.getElementById("pu_a").checked = true;
@@ -2827,7 +2828,7 @@ function set_solvemode(type = "url") {
 
 function set_contestmode() {
     // Disable Share, Undo/Redo buttons, IO sudoku
-    document.getElementById("title").innerHTML = "Contest Mode"
+    document.getElementById("title").innerHTML = "竞赛模式"
     document.getElementById("savetext").style.display = "none";
     document.getElementById("input_sudoku").style.display = "none";
     document.getElementById("bottom_button").style.display = "none";
@@ -2837,13 +2838,13 @@ function set_contestmode() {
     document.getElementById("tb_delete").style.display = "none";
     document.getElementById("mo_move_lb").style.display = "none";
     document.getElementById("puzzlesourcelink").style.display = "none";
-    document.getElementById("answer_key").innerHTML = "*Note the Solution Code, go back to <a href=" + document.getElementById("saveinfosource").value + " target=\"_blank\">Source</a> and enter in the Submissions Box*";
+    document.getElementById("answer_key").innerHTML = "*记录解答代码，返回<a href=" + document.getElementById("saveinfosource").value + " target=\"_blank\">源地址</a>并在提交框中输入*";
     pu.undoredo_disable = true;
     pu.comp = true;
 }
 
 function set_solvemodetitle() {
-    document.getElementById("title").innerHTML = "Solver Mode (Answer Checking Enabled)";
+    document.getElementById("title").innerHTML = "解题模式(已启用答案检查)";
     document.getElementById("header").classList.add("solving");
 }
 
@@ -2875,8 +2876,8 @@ function decode_puzzlink(url) {
 
     if ((cols > 65) || (rows > 65)) {
         Swal.fire({
-            title: 'Swaroop says:',
-            html: 'Penpa+ does not support grid size greater than 65 rows or columns',
+            title: 'Swaroop:',
+            html: 'Penpa+不支持超过65行/列的网格大小',
             icon: 'error',
             confirmButtonText: 'ok 🙂',
         })
@@ -2981,8 +2982,8 @@ function decode_puzzlink(url) {
                 pu = new Puzzle_square(10, 10, size);
                 setupProblem(pu, "surface");
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: `Sorry, sudoku grids of size: ${cols}x${rows} are not supported`,
+                    title: 'Swaroop:',
+                    html: `抱歉，不支持大小为${cols}x${rows}的数独网格`,
                     icon: 'error',
                     confirmButtonText: 'ok 🙂',
                 });
@@ -4058,8 +4059,8 @@ function decode_puzzlink(url) {
             break;
         default:
             Swal.fire({
-                title: 'Swaroop says:',
-                html: 'It currently does not support puzzle type: ' + type,
+                title: 'Swaroop:',
+                html: '目前不支持谜题类型: ' + type,
                 icon: 'error',
                 confirmButtonText: 'ok 🙂',
             })

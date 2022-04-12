@@ -245,8 +245,8 @@ const UserSettings = {
         if (valueInt > 90) {
             valueInt = 90;
             Swal.fire({
-                title: 'Swaroop says:',
-                html: 'Display Size must be in the range <h2 class="warn">12-90</h2> It is set to max value.',
+                title: 'Swaroop:',
+                html: '显示尺寸必须在<h2 class="warn">12-90</h2>范围内，已经设置为最大值。',
                 icon: 'info',
                 confirmButtonText: 'ok 🙂',
             })
@@ -254,8 +254,8 @@ const UserSettings = {
         if (valueInt < 12) {
             valueInt = 12;
             Swal.fire({
-                title: 'Swaroop says:',
-                html: 'Display Size must be in the range <h2 class="warn">12-90</h2> It is set to min value.',
+                title: 'Swaroop:',
+                html: '显示尺寸必须在<h2 class="warn">12-90</h2>范围内，已经设置为最小值。',
                 icon: 'info',
                 confirmButtonText: 'ok 🙂',
             })
@@ -275,7 +275,7 @@ const UserSettings = {
     set draw_edges(newValue) {
         const button = document.getElementById("edge_button");
         this._draw_edges = newValue;
-        button.textContent = newValue ? "ON" : "OFF";
+        button.textContent = newValue ? "开启" : "关闭";
 
         if (window.pu) {
             if (!newValue) {
@@ -293,7 +293,7 @@ const UserSettings = {
     set show_solution(newValue) {
         const button = document.getElementById("visibility_button");
         this._show_solution = newValue;
-        button.textContent = newValue ? "ON" : "OFF";
+        button.textContent = newValue ? "开启" : "关闭";
 
         if (window.pu) {
             pu.redraw();
@@ -334,25 +334,25 @@ const UserSettings = {
     ],
 
     // Handle saving settings if needed
-    attemptSave: function() {
+    attemptSave: function () {
         if (!this._settingsLoaded) {
             return;
         }
 
         if (this._save_settings) {
-            this.can_save.forEach(function(setting) {
+            this.can_save.forEach(function (setting) {
                 setCookie(setting, UserSettings[setting], this._expDate);
             });
-            this.gridtype_size.forEach(function(setting) {
+            this.gridtype_size.forEach(function (setting) {
                 setCookie(setting, UserSettings[setting], this._expDate);
             });
             setCookie("tab_settings", JSON.stringify(getValues('mode_choices')), this._expDate);
             // setCookie("different_solution_tab", document.getElementById("multitab_settings_opt").value, this._expDate);
         } else {
-            this.can_save.forEach(function(setting) {
+            this.can_save.forEach(function (setting) {
                 deleteCookie(setting);
             });
-            this.gridtype_size.forEach(function(setting) {
+            this.gridtype_size.forEach(function (setting) {
                 deleteCookie(setting);
             });
             deleteCookie('tab_settings');
@@ -361,10 +361,10 @@ const UserSettings = {
     },
 
     _settingsLoaded: false,
-    loadFromCookies: function(load = "others") {
+    loadFromCookies: function (load = "others") {
         if (load === "others") {
             let foundCookie;
-            this.can_save.forEach(function(setting) {
+            this.can_save.forEach(function (setting) {
                 let cookieQuery = getCookie(setting);
                 if (cookieQuery !== null) {
                     UserSettings[setting] = cookieQuery;
@@ -393,7 +393,7 @@ const UserSettings = {
 
             this._settingsLoaded = true;
         } else {
-            this.gridtype_size.forEach(function(setting) {
+            this.gridtype_size.forEach(function (setting) {
                 UserSettings[setting] = getCookie(setting);
             });
         }

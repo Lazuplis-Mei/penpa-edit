@@ -115,7 +115,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180924087-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() {dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-180924087-1');
     </script>
@@ -123,7 +123,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2WQYM10ZE7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2WQYM10ZE7');
     </script>
@@ -131,67 +131,69 @@
 
 <body>
     <header id="header">
-        <span id="title">Setter Mode</span>
-        <span id="version-info">Penpa+ v<span id="version-number"></span> &copy; 2020-2022 <button id="page_help"></button></span>
+        <span id="title">设定模式</span>
+        <span id="version-info">Penpa+ v<span id="version-number"></span> &copy; 2020-2022 <button
+                id="page_help"></button></span>
     </header>
     <div id="app-container">
         <div id="tool-container">
             <div id="tool-holder">
                 <div id="top_button">
-                    <button id="newboard">New Grid / Update</button>
-                    <button id="rotation">Transform</button>
-                    <button id="newsize" style="display:none;">Resize</button>
-                    <button id="saveimage">Screenshot</button>
-                    <button id="savetext">Share</button>
+                    <button id="newboard">新建/更新</button>
+                    <button id="rotation">变换</button>
+                    <button id="newsize" style="display:none;">调整大小</button>
+                    <button id="saveimage">保存截图</button>
+                    <button id="savetext">分享</button>
                     <a id="download_link"></a>
-                    <button id="duplicate" onclick="duplicate();">Clone</button>
-                    <button id="input_sudoku">I/O Sudoku</button>
-                    <button id="input_url">Load</button>
-                    <button id="page_settings">Settings</button>
+                    <button id="duplicate" onclick="duplicate();">复制</button>
+                    <button id="input_sudoku">导入/导出数独</button>
+                    <button id="input_url">载入链接</button>
+                    <button id="page_settings">设置</button>
                 </div>
                 <div id="buttons">
                     <div id="edit_button" class="mode_button">
-                        <label class="label_mode" id="edit_txt">Edit:</label>
+                        <label class="label_mode" id="edit_txt">编辑:</label>
                         <input type="radio" name="mode_qa" id="pu_q" value=1 checked="checked" />
-                        <label for="pu_q" class="label" id="pu_q_label">Problem</label>
+                        <label for="pu_q" class="label" id="pu_q_label">编辑模式</label>
                         <input type="radio" name="mode_qa" id="pu_a" value=2 />
-                        <label for="pu_a" class="label" id="pu_a_label">Solution</label>
-                        <label class="label_mode" id="constraints">Constraints (Beta):</label>
+                        <label for="pu_a" class="label" id="pu_a_label">解题模式</label>
+                        <label class="label_mode" id="constraints">约束(测试版):</label>
                         <select name="constraints_settings" id="constraints_settings_opt"> </select>
-                        <span id="visibility_button0" class="label_mode">Visibility:</span>
-                        <span id="visibility_button" class="label">ON</span>
+                        <span id="visibility_button0" class="label_mode">不同模式下可见:</span>
+                        <span id="visibility_button" class="label">开启</span>
                         <br id="visibility_break">
-                        <span id="edge_button0" class="label_mode">Draw on Edges:</span>
-                        <span id="edge_button" class="label">OFF</span>
+                        <span id="edge_button0" class="label_mode">绘制边缘:</span>
+                        <span id="edge_button" class="label">关闭</span>
                     </div>
                     <div id="mode_button" class="mode_button">
-                        <label class="label_mode" id="mode_txt">Mode:</label>
+                        <label class="label_mode" id="mode_txt">模式:</label>
                         <input type="radio" name="mode" id="mo_surface" checked="checked" />
-                        <label for="mo_surface" class="label" id="mo_surface_lb">Surface</label>
+                        <label for="mo_surface" class="label" id="mo_surface_lb">表面</label>
                         <input type="radio" name="mode" id="mo_line" />
-                        <label for="mo_line" class="label" id="mo_line_lb">Line</label>
+                        <label for="mo_line" class="label" id="mo_line_lb">线段</label>
                         <input type="radio" name="mode" id="mo_lineE" />
-                        <label for="mo_lineE" class="label" id="mo_lineE_lb">Edge</label>
+                        <label for="mo_lineE" class="label" id="mo_lineE_lb">边线</label>
                         <input type="radio" name="mode" id="mo_wall" />
-                        <label for="mo_wall" class="label" id="mo_wall_lb">Wall</label>
+                        <label for="mo_wall" class="label" id="mo_wall_lb">墙壁</label>
                         <input type="radio" name="mode" id="mo_cage" />
-                        <label for="mo_cage" class="label" id="mo_cage_lb">Cage</label>
+                        <label for="mo_cage" class="label" id="mo_cage_lb">线框</label>
                         <input type="radio" name="mode" id="mo_board" />
-                        <label for="mo_board" class="label" id="mo_board_lb">Box</label>
+                        <label for="mo_board" class="label" id="mo_board_lb">格子</label>
                         <input type="radio" name="mode" id="mo_move" />
-                        <label for="mo_move" class="label" id="mo_move_lb">Move</label>
+                        <label for="mo_move" class="label" id="mo_move_lb">移动</label>
                         <br id="mode_break">
-                        <label class="label_mode" id="mode_txt_space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="label_mode"
+                            id="mode_txt_space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="radio" name="mode" id="mo_number" />
-                        <label for="mo_number" class="label" id="mo_number_lb">Number</label>
+                        <label for="mo_number" class="label" id="mo_number_lb">数字</label>
                         <input type="radio" name="mode" id="mo_sudoku" />
-                        <label for="mo_sudoku" class="label" id="mo_sudoku_lb">Sudoku</label>
+                        <label for="mo_sudoku" class="label" id="mo_sudoku_lb">数独</label>
                         <input type="radio" name="mode" id="mo_symbol" />
-                        <label for="mo_symbol" class="label" id="mo_symbol_lb">Shape</label>
+                        <label for="mo_symbol" class="label" id="mo_symbol_lb">形状</label>
                         <input type="radio" name="mode" id="mo_special" />
-                        <label for="mo_special" class="label" id="mo_special_lb">Special</label>
+                        <label for="mo_special" class="label" id="mo_special_lb">特殊</label>
                         <input type="radio" name="mode" id="mo_combi" />
-                        <label for="mo_combi" class="label" id="mo_combi_lb">Composite</label>
+                        <label for="mo_combi" class="label" id="mo_combi_lb">综合</label>
                         <span class="tab" id="tab_selection">
                             <select id="mode_choices" multiple size="0"></select>
                         </span>
@@ -200,43 +202,44 @@
                     <hr size="1" noshade>
                     <div id="submode_button">
                         <span id="div_sub">
-                            <label class="label_mode tooltip" id="sub_txt">Sub:&nbsp;&nbsp;<span id="sub_text" class="tooltiptext">Choose one sub-mode wherever applicable</span></label>
+                            <label class="label_mode tooltip" id="sub_txt">子模式:&nbsp;&nbsp;<span id="sub_text"
+                                    class="tooltiptext">在适当的情况下选择一种子模式</span></label>
                         </span>
                         <span id="mode_line" style="display:none;">
                             <input type="radio" name="mode_line" value="1" id="sub_line1" checked="checked">
-                            <label for="sub_line1" class="label" id="sub_line1_lb">Normal</label>
+                            <label for="sub_line1" class="label" id="sub_line1_lb">普通</label>
                             <input type="radio" name="mode_line" value="2" id="sub_line2">
-                            <label for="sub_line2" class="label" id="sub_line2_lb">Diagonal</label>
+                            <label for="sub_line2" class="label" id="sub_line2_lb">对角线</label>
                             <input type="radio" name="mode_line" value="3" id="sub_line3">
-                            <label for="sub_line3" class="label" id="sub_line3_lb">Free</label>
+                            <label for="sub_line3" class="label" id="sub_line3_lb">自由</label>
                             <input type="radio" name="mode_line" value="5" id="sub_line5">
-                            <label for="sub_line5" class="label" id="sub_line5_lb">Middle</label>
+                            <label for="sub_line5" class="label" id="sub_line5_lb">半截</label>
                             <input type="radio" name="mode_line" value="4" id="sub_line4">
-                            <label for="sub_line4" class="label" id="sub_line4_lb">Helper (x)</label>
+                            <label for="sub_line4" class="label" id="sub_line4_lb">辅助标记(x)</label>
                         </span>
                         <span id="mode_lineE" style="display:none;">
                             <input type="radio" name="mode_lineE" value="1" id="sub_lineE1" checked="checked">
-                            <label for="sub_lineE1" class="label" id="sub_lineE1_lb">Normal</label>
+                            <label for="sub_lineE1" class="label" id="sub_lineE1_lb">普通</label>
                             <input type="radio" name="mode_lineE" value="2" id="sub_lineE2">
-                            <label for="sub_lineE2" class="label" id="sub_lineE2_lb">Diagonal</label>
+                            <label for="sub_lineE2" class="label" id="sub_lineE2_lb">对角线</label>
                             <input type="radio" name="mode_lineE" value="3" id="sub_lineE3">
-                            <label for="sub_lineE3" class="label" id="sub_lineE3_lb">Free</label>
+                            <label for="sub_lineE3" class="label" id="sub_lineE3_lb">自由</label>
                             <input type="radio" name="mode_lineE" value="4" id="sub_lineE4">
-                            <label for="sub_lineE4" class="label" id="sub_lineE4_lb">Helper (x)</label>
+                            <label for="sub_lineE4" class="label" id="sub_lineE4_lb">辅助标记(x)</label>
                             <input type="radio" name="mode_lineE" value="5" id="sub_lineE5">
-                            <label for="sub_lineE5" class="label" id="sub_lineE5_lb">Erase</label>
+                            <label for="sub_lineE5" class="label" id="sub_lineE5_lb">擦除器</label>
                         </span>
                         <span id="mode_number" style="display:none;">
                             <input type="radio" name="mode_number" value="1" id="sub_number1" checked="checked">
-                            <label for="sub_number1" class="labelL" id="sub_number1_lb">Normal</label>
+                            <label for="sub_number1" class="labelL" id="sub_number1_lb">普通</label>
                             <input type="radio" name="mode_number" value="10" id="sub_number10">
-                            <label for="sub_number10" class="labelL" id="sub_number10_lb">L</label>
+                            <label for="sub_number10" class="labelL" id="sub_number10_lb">大</label>
                             <input type="radio" name="mode_number" value="6" id="sub_number6">
-                            <label for="sub_number6" class="labelL" id="sub_number6_lb">M</label>
+                            <label for="sub_number6" class="labelL" id="sub_number6_lb">中</label>
                             <input type="radio" name="mode_number" value="5" id="sub_number5">
-                            <label for="sub_number5" class="labelL" id="sub_number5_lb">S</label>
+                            <label for="sub_number5" class="labelL" id="sub_number5_lb">小</label>
                             <input type="radio" name="mode_number" value="7" id="sub_number7">
-                            <label for="sub_number7" class="labelL" id="sub_number7_lb">Candidates</label>
+                            <label for="sub_number7" class="labelL" id="sub_number7_lb">候选数</label>
                             <input type="radio" name="mode_number" value="3" id="sub_number3">
                             <label for="sub_number3" class="labelL" id="sub_number3_lb"></label>
                             <input type="radio" name="mode_number" value="9" id="sub_number9">
@@ -244,275 +247,270 @@
                             <input type="radio" name="mode_number" value="4" id="sub_number4">
                             <label for="sub_number4" class="labelL" id="sub_number4_lb">Tapa</label>
                             <input type="radio" name="mode_number" value="2" id="sub_number2">
-                            <label for="sub_number2" class="labelL" id="sub_number2_lb">Arrow</label>
+                            <label for="sub_number2" class="labelL" id="sub_number2_lb">箭头</label>
                             <input type="radio" name="mode_number" value="8" id="sub_number8">
-                            <label for="sub_number8" class="labelL" id="sub_number8_lb">Long</label>
+                            <label for="sub_number8" class="labelL" id="sub_number8_lb">超长数字</label>
                             <input type="radio" name="mode_number" value="11" id="sub_number11">
-                            <label for="sub_number11" class="labelL" id="sub_number11_lb">Killer</label>
+                            <label for="sub_number11" class="labelL" id="sub_number11_lb">杀手数字</label>
                         </span>
                         <span id="mode_symbol" style="display:none;">
                             <ul class="nav">
-                                <li><span id="ms1" class="labelS">Shape</span>
+                                <li><span id="ms1" class="labelS">形状</span>
                                     <ul id="mode_symbolul1">
-                                        <li id="li_circle"><span id="ms1_circle">&#x26AB; &#x26AA; &#x25CF; &#x25CB;</span>
+                                        <li id="li_circle"><span id="ms1_circle">&#x26AB; &#x26AA; &#x25CF;
+                                                &#x25CB;</span>
                                             <ul>
-                                                <li id="li_circle_L"><span id="ms_circle_L">L</span></li>
-                                                <li id="li_circle_M"><span id="ms_circle_M">M</span></li>
-                                                <li id="li_circle_S"><span id="ms_circle_S">S</span></li>
-                                                <li id="li_circle_SS"><span id="ms_circle_SS">XS</span></li>
+                                                <li id="li_circle_L"><span id="ms_circle_L">大</span></li>
+                                                <li id="li_circle_M"><span id="ms_circle_M">中</span></li>
+                                                <li id="li_circle_S"><span id="ms_circle_S">小</span></li>
+                                                <li id="li_circle_SS"><span id="ms_circle_SS">超小</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_square"><span id="ms1_square">&#x2B1B; &#x2B1C; &#x25FC; &#x25FB;</span>
+                                        <li id="li_square"><span id="ms1_square">&#x2B1B; &#x2B1C; &#x25FC;
+                                                &#x25FB;</span>
                                             <ul>
-                                                <li id="li_square_LL"><span id="ms_square_LL">XL</span></li>
-                                                <li id="li_square_L"><span id="ms_square_L">L</span></li>
-                                                <li id="li_square_M"><span id="ms_square_M">M</span></li>
-                                                <li id="li_square_S"><span id="ms_square_S">S</span></li>
-                                                <li id="li_square_SS"><span id="ms_square_SS">XS</span></li>
+                                                <li id="li_square_LL"><span id="ms_square_LL">超大</span></li>
+                                                <li id="li_square_L"><span id="ms_square_L">大</span></li>
+                                                <li id="li_square_M"><span id="ms_square_M">中</span></li>
+                                                <li id="li_square_S"><span id="ms_square_S">小</span></li>
+                                                <li id="li_square_SS"><span id="ms_square_SS">超小</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_triup"><span id="ms1_triup">&#x25B2; &#x25B3; &#x25B4; &#x25B5;</span>
+                                        <li id="li_triup"><span id="ms1_triup">&#x25B2; &#x25B3; &#x25B4;
+                                                &#x25B5;</span>
                                             <ul>
-                                                <li><span id="ms_triup_L">L</span></li>
-                                                <li><span id="ms_triup_M">M</span></li>
-                                                <li><span id="ms_triup_S">S</span></li>
-                                                <li><span id="ms_triup_SS">XS</span></li>
+                                                <li><span id="ms_triup_L">大</span></li>
+                                                <li><span id="ms_triup_M">中</span></li>
+                                                <li><span id="ms_triup_S">小</span></li>
+                                                <li><span id="ms_triup_SS">超小</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_tridown"><span id="ms1_tridown">&#x25BC; &#x25BD; &#x25BE; &#x25BF;</span>
+                                        <li id="li_tridown"><span id="ms1_tridown">&#x25BC; &#x25BD; &#x25BE;
+                                                &#x25BF;</span>
                                             <ul>
-                                                <li><span id="ms_tridown_L">L</span></li>
-                                                <li><span id="ms_tridown_M">M</span></li>
-                                                <li><span id="ms_tridown_S">S</span></li>
-                                                <li><span id="ms_tridown_SS">XS</span></li>
+                                                <li><span id="ms_tridown_L">大</span></li>
+                                                <li><span id="ms_tridown_M">中</span></li>
+                                                <li><span id="ms_tridown_S">小</span></li>
+                                                <li><span id="ms_tridown_SS">超小</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_triright"><span id="ms1_triright">&#9655; &#11208; &#9657; &#9656;</span>
+                                        <li id="li_triright"><span id="ms1_triright">&#9655; &#11208; &#9657;
+                                                &#9656;</span>
                                             <ul>
-                                                <li><span id="ms_triright_L">L</span></li>
-                                                <li><span id="ms_triright_M">M</span></li>
-                                                <li><span id="ms_triright_S">S</span></li>
-                                                <li><span id="ms_triright_SS">XS</span></li>
+                                                <li><span id="ms_triright_L">大</span></li>
+                                                <li><span id="ms_triright_M">中</span></li>
+                                                <li><span id="ms_triright_S">小</span></li>
+                                                <li><span id="ms_triright_SS">超小</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_trileft"><span id="ms1_trileft">&#9665; &#11207; &#9667; &#9666;</span>
+                                        <li id="li_trileft"><span id="ms1_trileft">&#9665; &#11207; &#9667;
+                                                &#9666;</span>
                                             <ul>
-                                                <li><span id="ms_trileft_L">L</span></li>
-                                                <li><span id="ms_trileft_M">M</span></li>
-                                                <li><span id="ms_trileft_S">S</span></li>
-                                                <li><span id="ms_trileft_SS">XS</span></li>
+                                                <li><span id="ms_trileft_L">大</span></li>
+                                                <li><span id="ms_trileft_M">中</span></li>
+                                                <li><span id="ms_trileft_S">小</span></li>
+                                                <li><span id="ms_trileft_SS">超小</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_diamond"><span id="ms1_diamond">&#x2B25; &#x2B26; &#x25C6; &#x25C7;</span>
+                                        <li id="li_diamond"><span id="ms1_diamond">&#x2B25; &#x2B26; &#x25C6;
+                                                &#x25C7;</span>
                                             <ul>
-                                                <li><span id="ms_diamond_L">L</span></li>
-                                                <li><span id="ms_diamond_M">M</span></li>
-                                                <li><span id="ms_diamond_S">S</span></li>
-                                                <li><span id="ms_diamond_SS">XS</span></li>
-                                            </ul>
-                                        </li>
-                                        <li id="li_hexpoint"><span id="ms1_hexpoint">Hexagon point</span>
-                                            <ul>
-                                                <li><span id="ms_hexpoint_LL">XL</span></li>
-                                                <li><span id="ms_hexpoint_L">L</span></li>
-                                                <li><span id="ms_hexpoint_M">M</span></li>
-                                                <li><span id="ms_hexpoint_S">S</span></li>
-                                                <li><span id="ms_hexpoint_SS">XS</span></li>
-                                            </ul>
-                                        </li>
-                                        <li id="li_hexflat"><span id="ms1_hexflat">Hexagon flat</span>
-                                            <ul>
-                                                <li><span id="ms_hexflat_LL">XL</span></li>
-                                                <li><span id="ms_hexflat_L">L</span></li>
-                                                <li><span id="ms_hexflat_M">M</span></li>
-                                                <li><span id="ms_hexflat_S">S</span></li>
-                                                <li><span id="ms_hexflat_SS">XS</span></li>
+                                                <li><span id="ms_diamond_L">大</span></li>
+                                                <li><span id="ms_diamond_M">中</span></li>
+                                                <li><span id="ms_diamond_S">小</span></li>
+                                                <li><span id="ms_diamond_SS">超小</span></li>
                                             </ul>
                                         </li>
                                         <li id="li_ox"><span id="ms1_ox">○△□×</span>
                                             <ul>
-                                                <li><span id="ms_ox_B">Black</span></li>
-                                                <li><span id="ms_ox_E">Green</span></li>
-                                                <li><span id="ms_ox_G">Gray</span></li>
+                                                <li><span id="ms_ox_B">黑色</span></li>
+                                                <li><span id="ms_ox_E">绿色</span></li>
+                                                <li><span id="ms_ox_G">灰色</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_cross"><span id="ms_cross">Cross</span></li>
-                                        <li id="li_line"><span id="ms_line">Lines</span></li>
-                                        <li id="li_frameline"><span id="ms_frameline">Cage Lines</span></li>
-                                        <li id="li_bars"><span id="ms1_bars">Bars &#x25AE; &#x25AF;</span>
+                                        <li id="li_cross"><span id="ms_cross">十字</span></li>
+                                        <li id="li_line"><span id="ms_line">线段</span></li>
+                                        <li id="li_frameline"><span id="ms_frameline">笼式线</span></li>
+                                        <li id="li_bars"><span id="ms1_bars">竖条 &#x25AE; &#x25AF;</span>
                                             <ul id="ul_bars">
-                                                <li><span id="ms_bars_B">Black</span></li>
-                                                <li><span id="ms_bars_G">Gray</span></li>
-                                                <li><span id="ms_bars_W">White</span></li>
+                                                <li><span id="ms_bars_B">黑色</span></li>
+                                                <li><span id="ms_bars_G">灰色</span></li>
+                                                <li><span id="ms_bars_W">白色</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_tri"><span id="ms_tri">&#x25E2; &#x25E3; &#x25E4; &#x25E5;</span></li>
+                                        <li id="li_tri"><span id="ms_tri">&#x25E2; &#x25E3; &#x25E4; &#x25E5;</span>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><span id="ms2" class="labelS">Number</span>
+                                <li><span id="ms2" class="labelS">数字</span>
                                     <ul id="mode_symbolul2">
-                                        <li><span id="ms3_math">Math</span>
+                                        <li><span id="ms3_math">数学</span>
                                             <ul>
-                                                <li><span id="ms_math">Black</span></li>
-                                                <li><span id="ms_math_G">Green</span></li>
+                                                <li><span id="ms_math">黑色</span></li>
+                                                <li><span id="ms_math_G">绿色</span></li>
                                             </ul>
                                         </li>
                                         <li><span id="ms_inequality">&#xFF1C; &#xFF1E; ^ v </span></li>
-                                        <li id=msli_degital><span id="ms1_degital">&brvbar;-&brvbar; &brvbar; '-&brvbar;</span>
+                                        <li id=msli_degital><span id="ms1_degital">&brvbar;-&brvbar; &brvbar;
+                                                '-&brvbar;</span>
                                             <ul id="ul_degital">
-                                                <li><span id="ms_degital_B">Black</span></li>
-                                                <li><span id="ms_degital_E">Green</span></li>
-                                                <li><span id="ms_degital_G">Gray</span></li>
+                                                <li><span id="ms_degital_B">黑色</span></li>
+                                                <li><span id="ms_degital_E">绿色</span></li>
+                                                <li><span id="ms_degital_G">灰色</span></li>
                                             </ul>
                                         </li>
-                                        <li><span id="ms_degital_f">Digital Frame</span></li>
+                                        <li><span id="ms_degital_f">七段数码管</span></li>
                                         <li><span id="ms_dice">⚀ ⚂ ⚅</span></li>
-                                        <li><span id="ms_pills">Pills</span></li>
+                                        <li><span id="ms_pills">点</span></li>
                                     </ul>
                                 </li>
-                                <li><span id="ms3" class="labelS">Arrow</span>
+                                <li><span id="ms3" class="labelS">箭头</span>
                                     <ul id="mode_symbolul3">
-                                        <li id="li_arrow_B"><span id="ms3_arrow_B">Fat</span>
+                                        <li id="li_arrow_B"><span id="ms3_arrow_B">宽型</span>
                                             <ul>
-                                                <li><span id="ms_arrow_B_B">Black</span></li>
-                                                <li><span id="ms_arrow_B_G">Grey</span></li>
-                                                <li><span id="ms_arrow_B_W">White</span></li>
+                                                <li><span id="ms_arrow_B_B">黑色</span></li>
+                                                <li><span id="ms_arrow_B_G">灰色</span></li>
+                                                <li><span id="ms_arrow_B_W">白色</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_arrow_N"><span id="ms3_arrow_N">Thin</span>
+                                        <li id="li_arrow_N"><span id="ms3_arrow_N">窄型</span>
                                             <ul>
-                                                <li><span id="ms_arrow_N_B">Black</span></li>
-                                                <li><span id="ms_arrow_N_G">Grey</span></li>
-                                                <li><span id="ms_arrow_N_W">White</span></li>
+                                                <li><span id="ms_arrow_N_B">黑色</span></li>
+                                                <li><span id="ms_arrow_N_G">灰色</span></li>
+                                                <li><span id="ms_arrow_N_W">白色</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_arrow_tri"><span id="ms3_arrow_tri">Triangular</span>
+                                        <li id="li_arrow_tri"><span id="ms3_arrow_tri">三角形</span>
                                             <ul>
-                                                <li><span id="ms_arrow_tri_B">Black</span></li>
-                                                <li><span id="ms_arrow_tri_G">Grey</span></li>
-                                                <li><span id="ms_arrow_tri_W">White</span></li>
+                                                <li><span id="ms_arrow_tri_B">黑色</span></li>
+                                                <li><span id="ms_arrow_tri_G">灰色</span></li>
+                                                <li><span id="ms_arrow_tri_W">白色</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_arrow_fouredge"><span id="ms3_arrow_fouredge">Four edge</span>
+                                        <li id="li_arrow_fouredge"><span id="ms3_arrow_fouredge">四边</span>
                                             <ul>
-                                                <li><span id="ms_arrow_fouredge_B">Black</span></li>
-                                                <li><span id="ms_arrow_fouredge_G">Grey</span></li>
-                                                <li><span id="ms_arrow_fouredge_E">Green</span></li>
+                                                <li><span id="ms_arrow_fouredge_B">黑色</span></li>
+                                                <li><span id="ms_arrow_fouredge_G">灰色</span></li>
+                                                <li><span id="ms_arrow_fouredge_E">绿色</span></li>
                                             </ul>
                                         </li>
                                         <li id="li_arrow_GP"><span id="ms3_arrow_GP">GP</span>
                                             <ul>
-                                                <li><span id="ms_arrow_GP">Normal</span></li>
-                                                <li><span id="ms_arrow_GP_C">With circle</span></li>
+                                                <li><span id="ms_arrow_GP">普通</span></li>
+                                                <li><span id="ms_arrow_GP_C">圆圈</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_arrow_Short"><span id="ms_arrow_Short">Short and fat</span></li>
-                                        <li id="li_arrow_S"><span id="ms_arrow_S">Small</span></li>
-                                        <li id="li_arrow_cross"><span id="ms_arrow_cross">Cross</span></li>
-                                        <li id="li_arrow_eight"><span id="ms_arrow_eight">8-way</span></li>
-                                        <li id="li_arrow_fourtip"><span id="ms_arrow_fourtip">Arrow tips</span></li>
+                                        <li id="li_arrow_Short"><span id="ms_arrow_Short">短宽型</span></li>
+                                        <li id="li_arrow_S"><span id="ms_arrow_S">小型</span></li>
+                                        <li id="li_arrow_cross"><span id="ms_arrow_cross">半截</span></li>
+                                        <li id="li_arrow_eight"><span id="ms_arrow_eight">八向箭头</span></li>
+                                        <li id="li_arrow_fourtip"><span id="ms_arrow_fourtip">箭尖</span></li>
                                     </ul>
                                 </li>
-                                <li><span id="ms4" class="labelS">Special 1</span>
+                                <li><span id="ms4" class="labelS">特殊1</span>
                                     <ul id="mode_symbolul4">
-                                        <li id="li_battleship"><span id="ms4_battleship">Battleship</span>
+                                        <li id="li_battleship"><span id="ms4_battleship">战舰</span>
                                             <ul>
-                                                <li><span id="ms_battleship_B">Black</span></li>
-                                                <li><span id="ms_battleship_G">Grey</span></li>
-                                                <li><span id="ms_battleship_W">White</span></li>
-                                                <li><span id="ms_battleship_B+">Curvy Black</span></li>
-                                                <li><span id="ms_battleship_G+">Curvy Grey</span></li>
-                                                <li><span id="ms_battleship_W+">Curvy White</span></li>
+                                                <li><span id="ms_battleship_B">黑色</span></li>
+                                                <li><span id="ms_battleship_G">灰色</span></li>
+                                                <li><span id="ms_battleship_W">白色</span></li>
+                                                <li><span id="ms_battleship_B+">曲边黑块</span></li>
+                                                <li><span id="ms_battleship_G+">曲边灰色</span></li>
+                                                <li><span id="ms_battleship_W+">曲边白色</span></li>
                                             </ul>
                                         </li>
-                                        <li id="li_kakuro"><span id="ms_kakuro">Kakuro</span></li>
-                                        <li id="li_tents"><span id="ms_tents">&#127794; &#9650; &#8779; &#128031;</span></li>
+                                        <li id="li_kakuro"><span id="ms_kakuro">数和</span></li>
+                                        <li id="li_tents"><span id="ms_tents">&#127794; &#9650; &#8779; &#128031;</span>
+                                        </li>
                                         <li id="li_star"><span id="ms_star">&#10022; &#9734; &#9733;</span></li>
-                                        <li id="li_compass"><span id="ms_compass">Compass</span></li>
-                                        <li id="li_sudokuetc"><span id="ms_sudokuetc">Sudoku</span></li>
-                                        <li id="li_sudokumore"><span id="ms_sudokumore">ArrowSums</span></li>
-                                        <li id="li_polyomino"><span id="ms_polyomino">Polyomino</span></li>
-                                        <li id="li_polyhex"><span id="ms_polyhex">Polyhex</span></li>
+                                        <li id="li_compass"><span id="ms_compass">罗盘</span></li>
+                                        <li id="li_sudokuetc"><span id="ms_sudokuetc">数独</span></li>
+                                        <li id="li_sudokumore"><span id="ms_sudokumore">箭头和</span></li>
+                                        <li id="li_polyomino"><span id="ms_polyomino">多联骨牌</span></li>
                                     </ul>
                                 </li>
-                                <li><span id="ms5" class="labelS">Special 2</span>
+                                <li><span id="ms5" class="labelS">特殊2</span>
                                     <ul id="mode_symbolul5">
-                                        <li><span id="ms_angleloop">Angle Loop</span></li>
-                                        <li><span id="ms_firefly">Firefly</span></li>
+                                        <li><span id="ms_angleloop">角度环</span></li>
+                                        <li><span id="ms_firefly">萤火虫</span></li>
                                         <li><span id="ms_sun_moon">☼ 🌙 💡 💣</span></li>
-                                        <li><span id="ms_pencils">Pencils</span></li>
-                                        <li><span id="ms_slovak">Slovak Sums</span></li>
-                                        <li><span id="ms_arc">Arc</span></li>
-                                        <li><span id="ms_darts">Darts</span></li>
-                                        <li><span id="ms_spans">Spans</span></li>
-                                        <li><span id="ms_neighbors">Neighbors</span></li>
+                                        <li><span id="ms_pencils">铅笔</span></li>
+                                        <li><span id="ms_slovak">斯洛伐克和</span></li>
+                                        <li><span id="ms_arc">弧</span></li>
+                                        <li><span id="ms_darts">飞镖</span></li>
+                                        <li><span id="ms_spans">跨度</span></li>
+                                        <li><span id="ms_neighbors">邻居</span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </span>
                         <span id="mode_special" style="display:none;">
-                            <input type="radio" name="mode_special" value="thermo" id="sub_specialthermo" checked="checked">
-                            <label for="sub_specialthermo" class="label" id="sub_specialthermo_lb">Thermo</label>
+                            <input type="radio" name="mode_special" value="thermo" id="sub_specialthermo"
+                                checked="checked">
+                            <label for="sub_specialthermo" class="label" id="sub_specialthermo_lb">温度计</label>
                             <input type="radio" name="mode_special" value="nobulbthermo" id="sub_specialnobulbthermo">
-                            <label for="sub_specialnobulbthermo" class="label" id="sub_specialnobulbthermo_lb">No Bulb Thermo</label>
+                            <label for="sub_specialnobulbthermo" class="label"
+                                id="sub_specialnobulbthermo_lb">无泡温度计</label>
                             <input type="radio" name="mode_special" value="arrows" id="sub_specialarrows">
-                            <label for="sub_specialarrows" class="label" id="sub_specialarrows_lb">Sudoku Arrow</label>
+                            <label for="sub_specialarrows" class="label" id="sub_specialarrows_lb">数独箭头</label>
                             <input type="radio" name="mode_special" value="direction" id="sub_specialdirection">
-                            <label for="sub_specialdirection" class="label" id="sub_specialdirection_lb">Arrow</label>
+                            <label for="sub_specialdirection" class="label" id="sub_specialdirection_lb">箭头</label>
                             <input type="radio" name="mode_special" value="squareframe" id="sub_specialsquareframe">
-                            <label for="sub_specialsquareframe" class="label" id="sub_specialsquareframe_lb">Rectangle frame</label>
+                            <label for="sub_specialsquareframe" class="label" id="sub_specialsquareframe_lb">矩形框</label>
                             <input type="radio" name="mode_special" value="polygon" id="sub_specialpolygon">
-                            <label for="sub_specialpolygon" class="label" id="sub_specialpolygon_lb">Polygon</label>
+                            <label for="sub_specialpolygon" class="label" id="sub_specialpolygon_lb">多边形</label>
                         </span>
                         <span id="mode_cage" style="display:none;">
                             <input type="radio" name="mode_cage" value="1" id="sub_cage1" checked="checked">
-                            <label for="sub_cage1" class="label" id="sub_cage1_lb">Killer</label>
+                            <label for="sub_cage1" class="label" id="sub_cage1_lb">杀手框</label>
                             <input type="radio" name="mode_cage" value="2" id="sub_cage2">
-                            <label for="sub_cage2" class="label" id="sub_cage2_lb">Free</label>
+                            <label for="sub_cage2" class="label" id="sub_cage2_lb">自由模式</label>
                         </span>
                         <span id="mode_move" style="display:none;">
                             <input type="radio" name="mode_move" value="1" id="sub_move1" checked="checked">
-                            <label for="sub_move1" class="label" id="sub_move1_lb">All</label>
+                            <label for="sub_move1" class="label" id="sub_move1_lb">所有</label>
                             <input type="radio" name="mode_move" value="2" id="sub_move2">
-                            <label for="sub_move2" class="label" id="sub_move2_lb">Numbers</label>
+                            <label for="sub_move2" class="label" id="sub_move2_lb">数字</label>
                             <input type="radio" name="mode_move" value="3" id="sub_move3">
-                            <label for="sub_move3" class="label" id="sub_move3_lb">Shapes</label>
+                            <label for="sub_move3" class="label" id="sub_move3_lb">形状</label>
                         </span>
                         <span id="mode_combi" style="display:none;">
                             <ul class="nav">
-                                <li><span id="subc1" class="labelS">Paint</span>
+                                <li><span id="subc1" class="labelS">涂色</span>
                                     <ul>
-                                        <li><span id="combisub_blpo">Black / dot</span></li>
-                                        <li><span id="combisub_blwh">Yin-Yang</span></li>
-                                        <li id="combili_shaka"><span id="combisub_shaka">Shakashaka</span></li>
+                                        <li><span id="combisub_blpo">黑块/点</span></li>
+                                        <li><span id="combisub_blwh">阴阳</span></li>
+                                        <li id="combili_shaka"><span id="combisub_shaka">留方</span></li>
                                     </ul>
                                 </li>
-                                <li><span id="subc2" class="labelS">Loop</span>
+                                <li><span id="subc2" class="labelS">回路</span>
                                     <ul>
-                                        <li id="li_linex"><span id="combisub_linex">Line or x</span></li>
-                                        <li id="li_lineox"><span id="combisub_lineox">Line or OX</span></li>
-                                        <li id="li_edgex"><span id="combisub_edgex">Edge x</span></li>
-                                        <li id="li_edgexoi"><span id="combisub_edgexoi">Edge IO</span></li>
-                                        <li id="li_yajilin"><span id="combisub_yajilin">Yajilin</span></li>
+                                        <li id="li_linex"><span id="combisub_linex">线段(x)</span></li>
+                                        <li id="li_lineox"><span id="combisub_lineox">线段(OX)</span></li>
+                                        <li id="li_edgex"><span id="combisub_edgex">边线(x)</span></li>
+                                        <li id="li_edgexoi"><span id="combisub_edgexoi">边线(IO)</span></li>
+                                        <li id="li_yajilin"><span id="combisub_yajilin">仙人指路</span></li>
                                         <li id="li_hashi"><span id="combisub_hashi">Hashi</span></li>
                                         <li id="li_rassisillai"><span id="combisub_rassisillai">RassiSillai</span></li>
                                     </ul>
                                 </li>
-                                <li><span id="subc3" class="labelS">Area / Field</span>
+                                <li><span id="subc3" class="labelS">区域</span>
                                     <ul>
-                                        <li><span id="combisub_edgesub">Edge/Aux line</span></li>
+                                        <li><span id="combisub_edgesub">区域/辅助线</span></li>
                                     </ul>
                                 </li>
-                                <li><span id="subc4" class="labelS">Object</span>
+                                <li><span id="subc4" class="labelS">对象物体</span>
                                     <ul>
-                                        <li id="combili_battleship"><span id="combisub_battleship">Battleship</span></li>
-                                        <li><span id="combisub_star">Star Battle</span></li>
-                                        <li><span id="combisub_tents">Tent</span></li>
-                                        <li><span id="combisub_magnets">Magnets</span></li>
-                                        <li id="combili_mines"><span id="combisub_mines">Minesweeper</span></li>
-                                        <li id="combili_akari"><span id="combisub_akari">Akari</span></li>
-                                        <li id="combili_arrowS"><span id="combisub_arrowS">Arrows</span></li>
-                                        <li id="combili_doublemines"><span id="combisub_doublemines">DoubleMines</span></li>
+                                        <li id="combili_battleship"><span id="combisub_battleship">战舰</span>
+                                        </li>
+                                        <li><span id="combisub_star">星战</span></li>
+                                        <li><span id="combisub_tents">帐篷</span></li>
+                                        <li><span id="combisub_magnets">磁铁</span></li>
+                                        <li id="combili_mines"><span id="combisub_mines">扫雷</span></li>
+                                        <li id="combili_akari"><span id="combisub_akari">点灯</span></li>
+                                        <li id="combili_arrowS"><span id="combisub_arrowS">箭头</span></li>
+                                        <li id="combili_doublemines"><span id="combisub_doublemines">双倍扫雷</span>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><span id="subc5" class="labelS">Number logic</span>
@@ -525,123 +523,136 @@
                         </span>
                         <span id="mode_sudoku" style="display:none;">
                             <input type="radio" name="mode_sudoku" value="1" id="sub_sudoku1" checked="checked">
-                            <label for="sub_sudoku1" class="label" id="sub_sudoku1_lb">Normal</label>
+                            <label for="sub_sudoku1" class="label" id="sub_sudoku1_lb">普通</label>
                             <input type="radio" name="mode_sudoku" value="2" id="sub_sudoku2">
-                            <label for="sub_sudoku2" class="label" id="sub_sudoku2_lb">Corner</label>
+                            <label for="sub_sudoku2" class="label" id="sub_sudoku2_lb">角落</label>
                             <input type="radio" name="mode_sudoku" value="3" id="sub_sudoku3">
-                            <label for="sub_sudoku3" class="label" id="sub_sudoku3_lb">Centre</label>
+                            <label for="sub_sudoku3" class="label" id="sub_sudoku3_lb">中间</label>
                         </span>
                     </div>
                     <div id="stylemode_button">
                         <span>
-                            <label class="label_mode tooltip" id="style_txt">Style:<span id="style_text" class="tooltiptext">Choose one style</span></label>
+                            <label class="label_mode tooltip" id="style_txt">样式:<span id="style_text"
+                                    class="tooltiptext">选择一个样式</span></label>
                         </span>
                         <span id="style_surface" style="display:'inline-block';">
                             <!-- Adding superscript was affecting the color selection as it did not had id, so defined new id and followed same structure as parent. Its important to have only two characters at the end after _ because of the way, window_click is setup in main.js for stylemode_check-->
                             <input type="radio" name="style_surface" value="1" id="st_surface1" checked="checked">
-                            <label for="st_surface1" class="labelL" id="st_surface1_lb">DG<sup id="st_surface1_sp">1</sup></label>
+                            <label for="st_surface1" class="labelL" id="st_surface1_lb">深灰<sup
+                                    id="st_surface1_sp">1</sup></label>
                             <input type="radio" name="style_surface" value="8" id="st_surface8">
-                            <label for="st_surface8" class="labelL" id="st_surface8_lb">GR<sup id="st_surface8_sp">2</sup></label>
+                            <label for="st_surface8" class="labelL" id="st_surface8_lb">灰<sup
+                                    id="st_surface8_sp">2</sup></label>
                             <input type="radio" name="style_surface" value="3" id="st_surface3">
-                            <label for="st_surface3" class="labelL" id="st_surface3_lb">LG<sup id="st_surface3_sp">3</sup></label>
+                            <label for="st_surface3" class="labelL" id="st_surface3_lb">浅灰<sup
+                                    id="st_surface3_sp">3</sup></label>
                             <input type="radio" name="style_surface" value="4" id="st_surface4">
-                            <label for="st_surface4" class="labelL" id="st_surface4_lb">BL<sup id="st_surface4_sp">4</sup></label>
+                            <label for="st_surface4" class="labelL" id="st_surface4_lb">黑<sup
+                                    id="st_surface4_sp">4</sup></label>
                             <input type="radio" name="style_surface" value="2" id="st_surface2">
-                            <label for="st_surface2" class="labelL" id="st_surface2_lb">GR<sup id="st_surface2_sp">5</sup></label>
+                            <label for="st_surface2" class="labelL" id="st_surface2_lb">绿<sup
+                                    id="st_surface2_sp">5</sup></label>
                             <input type="radio" name="style_surface" value="5" id="st_surface5">
-                            <label for="st_surface5" class="labelL" id="st_surface5_lb">BL<sup id="st_surface5_sp">6</sup></label>
+                            <label for="st_surface5" class="labelL" id="st_surface5_lb">蓝<sup
+                                    id="st_surface5_sp">6</sup></label>
                             <input type="radio" name="style_surface" value="6" id="st_surface6">
-                            <label for="st_surface6" class="labelL" id="st_surface6_lb">RE<sup id="st_surface6_sp">7</sup></label>
+                            <label for="st_surface6" class="labelL" id="st_surface6_lb">红<sup
+                                    id="st_surface6_sp">7</sup></label>
                             <input type="radio" name="style_surface" value="7" id="st_surface7">
-                            <label for="st_surface7" class="labelL" id="st_surface7_lb">YE<sup id="st_surface7_sp">8</sup></label>
+                            <label for="st_surface7" class="labelL" id="st_surface7_lb">黄<sup
+                                    id="st_surface7_sp">8</sup></label>
                             <input type="radio" name="style_surface" value="9" id="st_surface9">
-                            <label for="st_surface9" class="labelL" id="st_surface9_lb">PI<sup id="st_surface9_sp">9</sup></label>
+                            <label for="st_surface9" class="labelL" id="st_surface9_lb">粉<sup
+                                    id="st_surface9_sp">9</sup></label>
                             <input type="radio" name="style_surface" value="10" id="st_surface10">
-                            <label for="st_surface10" class="labelL" id="st_surface10_lb">OR<sup id="st_surface10_sp">0</sup></label>
+                            <label for="st_surface10" class="labelL" id="st_surface10_lb">橙<sup
+                                    id="st_surface10_sp">0</sup></label>
                             <input type="radio" name="style_surface" value="11" id="st_surface11">
-                            <label for="st_surface11" class="labelL" id="st_surface11_lb">PU<sup id="st_surface11_sp">11</sup></label>
+                            <label for="st_surface11" class="labelL" id="st_surface11_lb">紫<sup
+                                    id="st_surface11_sp">11</sup></label>
                             <input type="radio" name="style_surface" value="12" id="st_surface12">
-                            <label for="st_surface12" class="labelL" id="st_surface12_lb">BR<sup id="st_surface12_sp">12</sup></label>
+                            <label for="st_surface12" class="labelL" id="st_surface12_lb">棕<sup
+                                    id="st_surface12_sp">12</sup></label>
                         </span>
                         <span id="style_line" style="display:none;">
                             <input type="radio" name="style_line" value="3" id="st_line3" checked="checked">
-                            <label for="st_line3" class="labelL" id="st_line3_lb">G</label>
+                            <label for="st_line3" class="labelL" id="st_line3_lb">绿</label>
                             <input type="radio" name="style_line" value="2" id="st_line2">
-                            <label for="st_line2" class="labelL" id="st_line2_lb">B</label>
+                            <label for="st_line2" class="labelL" id="st_line2_lb">黑</label>
                             <input type="radio" name="style_line" value="5" id="st_line5">
-                            <label for="st_line5" class="labelL" id="st_line5_lb">G</label>
+                            <label for="st_line5" class="labelL" id="st_line5_lb">灰</label>
                             <input type="radio" name="style_line" value="8" id="st_line8">
-                            <label for="st_line8" class="labelL" id="st_line8_lb">R</label>
+                            <label for="st_line8" class="labelL" id="st_line8_lb">红</label>
                             <input type="radio" name="style_line" value="9" id="st_line9">
-                            <label for="st_line9" class="labelL" id="st_line9_lb">B</label>
+                            <label for="st_line9" class="labelL" id="st_line9_lb">蓝</label>
                             <input type="radio" name="style_line" value="80" id="st_line80">
-                            <label for="st_line80" class="labelL" id="st_line80_lb">Thin</label>
+                            <label for="st_line80" class="labelL" id="st_line80_lb">细线</label>
                             <input type="radio" name="style_line" value="12" id="st_line12">
-                            <label for="st_line12" class="labelL" id="st_line12_lb">Dotted</label>
+                            <label for="st_line12" class="labelL" id="st_line12_lb">虚线</label>
                             <input type="radio" name="style_line" value="13" id="st_line13">
-                            <label for="st_line13" class="labelL" id="st_line13_lb">Fat dots</label>
+                            <label for="st_line13" class="labelL" id="st_line13_lb">粗虚线</label>
                             <input type="radio" name="style_line" value="40" id="st_line40">
-                            <label for="st_line40" class="labelL" id="st_line40_lb">Short</label>
+                            <label for="st_line40" class="labelL" id="st_line40_lb">断线</label>
                             <input type="radio" name="style_line" value="30" id="st_line30">
-                            <label for="st_line30" class="labelL" id="st_line30_lb">Double</label>
+                            <label for="st_line30" class="labelL" id="st_line30_lb">双线</label>
                         </span>
                         <span id="style_lineE" style="display:none;">
                             <input type="radio" name="style_lineE" value="3" id="st_lineE3" checked="checked">
-                            <label for="st_lineE3" class="labelL" id="st_lineE3_lb">G</label>
+                            <label for="st_lineE3" class="labelL" id="st_lineE3_lb">绿</label>
                             <input type="radio" name="style_lineE" value="2" id="st_lineE2">
-                            <label for="st_lineE2" class="labelL" id="st_lineE2_lb">B</label>
+                            <label for="st_lineE2" class="labelL" id="st_lineE2_lb">黑</label>
                             <input type="radio" name="style_lineE" value="5" id="st_lineE5">
-                            <label for="st_lineE5" class="labelL" id="st_lineE5_lb">G</label>
+                            <label for="st_lineE5" class="labelL" id="st_lineE5_lb">灰</label>
                             <input type="radio" name="style_lineE" value="8" id="st_lineE8">
-                            <label for="st_lineE8" class="labelL" id="st_lineE8_lb">R</label>
+                            <label for="st_lineE8" class="labelL" id="st_lineE8_lb">红</label>
                             <input type="radio" name="style_lineE" value="9" id="st_lineE9">
-                            <label for="st_lineE9" class="labelL" id="st_lineE9_lb">B</label>
+                            <label for="st_lineE9" class="labelL" id="st_lineE9_lb">蓝</label>
                             <input type="radio" name="style_lineE" value="21" id="st_lineE21">
-                            <label for="st_lineE21" class="labelL" id="st_lineE21_lb">Thicker</label>
+                            <label for="st_lineE21" class="labelL" id="st_lineE21_lb">加厚</label>
                             <input type="radio" name="style_lineE" value="80" id="st_lineE80">
-                            <label for="st_lineE80" class="labelL" id="st_lineE80_lb">Thin</label>
+                            <label for="st_lineE80" class="labelL" id="st_lineE80_lb">细线</label>
                             <input type="radio" name="style_lineE" value="12" id="st_lineE12">
-                            <label for="st_lineE12" class="labelL" id="st_lineE12_lb">Dotted</label>
+                            <label for="st_lineE12" class="labelL" id="st_lineE12_lb">虚线</label>
                             <input type="radio" name="style_lineE" value="13" id="st_lineE13">
-                            <label for="st_lineE13" class="labelL" id="st_lineE13_lb">Fat dots</label>
+                            <label for="st_lineE13" class="labelL" id="st_lineE13_lb">粗虚线</label>
                             <input type="radio" name="style_lineE" value="30" id="st_lineE30">
-                            <label for="st_lineE30" class="labelL" id="st_lineE30_lb">Double</label>
+                            <label for="st_lineE30" class="labelL" id="st_lineE30_lb">双线</label>
                         </span>
                         <span id="style_wall" style="display:none;">
                             <input type="radio" name="style_wall" value="3" id="st_wall3" checked="checked">
-                            <label for="st_wall3" class="labelL" id="st_wall3_lb">G</label>
+                            <label for="st_wall3" class="labelL" id="st_wall3_lb">绿</label>
                             <input type="radio" name="style_wall" value="2" id="st_wall2">
-                            <label for="st_wall2" class="labelL" id="st_wall2_lb">B</label>
+                            <label for="st_wall2" class="labelL" id="st_wall2_lb">黑</label>
                             <input type="radio" name="style_wall" value="5" id="st_wall5">
-                            <label for="st_wall5" class="labelL" id="st_wall5_lb">G</label>
+                            <label for="st_wall5" class="labelL" id="st_wall5_lb">灰</label>
                             <input type="radio" name="style_wall" value="8" id="st_wall8">
-                            <label for="st_wall8" class="labelL" id="st_wall8_lb">R</label>
+                            <label for="st_wall8" class="labelL" id="st_wall8_lb">红</label>
                             <input type="radio" name="style_wall" value="9" id="st_wall9">
-                            <label for="st_wall9" class="labelL" id="st_wall9_lb">B</label>
+                            <label for="st_wall9" class="labelL" id="st_wall9_lb">蓝</label>
                             <input type="radio" name="style_wall" value="1" id="st_wall1">
-                            <label for="st_wall1" class="labelL" id="st_wall1_lb">Thin</label>
+                            <label for="st_wall1" class="labelL" id="st_wall1_lb">细线</label>
                             <input type="radio" name="style_wall" value="12" id="st_wall12">
-                            <label for="st_wall12" class="labelL" id="st_wall12_lb">Dotted</label>
+                            <label for="st_wall12" class="labelL" id="st_wall12_lb">虚线</label>
                             <input type="radio" name="style_wall" value="17" id="st_wall17">
-                            <label for="st_wall17" class="labelL" id="st_wall17_lb">Fat dots</label>
+                            <label for="st_wall17" class="labelL" id="st_wall17_lb">粗虚线</label>
                             <input type="radio" name="style_wall" value="14" id="st_wall14">
-                            <label for="st_wall14" class="labelL" id="st_wall14_lb">Grey dot</label>
+                            <label for="st_wall14" class="labelL" id="st_wall14_lb">灰虚线</label>
                         </span>
                         <span id="style_number" style="display:none;">
                             <input type="radio" name="style_number" value="1" id="st_number1" checked="checked">
-                            <label for="st_number1" class="labelL" id="st_number1_lb">B</label>
+                            <label for="st_number1" class="labelL" id="st_number1_lb">黑</label>
                             <input type="radio" name="style_number" value="2" id="st_number2">
-                            <label for="st_number2" class="labelL" id="st_number2_lb">G</label>
+                            <label for="st_number2" class="labelL" id="st_number2_lb">绿</label>
                             <input type="radio" name="style_number" value="8" id="st_number8">
-                            <label for="st_number8" class="labelL" id="st_number8_lb">B</label>
+                            <label for="st_number8" class="labelL" id="st_number8_lb">蓝</label>
                             <input type="radio" name="style_number" value="3" id="st_number3">
-                            <label for="st_number3" class="labelL" id="st_number3_lb">G</label>
+                            <label for="st_number3" class="labelL" id="st_number3_lb">灰</label>
                             <input type="radio" name="style_number" value="9" id="st_number9">
-                            <label for="st_number9" class="labelL" id="st_number9_lb">B</label>
+                            <label for="st_number9" class="labelL" id="st_number9_lb">深蓝</label>
                             <input type="radio" name="style_number" value="10" id="st_number10">
-                            <label for="st_number10" class="labelL" id="st_number10_lb">R</label>
+                            <label for="st_number10" class="labelL" id="st_number10_lb">红</label>
                             <input type="radio" name="style_number" value="4" id="st_number4">
-                            <label for="st_number4" class="labelL" id="st_number4_lb">W</label>
+                            <label for="st_number4" class="labelL" id="st_number4_lb">白</label>
                             <input type="radio" name="style_number" value="0" id="st_number0">
                             <label for="st_number0" class="labelL" id="st_number0_lb"></label>
                             <input type="radio" name="style_number" value="6" id="st_number6">
@@ -651,47 +662,47 @@
                             <input type="radio" name="style_number" value="11" id="st_number11">
                             <label for="st_number11" class="labelL" id="st_number11_lb"></label>
                             <input type="radio" name="style_number" value="5" id="st_number5">
-                            <label for="st_number5" class="labelL" id="st_number5_lb">White BG</label>
+                            <label for="st_number5" class="labelL" id="st_number5_lb">白圈</label>
                         </span>
                         <span id="style_symbol" style="display:none;">
                             <input type="radio" name="style_symbol" value="1" id="st_symbol1">
-                            <label for="st_symbol1" class="label" id="st_symbol1_lb">Behind Lines</label>
+                            <label for="st_symbol1" class="label" id="st_symbol1_lb">位于线后</label>
                             <input type="radio" name="style_symbol" value="2" id="st_symbol2" checked="checked">
-                            <label for="st_symbol2" class="label" id="st_symbol2_lb">In front of lines</label>
+                            <label for="st_symbol2" class="label" id="st_symbol2_lb">位于线前</label>
                             <span class="symbolmode_display">
-                                <span id="panel_buttons0" class="label">Selection:</span>
+                                <span id="panel_buttons0" class="label">当前选择:</span>
                                 <b><span id="symmode_content" class="symmode_content">circle_L</span></b>
                             </span>
                         </span>
                         <span id="style_combi" style="display:none;">
                             <span class="combimode_display">
-                                <span id="panel_buttonc0" class="label">Selection:</span>
+                                <span id="panel_buttonc0" class="label">当前选择:</span>
                                 <b><span id="combimode_content" class="combimode_content">blpo</span></b>
                             </span>
                         </span>
                         <span id="style_cage" style="display:none;">
                             <input type="radio" name="style_cage" value="10" id="st_cage10" checked="checked">
-                            <label for="st_cage10" class="label" id="st_cage10_lb">Dotted line</label>
+                            <label for="st_cage10" class="label" id="st_cage10_lb">虚线</label>
                             <input type="radio" name="style_cage" value="7" id="st_cage7">
-                            <label for="st_cage7" class="label" id="st_cage7_lb">Grey line</label>
+                            <label for="st_cage7" class="label" id="st_cage7_lb">灰线</label>
                             <input type="radio" name="style_cage" value="15" id="st_cage15">
-                            <label for="st_cage15" class="label" id="st_cage15_lb">Grey dots</label>
+                            <label for="st_cage15" class="label" id="st_cage15_lb">灰虚线</label>
                             <input type="radio" name="style_cage" value="16" id="st_cage16">
-                            <label for="st_cage16" class="label" id="st_cage16_lb">Solid line</label>
+                            <label for="st_cage16" class="label" id="st_cage16_lb">实线</label>
                         </span>
                         <span id="style_sudoku" style="display:none;">
                             <input type="radio" name="style_sudoku" value="1" id="st_sudoku1" checked="checked">
-                            <label for="st_sudoku1" class="label" id="st_sudoku1_lb">B</label>
+                            <label for="st_sudoku1" class="label" id="st_sudoku1_lb">黑</label>
                             <input type="radio" name="style_sudoku" value="2" id="st_sudoku2">
-                            <label for="st_sudoku2" class="label" id="st_sudoku2_lb">G</label>
+                            <label for="st_sudoku2" class="label" id="st_sudoku2_lb">绿</label>
                             <input type="radio" name="style_sudoku" value="8" id="st_sudoku8">
-                            <label for="st_sudoku8" class="label" id="st_sudoku8_lb">B</label>
+                            <label for="st_sudoku8" class="label" id="st_sudoku8_lb">蓝</label>
                             <input type="radio" name="style_sudoku" value="3" id="st_sudoku3">
-                            <label for="st_sudoku3" class="label" id="st_sudoku3_lb">G</label>
+                            <label for="st_sudoku3" class="label" id="st_sudoku3_lb">灰</label>
                             <input type="radio" name="style_sudoku" value="9" id="st_sudoku9">
-                            <label for="st_sudoku9" class="label" id="st_sudoku9_lb">B</label>
+                            <label for="st_sudoku9" class="label" id="st_sudoku9_lb">深蓝</label>
                             <input type="radio" name="style_sudoku" value="10" id="st_sudoku10">
-                            <label for="st_sudoku10" class="label" id="st_sudoku10_lb">R</label>
+                            <label for="st_sudoku10" class="label" id="st_sudoku10_lb">红</label>
                         </span>
                         <span id="style_special" style="display:none;">
                             <input type="text" name="style_special" id="colorpicker_special" />
@@ -704,8 +715,9 @@
             <div id="puzzleinfo">
                 <div><label id="puzzletitle" class="info"></label></div>
                 <div><label id="puzzleauthor" class="info"></label></div>
-                <div><input type="button" id="puzzlerules" value="Show rules" style="display:none;" /></div>
-                <div><a id="puzzlesourcelink" href="" target="_blank"><label id="puzzlesource" class="info"></label></a></div>
+                <div><input type="button" id="puzzlerules" value="  显示规则  " style="display:none;" /></div>
+                <div><a id="puzzlesourcelink" href="" target="_blank"><label id="puzzlesource" class="info"></label></a>
+                </div>
                 <div><label id="solution_check" class="info" /></label>
                 </div>
             </div>
@@ -718,31 +730,31 @@
             </div>
             <div id="bottom_button">
                 <span class="tooltip">
-                    <button id="tb_undo" class="button" disabled>Undo</button>
+                    <button id="tb_undo" class="button" disabled>撤销</button>
                     <span id="undo_text" class="tooltiptext">CTRL + z</span>
                 </span>
                 <span class="tooltip">
-                    <button id="tb_redo" class="button" disabled>Redo</button>
+                    <button id="tb_redo" class="button" disabled>重做</button>
                     <span id="redo_text" class="tooltiptext">CTRL + y</span>
                 </span>
                 <span class="tooltip">
-                    <button id="tb_reset" class="button">Erase selected mode</button>
-                    <span id="eraseselect_text" class="tooltiptext">Erase elements that belongs to the selected mode</span>
+                    <button id="tb_reset" class="button">清除当前选定模式</button>
+                    <span id="eraseselect_text" class="tooltiptext">删除当前选定模式的所有元素</span>
                 </span>
                 <span class="tooltip">
-                    <button id="tb_delete" class="button">Delete all</button>
-                    <span id="erase_text" class="tooltiptext">Erase problem or solution grid</span>
+                    <button id="tb_delete" class="button">全部清除</button>
+                    <span id="erase_text" class="tooltiptext">删除谜题/解答</span>
                 </span>
                 <br>
             </div>
             <div id="stop_watch">
                 <h1 id="timer" class="values">00:00:00:00:0</h1>
                 <div>
-                    <button id="sw_start" class="button sw">Start</button>
-                    <button id="sw_pause" class="button sw">Pause</button>
-                    <button id="sw_stop" class="button sw">Stop</button>
-                    <button id="sw_reset" class="button sw">Reset</button>
-                    <button id="sw_hide" class="button sw">Hide</button>
+                    <button id="sw_start" class="button sw">开始计时</button>
+                    <button id="sw_pause" class="button sw">暂停</button>
+                    <button id="sw_stop" class="button sw">停止</button>
+                    <button id="sw_reset" class="button sw">重置计时器</button>
+                    <button id="sw_hide" class="button sw">隐藏计时器</button>
                 </div>
             </div>
         </div>
@@ -780,7 +792,8 @@
                 <canvas id="float-canvas" class="float-canvas"></canvas>
             </div>
             <div id="float-key-text">
-                <textarea class="text_area" class="text_area" rows="1" cols="20" maxlength="100" id="inputtext"></textarea>
+                <textarea class="text_area" class="text_area" rows="1" cols="20" maxlength="100"
+                    id="inputtext"></textarea>
                 <input type="button" id="closeBtn_input1" value="Insert" />
                 <input type="button" id="closeBtn_input2" value="Clear" />
             </div>
@@ -788,98 +801,98 @@
     </div>
     <div id="modal" class="modal">
         <div id="modal-new-content" class="modal-content">
-            <h3 class="modal-header">New Grid</h3>
+            <h3 class="modal-header">新建/更新</h3>
             <span id="modal-grid">
-                <h4><label class="label_nb" id="nb_gridtype_lb">Board type:</label></h4>
+                <h4><label class="label_nb" id="nb_gridtype_lb">面板类型:</label></h4>
                 <select id="gridtype" onchange="changetype()">
-                    <option value="square" id="nb_gridtype1_lb" selected="selected">Square</option>
-                    <option value="hex" id="nb_gridtype2_lb">Hexagon</option>
-                    <option value="tri" id="nb_gridtype3_lb">Triangle</option>
-                    <option value="pyramid" id="nb_gridtype4_lb">Pyramid</option>
-                    <option value="iso" id="nb_gridtype5_lb">Cube</option>
-                    <option value="sudoku" id="nb_gridtype6_lb">Sudoku</option>
-                    <option value="kakuro" id="nb_gridtype7_lb">Kakuro</option>
-                    <option value="tetrakis_square" id="nb_gridtype8_lb"> Tetrakis square </option>
-                    <option value="truncated_square" id="nb_gridtype9_lb"> Truncated square </option>
-                    <option value="snub_square" id="nb_gridtype10_lb"> Snub square </option>
-                    <option value="cairo_pentagonal" id="nb_gridtype11_lb"> Cairo pentagonal </option>
+                    <option value="square" id="nb_gridtype1_lb" selected="selected">矩形</option>
+                    <option value="hex" id="nb_gridtype2_lb">六边形</option>
+                    <option value="tri" id="nb_gridtype3_lb">三角形</option>
+                    <option value="pyramid" id="nb_gridtype4_lb">金字塔</option>
+                    <option value="iso" id="nb_gridtype5_lb">立方体</option>
+                    <option value="sudoku" id="nb_gridtype6_lb">数独</option>
+                    <option value="kakuro" id="nb_gridtype7_lb">数和</option>
+                    <option value="tetrakis_square" id="nb_gridtype8_lb">四联方块</option>
+                    <option value="truncated_square" id="nb_gridtype9_lb">截顶方块</option>
+                    <option value="snub_square" id="nb_gridtype10_lb">Snub密铺</option>
+                    <option value="cairo_pentagonal" id="nb_gridtype11_lb">开罗五边形密铺</option>
                 </select>
             </span><br>
-            <h4><label class="label_nb" id="nb_size_lb">Size:</label></h4>
+            <h4><label class="label_nb" id="nb_size_lb">尺寸:</label></h4>
             <span>
-                <span><label class="label_nb" id="name_size2">Rows:</label></span>
+                <span><label class="label_nb" id="name_size2">行数:</label></span>
                 <input type="number" pattern="\d*" name="nb_size2" id="nb_size2" value="10" min="1" max="100" step="1">
-                <span><label class="label_nb" id="name_size1">Columns:</label></span>
+                <span><label class="label_nb" id="name_size1">列数:</label></span>
                 <input type="number" pattern="\d*" name="nb_size1" id="nb_size1" value="10" min="1" max="100" step="1">
-                <span><label class="label_nb" id="nb_sudoku1_lb">Diagonal &#x27CD;</label></span>
+                <span><label class="label_nb" id="nb_sudoku1_lb">主对角线 &#x27CD;</label></span>
                 <input type="checkbox" name="nb_sudoku1" id="nb_sudoku1">
-                <span><label class="label_nb" id="nb_sudoku4_lb">Diagonal &#x27CB;</label></span>
+                <span><label class="label_nb" id="nb_sudoku4_lb">次对角线 &#x27CB;</label></span>
                 <input type="checkbox" name="nb_sudoku4" id="nb_sudoku4">
                 <br>
-                <span><label class="label_nb" id="nb_sudoku2_lb">Outside clues</label></span>
+                <span><label class="label_nb" id="nb_sudoku2_lb">外部线索空间</label></span>
                 <input type="checkbox" name="nb_sudoku2" id="nb_sudoku2">
-                <span><label class="label_nb" id="nb_sudoku3_lb">Outside clues (top/left)</label></span>
+                <span><label class="label_nb" id="nb_sudoku3_lb">外部线索空间(左上)</label></span>
                 <input type="checkbox" name="nb_sudoku3" id="nb_sudoku3">
                 <br>
-                <span><label class="label_nb" id="nb_sudoku8_lb">Size 4x4</label></span>
+                <span><label class="label_nb" id="nb_sudoku8_lb">四宫数独</label></span>
                 <input type="checkbox" name="nb_sudoku8" id="nb_sudoku8">
-                <span><label class="label_nb" id="nb_sudoku5_lb">Size 6x6</label></span>
+                <span><label class="label_nb" id="nb_sudoku5_lb">六宫数独</label></span>
                 <input type="checkbox" name="nb_sudoku5" id="nb_sudoku5">
-                <span><label class="label_nb" id="nb_sudoku6_lb">Size 8x8</label></span>
+                <span><label class="label_nb" id="nb_sudoku6_lb">八宫数独</label></span>
                 <input type="checkbox" name="nb_sudoku6" id="nb_sudoku6">
                 <br>
                 <span><label class="label_nb" id="nb_sudoku7_lb"></label></span>
             </span>
             <br>
-            <h4><label class="label_nb" id="nb_space_lb">White space:</label></h4>
+            <h4><label class="label_nb" id="nb_space_lb">扩展空间:</label></h4>
             <!--Mode Setting-->
             <span id="modal-spaceud" style="display:inline;">
-                <span><label class="label_nb" id="name_space1">Over:</label></span>
+                <span><label class="label_nb" id="name_space1">上方:</label></span>
                 <input type="number" pattern="\d*" name="nb_space1" id="nb_space1" value="0" min="0" max="20" step="1">
-                <span><label class="label_nb" id="name_space2">Under</label></span>
+                <span><label class="label_nb" id="name_space2">下方:</label></span>
                 <input type="number" pattern="\d*" name="nb_space2" id="nb_space2" value="0" min="0" max="20" step="1">
             </span>
             <br>
-            <h4><label class="label_nb">　　　</label></h4>
+            <h4><label class="label_nb"></label></h4>
             <span id="modal-spacelr" style="display:inline;">
-                <span><label class="label_nb" id="name_space3">Left:</label></span>
+                <span><label class="label_nb" id="name_space3">左边:</label></span>
                 <input type="number" pattern="\d*" name="nb_space3" id="nb_space3" value="0" min="0" max="20" step="1">
-                <span><label class="label_nb" id="name_space4">Right:</label></span>
+                <span><label class="label_nb" id="name_space4">右边:</label></span>
                 <input type="number" pattern="\d*" name="nb_space4" id="nb_space4" value="0" min="0" max="20" step="1">
             </span>
             <br>
             <hr size=1 noshade class="newgridhrline">
-            <h5><label id="nb_note">*Update display* button only affects the following properties:</label></h5>
+            <h5><label id="nb_note">[更新显示]按钮仅影响以下属性:</label></h5>
             <br>
-            <h4><label class="label_nb">Display size:</label></h4>
+            <h4><label class="label_nb">显示尺寸:</label></h4>
             <span id="">
                 <input type="number" pattern="\d*" name="nb_size3" id="nb_size3" value="38" min="12" max="90" step="2">
             </span>
             <br>
-            <h4><label class="label_nb" id="nb_grid_lb">Gridlines:</label></h4>
+            <h4><label class="label_nb" id="nb_grid_lb">网格线:</label></h4>
             <input type="radio" name="nb_grid" value="1" id="nb_grid1" checked="checked">
-            <label for="nb_grid1" class="label" id="nb_grid1_lb">Solid line</label>
+            <label for="nb_grid1" class="label" id="nb_grid1_lb">实线</label>
             <input type="radio" name="nb_grid" value="2" id="nb_grid2">
-            <label for="nb_grid2" class="label" id="nb_grid2_lb">Dotted line</label>
+            <label for="nb_grid2" class="label" id="nb_grid2_lb">虚线</label>
             <input type="radio" name="nb_grid" value="3" id="nb_grid3">
-            <label for="nb_grid3" class="label" id="nb_grid3_lb">None</label>
+            <label for="nb_grid3" class="label" id="nb_grid3_lb">无</label>
             <br>
-            <h4><label class="label_nb" id="nb_lat_lb">Gridpoints:</label></h4>
+            <h4><label class="label_nb" id="nb_lat_lb">网格点:</label></h4>
             <input type="radio" name="nb_lat" value="1" id="nb_lat1">
-            <label for="nb_lat1" class="label" id="nb_lat1_lb">Yes</label>
+            <label for="nb_lat1" class="label" id="nb_lat1_lb">有</label>
             <input type="radio" name="nb_lat" value="2" id="nb_lat2" checked="checked">
-            <label for="nb_lat2" class="label" id="nb_lat2_lb">No</label>
+            <label for="nb_lat2" class="label" id="nb_lat2_lb">无</label>
             <br>
-            <h4><label class="label_nb" id="nb_out_lb">Outside frame:</label></h4>
+            <h4><label class="label_nb" id="nb_out_lb">外边框:</label></h4>
             <input type="radio" name="nb_out" value="1" id="nb_out1" checked="checked">
-            <label for="nb_out1" class="label" id="nb_out1_lb">Yes</label>
+            <label for="nb_out1" class="label" id="nb_out1_lb">有</label>
             <input type="radio" name="nb_out" value="2" id="nb_out2">
-            <label for="nb_out2" class="label" id="nb_out2_lb">No</label>
+            <label for="nb_out2" class="label" id="nb_out2_lb">无</label>
             <br><br>
             <div class="nb_button">
-                <input type="button" id="closeBtn_nb1" value="New grid" />
-                <input type="button" id="closeBtn_nb2" value="Update display" />
-                <input type="button" id="closeBtn_nb3" value="Close" />
+                <input type="button" id="closeBtn_nb1" value="新建面板" />
+                <input type="button" id="closeBtn_nb2" value="更新显示" />
+                <input type="button" id="closeBtn_nb3" value="关闭" />
             </div>
         </div>
     </div>
@@ -888,7 +901,8 @@
             <h3 class="modal-header" id="modal-newsize_lb">Resize</h3>
             <span id="modal-sizeA">
                 <span><label class="label_nb" id="modal-newsize_size_lb">Display size:</label></span>
-                <input type="number" pattern="\d*" name="nb_size3_r" id="nb_size3_r" value="38" min="12" max="90" step="2">
+                <input type="number" pattern="\d*" name="nb_size3_r" id="nb_size3_r" value="38" min="12" max="90"
+                    step="2">
             </span>
             <br>
             <div class="nb_button">
@@ -898,7 +912,8 @@
             <br>
             <div class="nb_button">
                 <h4><label id="rt4_lb_r">Add/Remove Rows/Columns:</label></h4>
-                <p><label id="rt5_lb_r">*Works only in Square Board Type, it also resets undo/redo. Answer checking if enabled, will only work with original grid size.</label></p>
+                <p><label id="rt5_lb_r">*Works only in Square Board Type, it also resets undo/redo. Answer checking if
+                        enabled, will only work with original grid size.</label></p>
                 <div class="resize-grid-buttons">
                     <div class="existing-grid">Existing Grid</div>
                     <button class="addtop" id="rt_addtop_r">+ &#9650;</button>
@@ -915,21 +930,21 @@
     </div>
     <div id="modal-image" class="modal">
         <div id="modal-image-content">
-            <h3 class="modal-header" id="saveimagetitle">Save screenshot</h3>
+            <h3 class="modal-header" id="saveimagetitle">保存截图</h3>
             <div id="modal-image-body">
-                <h4><label class="label_imagespace" id="nb_margin_lb">White border:</label></h4>
+                <h4><label class="label_imagespace" id="nb_margin_lb">白色边框:</label></h4>
                 <input type="radio" name="nb_margin" value="1" id="nb_margin1" checked="checked">
-                <label for="nb_margin1" class="label" id="nb_margin1_lb">Yes</label>
+                <label for="nb_margin1" class="label" id="nb_margin1_lb">有</label>
                 <input type="radio" name="nb_margin" value="2" id="nb_margin2">
-                <label for="nb_margin2" class="label" id="nb_margin2_lb">No</label>
+                <label for="nb_margin2" class="label" id="nb_margin2_lb">无</label>
                 <br>
-                <h4><label class="label_imagespace" id="nb_quality_lb">Image quality:</label></h4>
+                <h4><label class="label_imagespace" id="nb_quality_lb">图片质量:</label></h4>
                 <input type="radio" name="nb_quality" value="1" id="nb_quality1" checked="checked">
-                <label for="nb_quality1" class="label" id="nb_quality1_lb">High</label>
+                <label for="nb_quality1" class="label" id="nb_quality1_lb">高</label>
                 <input type="radio" name="nb_quality" value="2" id="nb_quality2">
-                <label for="nb_quality2" class="label" id="nb_quality2_lb">Low</label>
+                <label for="nb_quality2" class="label" id="nb_quality2_lb">普通</label>
                 <br>
-                <h4><label class="label_imagespace" id="nb_type_lb">File Type:</label></h4>
+                <h4><label class="label_imagespace" id="nb_type_lb">文件类型:</label></h4>
                 <input type="radio" name="nb_type" value="1" id="nb_type1" checked="checked">
                 <label for="nb_type1" class="label" id="nb_type1_lb">png</label>
                 <input type="radio" name="nb_type" value="2" id="nb_type2">
@@ -937,43 +952,43 @@
                 <input type="radio" name="nb_type" value="3" id="nb_type3">
                 <label for="nb_type3" class="label" id="nb_type3_lb">svg</label>
                 <br><br>
-                <span id="saveimagename_lb">File name:<input type="text" placeholder="sample_name" id="saveimagename"></span>
+                <span id="saveimagename_lb">文件名:<input type="text" placeholder="输入文件名" id="saveimagename"></span>
             </div>
             <br>
             <div class="nb_button">
-                <input type="button" id="closeBtn_image1" value="Open in new window" onclick="saveimage_window();" />
-                <input type="button" id="closeBtn_image2" value="Download" />
-                <input type="button" id="closeBtn_image3" value="Close" />
+                <input type="button" id="closeBtn_image1" value="在新窗口打开" onclick="saveimage_window();" />
+                <input type="button" id="closeBtn_image2" value="下载" />
+                <input type="button" id="closeBtn_image3" value="关闭" />
             </div>
         </div>
     </div>
     <div id="modal-rotate" class="modal">
         <div id="modal-rotate-content" class="modal-content">
-            <h3 class="modal-header" id="savetexttitle">Rotate / Move / Add / Remove</h3>
+            <h3 class="modal-header" id="savetexttitle">旋转/移动/添加/移除</h3>
             <div class="nb_button">
-                <h4><label id="rt1_lb">Rotate:</label></h4>
+                <h4><label id="rt1_lb">旋转:</label></h4>
                 <input type="button" id="rt_left" value="&larr;" />
                 <input type="button" id="rt_right" value="&rarr;" />
             </div>
             <div class="nb_button">
-                <h4><label id="rt2_lb">Flip:</label></h4>
+                <h4><label id="rt2_lb">翻转:</label></h4>
                 <input type="button" id="rt_LR" value="&harr;" />
                 <input type="button" id="rt_UD" value="&#8597;" />
             </div>
             <br>
             <div class="nb_button">
-                <h4><label id="rt3_lb">Move:</label></h4>
+                <h4><label id="rt3_lb">移动:</label></h4>
                 <br>
-                <input type="button" id="rt_center" value="Move board to center" /><br>
-                <input type="button" id="rt_size" value="Fit window to board" /><br>
-                <input type="button" id="rt_reset" value="Reset" />
+                <input type="button" id="rt_center" value="将面板移到中心" /><br>
+                <input type="button" id="rt_size" value="适应窗口大小" /><br>
+                <input type="button" id="rt_reset" value="重置" />
             </div>
             <br>
             <div class="nb_button">
-                <h4><label id="rt4_lb">Add/Remove Rows/Columns:</label></h4>
-                <p><label id="rt5_lb">*Works only in Square Board Type, it also resets undo/redo. Ensure empty row/column before removing.</label></p>
+                <h4><label id="rt4_lb">添加/删除行/列:</label></h4>
+                <p><label id="rt5_lb">*仅适用于矩形面板，并且会清除撤消/重做记录，删除前确保留有行/列。</label></p>
                 <div class="resize-grid-buttons">
-                    <div class="existing-grid">Existing Grid</div>
+                    <div class="existing-grid">当前面板</div>
                     <button class="addtop" id="rt_addtop">+ &#9650;</button>
                     <button class="subtop" id="rt_subtop">&ndash; &#9660;</button>
                     <button class="addleft" id="rt_addleft">+ &#9664;</button>
@@ -986,59 +1001,61 @@
             </div>
             <br>
             <div class="nb_button">
-                <input type="button" id="closeBtn_rotate1" value="Close" />
+                <input type="button" id="closeBtn_rotate1" value="关闭" />
             </div>
         </div>
     </div>
     <div id="modal-save" class="modal">
         <div id="modal-save-content">
-            <h3 class="modal-header" id="savetexttitle">Share Puzzle</h3>
-            <h5 class="modal-subheader">Puzzle Information</h5>
+            <h3 class="modal-header" id="savetexttitle">分享谜题</h3>
+            <h5 class="modal-subheader">谜题信息</h5>
             <div id="modal-save-info">
-                <span class="DM">Title:<input type="text" placeholder="e.g. Thermo Sudoku or Yajilin" value="" id="saveinfotitle" class="right"></span>
+                <span class="DM">标题:<input type="text" placeholder="例如:Thermo Sudoku or Yajilin" value=""
+                        id="saveinfotitle" class="right"></span>
                 <br>
-                <span class="DM">Author:<input type="text" placeholder="Puzzle creator name" value="" id="saveinfoauthor"></span>
+                <span class="DM">作者:<input type="text" placeholder="谜题作者" value="" id="saveinfoauthor"></span>
                 <br>
-                <span class="DM">Rules:<textarea class="text_area" rows="1" cols="10" placeholder="e.g. Classic sudoku rules." value="" id="saveinforules"></textarea></span>
+                <span class="DM">规则:<textarea class="text_area" rows="1" cols="10" placeholder="例如: 标准数独规则" value=""
+                        id="saveinforules"></textarea></span>
                 <br>
-                <input type="button" id="saveinfogenre" value="Select Genre/Tags (Optional)" />
+                <input type="button" id="saveinfogenre" value="选择谜题/标签(可选)" />
                 <br>
                 <span class="DM">
-                    Source:
-                    <span id="sourcewarning">* If you are not the author of the puzzle, please specify the source URL</span>
+                    源地址:
+                    <span id="sourcewarning">*如果你不是谜题的作者，请注明出处网址。</span>
                     <input type="text" placeholder="https://example.com" id="saveinfosource"></span>
             </div>
-            <h5 class="modal-subheader">Generate URL</h5>
+            <h5 class="modal-subheader">生成地址</h5>
             <div class="modal-save-inset">
-                <label class="label_nb" for="save_undo" id="save_undo_lb">Save Undo/Redo (History)</label>
+                <label class="label_nb" for="save_undo" id="save_undo_lb">保存撤销重做历史</label>
                 <input type="checkbox" name="save_undo" id="save_undo"><br />
-                <label class="label_nb" for="auto_shorten_chk" id="auto_shorten_chk_lb">Automatically Shorten with TinyURL</label>
+                <label class="label_nb" for="auto_shorten_chk" id="auto_shorten_chk_lb">使用TinyURL缩短地址</label>
                 <input type="checkbox" name="auto_shorten_chk" id="auto_shorten_chk" />
             </div>
             <div class="nb_button">
-                <input type="button" id="address_edit" value="Editing URL" />
-                <input type="button" id="address_solve" value="Solving URL" />
+                <input type="button" id="address_edit" value="编辑模式地址" />
+                <input type="button" id="address_solve" value="解题地址" />
                 <!--For Competitive Solving-->
-                <input type="button" id="address_comp" value="Contest-Mode URL" />
+                <input type="button" id="address_comp" value="竞赛模式地址" />
                 <input type="button" id="expansion_replay" value="Replay URL" style="display:none;" /> <br />
-                <input type="button" id="expansion" value="URL with Answer Check / Advanced Options" />
+                <input type="button" id="expansion" value="带有答案检查/高级选项的地址" />
             </div>
             <div id="modal-save-body">
                 <textarea class="text_area" readonly rows="1" cols="50" id="savetextarea"></textarea>
-                <span class="DM">Filename:<input type="text" placeholder="sample.txt" id="savetextname"></span>
+                <span class="DM">文件名:<input type="text" placeholder="示例.txt" id="savetextname"></span>
             </div>
             <div class="nb_button">
-                <input type="button" id="closeBtn_save1" value="Copy" />
-                <input type="button" id="closeBtn_save2" value="Download" />
-                <input type="button" id="closeBtn_save3" value="Open" onclick="savetext_window();" />
-                <input type="button" id="closeBtn_save6" value="Shorten" onclick="shorturl_tab();" />
-                <input type="button" id="closeBtn_save4" value="Close" />
+                <input type="button" id="closeBtn_save1" value="复制" />
+                <input type="button" id="closeBtn_save2" value="下载" />
+                <input type="button" id="closeBtn_save3" value="打开" onclick="savetext_window();" />
+                <input type="button" id="closeBtn_save6" value="缩短" onclick="shorturl_tab();" />
+                <input type="button" id="closeBtn_save4" value="关闭" />
             </div>
         </div>
     </div>
     <div id="modal-save-tag" class="modal">
         <div id="modal-save-tag-content">
-            <h3 class="modal-header" id="save7texttitle">Add/Remove Genre Tags</h3>
+            <h3 class="modal-header" id="save7texttitle">添加谜题/标签</h3>
             <div id="modal-save-tag-body">
                 <select name="genre_tags" id="genre_tags_opt" multiple="multiple"> </select>
             </div>
@@ -1046,29 +1063,29 @@
     </div>
     <div id="modal-save2" class="modal">
         <div id="modal-save2-content" class="modal-content">
-            <h3 class="modal-header">Extended Output</h3>
+            <h3 class="modal-header">扩展高级选项</h3>
             <div class="nb_button">
-                <input type="button" id="solution_open" value="Answer check" />
-                <input type="button" id="pp_file_open" style="margin-top: 5px;" value="puzzle_output_file" />
+                <input type="button" id="solution_open" value="答案检查" />
+                <input type="button" id="pp_file_open" style="margin-top: 5px;" value="谜题输出文件" />
             </div>
             <div id="modal-save2-solution">
-                <h3 id="save3texttitle">Solution will check only following:</h3>
-                <h5 id="answerwarning">*Default (none selected) it checks for all. Choose either AND or OR column, if both are selected, AND will be given preference.</h5>
+                <h3 id="save3texttitle">将仅检查以下模式:</h3>
+                <h5 id="answerwarning">*默认(未选择)会检查所有模式，如果[和]与[或]都被选中，则为[和]。</h5>
                 <div class="nb_button">
                     <table id="answersetting">
                         <tr>
                             <td>
                             </td>
                             <td>
-                                <span><label id="sol_and_lb">AND</label></span>
+                                <span><label id="sol_and_lb">和</label></span>
                             </td>
                             <td>
-                                <span><label id="sol_or_lb">OR</label></span>
+                                <span><label id="sol_or_lb">或</label></span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_surface_lb">Shading - DG (Dark Grey), GR, LG, BL (Black):</label></span>
+                                <span><label id="sol_surface_lb">底纹 - DG(深灰),GR,LG,BL(黑色):</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_surface" class="solcheck">
@@ -1079,7 +1096,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_number_lb">Number - Normal, L, M, S - Green, Blue, Red <br> Sudoku - Normal, Centre - Green, Blue, Red:</label></span>
+                                <span><label id="sol_number_lb">数字 - 正常,大,中,小 - 绿,蓝,红<br>数独 - 正常,中间 -
+                                        绿,蓝,红:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_number" class="solcheck">
@@ -1090,7 +1108,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_loopline_lb">Line - Green, Double:</label></span>
+                                <span><label id="sol_loopline_lb">线段 - 绿色,双线:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_loopline" class="solcheck">
@@ -1101,7 +1119,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_ignoreloopline_lb">Line - Ignore Given Line Segments:</label></span>
+                                <span><label id="sol_ignoreloopline_lb">线段 - 忽略给定的线段:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_ignoreloopline" class="solcheck">
@@ -1109,7 +1127,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_loopedge_lb">Edge - Green, Double:</label></span>
+                                <span><label id="sol_loopedge_lb">边线 - 绿色,双线:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_loopedge" class="solcheck">
@@ -1120,7 +1138,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_ignoreborder_lb">Edge - Ignore Edges on Grid Border / Givens:</label></span>
+                                <span><label id="sol_ignoreborder_lb">边线 - I忽略网格边界上/给定的边缘:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_ignoreborder" class="solcheck">
@@ -1128,7 +1146,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_wall_lb">Wall - Green:</label></span>
+                                <span><label id="sol_wall_lb">墙壁 - 绿色:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_wall" class="solcheck">
@@ -1139,7 +1157,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_square_lb">Shape - Shape - Square - Option 2:</label></span>
+                                <span><label id="sol_square_lb">形状 - 形状 - 方形 - 选项2:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_square" class="solcheck">
@@ -1150,7 +1168,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_circle_lb">Shape - Shape - Circle - M size - Options 1 & 2:</label></span>
+                                <span><label id="sol_circle_lb">形状 - 形状 - 圆形 - 中等 - 选项1和2:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_circle" class="solcheck">
@@ -1161,7 +1179,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_tri_lb">Shape - Shape - Corner triangle - Options 1 to 4:</label></span>
+                                <span><label id="sol_tri_lb">形状 - 形状 - 角落三角形 - 选项1到4:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_tri" class="solcheck">
@@ -1172,7 +1190,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_arrow_lb">Shape - Arrow - Small - Options 1 to 8:</label></span>
+                                <span><label id="sol_arrow_lb">形状 - 箭头 - 小 - 选项1到8:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_arrow" class="solcheck">
@@ -1183,7 +1201,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_math_lb">Shape - Number - Math - Black, Green - Options 2 & 3:</label></span>
+                                <span><label id="sol_math_lb">形状 - 数字 - 数学 - 黑色,绿色 - 选项2和3:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_math" class="solcheck">
@@ -1194,7 +1212,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_battleship_lb">Shape - Special 1 - Battleship - Black - Options 1 to 6 <br> and Curvy Black - Options 1 to 4:</label></span>
+                                <span><label id="sol_battleship_lb">形状 - 特殊1 - 战舰 - 黑色 - 选项1到6 <br> 和 曲边黑块 -
+                                        选项1到4:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_battleship" class="solcheck">
@@ -1205,7 +1224,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_tent_lb">Shape - Special 1 - Tent - Option 2:</label></span>
+                                <span><label id="sol_tent_lb">形状 - 特殊1 - 帐篷 - 选项2:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_tent" class="solcheck">
@@ -1216,7 +1235,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_star_lb">Shape - Special 1 - Star - Options 1 to 3:</label></span>
+                                <span><label id="sol_star_lb">形状 - 特殊1 - 星星 - 选项1到3:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_star" class="solcheck">
@@ -1227,7 +1246,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_akari_lb">Shape - Special 2 - Lightbulb - Option 3:</label></span>
+                                <span><label id="sol_akari_lb">形状 - 特殊2 - 灯泡 - 选项3:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_akari" class="solcheck">
@@ -1238,7 +1257,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span><label id="sol_mine_lb">Shape - Special 2 - Minesweeper - Option 4:</label></span>
+                                <span><label id="sol_mine_lb">形状 - 特殊2 - 扫雷 - 选项4:</label></span>
                             </td>
                             <td>
                                 <input type="checkbox" name="solution" id="sol_mine" class="solcheck">
@@ -1248,15 +1267,17 @@
                             </td>
                         </tr>
                     </table>
-                    <h5 id="save6texttitle">Custom Message</h5>
-                    <textarea class="text_area" rows="1" cols="50" placeholder="Custom Congratulation Message on answer check pop up" id="custom_message"></textarea>
+                    <h5 id="save6texttitle">自定义消息</h5>
+                    <textarea class="text_area" rows="1" cols="50" placeholder="答案检查弹出自定义祝贺消息"
+                        id="custom_message"></textarea>
                     <br>
-                    <input type="button" id="closeBtn_save5" value="Generate URL with answer check" />
+                    <input type="button" id="closeBtn_save5" value="生成带有答案检查的链接" />
                 </div>
             </div>
             <div id="modal-save2-pp" style="display:none;">
                 <h5 id="save5texttitle">Header</h5>
-                <textarea class="text_area" rows="1" cols="50" placeholder="e.g. classicsudoku or cs" id="savetextarea_pp"></textarea>
+                <textarea class="text_area" rows="1" cols="50" placeholder="e.g. classicsudoku or cs"
+                    id="savetextarea_pp"></textarea>
                 <div class="nb_button">
                     <input type="button" id="pp_file" value="pp_file output" />
                     <input type="button" id="gmp_file" value="GMPuzzle output" />
@@ -1277,122 +1298,125 @@
     </div>
     <div id="modal-input" class="modal">
         <div id="modal-input-content">
-            <h3 class="modal-header" id="save4texttitle">Input/Output sudoku string</h3>
+            <h3 class="modal-header" id="save4texttitle">输入/输出数独字符串</h3>
             <div id="modal-save-body">
                 <textarea class="text_area" rows="1" cols="81" id="iostring"></textarea>
             </div>
-            <p id="modal-input-parameters-text">*Specify the location of the first cell of your sudoku grid and its size[optional]:</p>
+            <p id="modal-input-parameters-text">*指定数独网格的第一个单元格的位置及其大小[可选]:</p>
             <div id="modal-input-parameters">
-                <span><label class="label_nb" id="firstcell_row_lb">Row:</label></span>
-                <input type="number" pattern="\d*" name="firstcell_row" id="firstcell_row" value="" min="1" max="60" step="1" placeholder="1">
-                <span><label class="label_nb" id="firstcell_column_lb">Col:</label></span>
-                <input type="number" pattern="\d*" name="firstcell_column" id="firstcell_column" value="" min="1" max="60" step="1" placeholder="1">
-                <span><label class="label_nb" id="sudokusize_lb">Size:</label></span>
-                <input type="number" pattern="\d*" name="sudokusize" id="sudokusize" value="" min="1" max="9" step="1" placeholder="9">
+                <span><label class="label_nb" id="firstcell_row_lb">行数:</label></span>
+                <input type="number" pattern="\d*" name="firstcell_row" id="firstcell_row" value="" min="1" max="60"
+                    step="1" placeholder="1">
+                <span><label class="label_nb" id="firstcell_column_lb">列数:</label></span>
+                <input type="number" pattern="\d*" name="firstcell_column" id="firstcell_column" value="" min="1"
+                    max="60" step="1" placeholder="1">
+                <span><label class="label_nb" id="sudokusize_lb">尺寸:</label></span>
+                <input type="number" pattern="\d*" name="sudokusize" id="sudokusize" value="" min="1" max="9" step="1"
+                    placeholder="9">
             </div>
             <div>
-                <span><label class="label_nb" id="ignore_pencilmarks_lb">Ignore Pencil Marks (L, M, S values)</label></span>
+                <span><label class="label_nb" id="ignore_pencilmarks_lb">忽略铅笔标记(大中小的值)</label></span>
                 <input type="checkbox" name="ignore_pencilmarks" id="ignore_pencilmarks">
             </div>
             <div class="nb_button">
-                <input type="button" id="load_input" value="Import Sudoku" onclick="import_sudoku();" />
-                <input type="button" id="export_input" value="Export Sudoku" onclick="export_sudoku();" />
+                <input type="button" id="load_input" value="导入数独" onclick="import_sudoku();" />
+                <input type="button" id="export_input" value="导出数独" onclick="export_sudoku();" />
             </div>
         </div>
     </div>
     <div id="modal-load" class="modal">
         <div id="modal-load-content">
-            <h3 class="modal-header" id="save6texttitle">Load URL</h3>
+            <h3 class="modal-header" id="save6texttitle">载入链接</h3>
             <div id="modal-save-body">
                 <textarea class="text_area" rows="1" cols="81" id="urlstring" value=""></textarea>
             </div>
             <div class="nb_button">
-                <input type="button" id="load_url" value="Load URL" onclick="import_url();" />
+                <input type="button" id="load_url" value="载入链接" onclick="import_url();" />
             </div>
         </div>
     </div>
     <div id="modal-settings" class="modal">
         <div id="modal-settings-content" class="modal-content">
-            <h3 class="modal-header" id="save7texttitle">General Settings</h3>
+            <h3 class="modal-header" id="save7texttitle">通用设置</h3>
             <div id="modal-settings-body">
                 <table id="settings-table">
                     <tr>
                         <td>
-                            <label>Display Theme:</label>
+                            <label>显示主题:</label>
                         </td>
                         <td>
                             <select name="theme_mode" id="theme_mode_opt">
-                                <option value="1" selected="selected">Light</option>
-                                <option value="2">Dark</option>
+                                <option value="1" selected="selected">浅色</option>
+                                <option value="2">深色</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Responsive Mode:</label>
+                            <label>布局响应模式:</label>
                         </td>
                         <td>
                             <select name="responsive_settings" id="responsive_settings_opt">
-                                <option value="1" selected="selected">Off</option>
-                                <option value="2">On (Tools Left)</option>
-                                <option value="3">On (Tools Right)</option>
+                                <option value="1" selected="selected">关闭</option>
+                                <option value="2">左侧工具</option>
+                                <option value="3">右侧工具</option>
                             </select>
                         </td>
                     </tr>
                     <tr id="custom_color_lb">
                         <td>
-                            <label>Custom Colors (Beta):</label>
+                            <label>自定义颜色(测试):</label>
                         </td>
                         <td>
                             <select name="custom_color" id="custom_color_opt">
-                                <option value="1" selected="selected">No</option>
-                                <option value="2">Yes</option>
+                                <option value="1" selected="selected">关闭</option>
+                                <option value="2">打开</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Sudoku Pencil Marks:</label>
+                            <label>数独铅笔标记:</label>
                         </td>
                         <td>
                             <select name="sudoku_settings" id="sudoku_settings_opt">
-                                <option value="1" selected="selected">Dynamic</option>
-                                <option value="2">Large</option>
-                                <option value="3">Small</option>
+                                <option value="1" selected="selected">自动</option>
+                                <option value="2">大</option>
+                                <option value="3">小</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Sudoku Normal:</label>
+                            <label>数独普通数字:</label>
                         </td>
                         <td>
                             <select name="sudoku_settings_normal" id="sudoku_settings_normal_opt">
-                                <option value="1" selected="selected">Centered</option>
-                                <option value="2">Bottom</option>
+                                <option value="1" selected="selected">中间</option>
+                                <option value="2">底部</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Star Battle Dots:</label>
+                            <label>星战圆点标记:</label>
                         </td>
                         <td>
                             <select name="starbattle_settings" id="starbattle_settings_opt">
-                                <option value="1" selected="selected">High Range</option>
-                                <option value="2">Low Range</option>
-                                <option value="3">Disable</option>
+                                <option value="1" selected="selected">高范围</option>
+                                <option value="2">低范围</option>
+                                <option value="3">禁用</option>
                             </select>
                         </td>
                     </tr>
                     <tr id="mousemiddle_settings_lb">
                         <td>
-                            <label>Mouse Middle Button:</label>
+                            <label>鼠标中键:</label>
                         </td>
                         <td>
                             <select name="mousemiddle" id="mousemiddle_settings_opt">
-                                <option value="1" selected="selected">No</option>
-                                <option value="2">Yes</option>
+                                <option value="1" selected="selected">关闭</option>
+                                <option value="2">打开</option>
                             </select>
                         </td>
                     </tr>
@@ -1409,44 +1433,44 @@
                     </tr> -->
                     <tr id="secondcolor_settings_lb">
                         <td>
-                            <label>Surface Second Color:</label>
+                            <label>表面右键颜色:</label>
                         </td>
                         <td>
                             <select name="secondcolor_settings" id="secondcolor_settings_opt">
-                                <option value="1">Dark Grey</option>
-                                <option value="8">Grey</option>
-                                <option value="3">Light Grey</option>
-                                <option value="4">Black</option>
-                                <option value="2" selected="selected">Green</option>
-                                <option value="5">Blue</option>
-                                <option value="6">Red</option>
-                                <option value="7">Yellow</option>
-                                <option value="9">Pink</option>
-                                <option value="10">Orange</option>
-                                <option value="11">Purple</option>
-                                <option value="12">Brown</option>
+                                <option value="1">深灰</option>
+                                <option value="8">灰色</option>
+                                <option value="3">浅灰</option>
+                                <option value="4">黑色</option>
+                                <option value="2" selected="selected">绿色</option>
+                                <option value="5">蓝色</option>
+                                <option value="6">灰色</option>
+                                <option value="7">黄色</option>
+                                <option value="9">粉色</option>
+                                <option value="10">橙色</option>
+                                <option value="11">紫色</option>
+                                <option value="12">棕色</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Panel:</label>
+                            <label>输入面板:</label>
                         </td>
                         <td>
                             <select name="panelbutton" id="panel_button">
-                                <option value="1">ON</option>
-                                <option value="2" selected="selected">OFF</option>
+                                <option value="1">开启</option>
+                                <option value="2" selected="selected">关闭</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Shorten Links Automatically:</label>
+                            <label>自动缩短链接:</label>
                         </td>
                         <td>
                             <select id="shorten_links_dropdown">
-                                <option value="1">ON</option>
-                                <option value="0" selected>OFF</option>
+                                <option value="1">开启</option>
+                                <option value="0" selected>关闭</option>
                             </select>
                         </td>
                     </tr>
@@ -1463,12 +1487,12 @@
                     </tr> -->
                     <tr>
                         <td>
-                            <label>Reload Protection:</label>
+                            <label>重载保护:</label>
                         </td>
                         <td>
                             <select name="reloadbutton" id="reload_button">
-                                <option value="1">ON</option>
-                                <option value="2" selected="selected">OFF</option>
+                                <option value="1">开启</option>
+                                <option value="2" selected="selected">关闭</option>
                             </select>
                         </td>
                     </tr>
@@ -1485,50 +1509,50 @@
                     </tr> -->
                     <tr>
                         <td>
-                            <label>Timer:</label>
+                            <label>计时器:</label>
                         </td>
                         <td>
                             <select name="timerbar" id="timer_bar_opt">
-                                <option value="1" selected="selected">Show</option>
-                                <option value="2">Hide</option>
+                                <option value="1" selected="selected">显示</option>
+                                <option value="2">隐藏</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Conflict Detection:</label>
+                            <label>冲突检测:</label>
                         </td>
                         <td>
                             <select name="conflict_detection" id="conflict_detection_opt">
-                                <option value="1" selected="selected">ON</option>
-                                <option value="2">OFF (this puzzle)</option>
-                                <option value="3">OFF (all puzzles)</option>
+                                <option value="1" selected="selected">开启</option>
+                                <option value="2">关闭(当前谜题)</option>
+                                <option value="3">关闭(所有谜题)</option>
                             </select>
                         </td>
                     </tr>
                     <tr id="save_settings_lb">
                         <td>
-                            <label>Save Settings:</label>
+                            <label>保存设置:</label>
                         </td>
                         <td>
                             <select name="save_settings" id="save_settings_opt">
-                                <option value="3" selected="selected"></option>
-                                <option value="1">No</option>
-                                <option value="2">Yes</option>
+                                <option value="3" selected="selected">默认</option>
+                                <option value="1">否</option>
+                                <option value="2">是</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Local Storage:</label>
+                            <label>本地存储:</label>
                         </td>
                         <td>
                             <select name="clear_storage" id="clear_storage_opt">
-                                <option value="1" selected="selected">ON</option>
-                                <option value="4">OFF</option>
+                                <option value="1" selected="selected">开启</option>
+                                <option value="4">关闭</option>
                             </select><br>
-                            <button id="clear_storage_one" onclick="clear_storage_one()">Clear this puzzle</button><br>
-                            <button id="clear_storage_all" onclick="clear_storage_all()">Clear all</button>
+                            <button id="clear_storage_one" onclick="clear_storage_one()">清除当前谜题</button><br>
+                            <button id="clear_storage_all" onclick="clear_storage_all()">清除所有谜题</button>
                         </td>
                     </tr>
                 </table>
@@ -1537,36 +1561,55 @@
     </div>
     <div id="modal-help" class="modal">
         <div id="modal-help-content" class="modal-content">
-            <h3 class="modal-header">Welcome to Penpa+</h3>
+            <h3 class="modal-header">欢迎使用 Penpa+</h3>
             <div id="modal-help-body">
-                <p>It's a web application and universal pencil puzzle editor capable of drawing many different kinds of pencil puzzles. You can download your puzzles as images and save puzzle links in the form of URLs to share with others.</p>
-                <h5 class="modal-subheader">Usage</h5>
+                <p>它是一个 Web应用程序与通用纸上谜题的编辑器，能够绘制许多不同类型的纸上谜题。
+                    你可以将谜题下载为图像，并以地址的形式保存拼图链接与他人共享。</p>
+                <h5 class="modal-subheader">用法</h5>
                 <div class="nb_button">
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/blob/master/README.md">Tool Instructions</a>
-                    <a class="button" target="_blank" href="https://www.youtube.com/channel/UCAv0bBz7MTVJOlHzINnHhYQ/videos">Youtube Tutorials</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/blob/master/VIDEO_TUTORIALS.md">List of Youtube Tutorials</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/wiki/Steps-to-Create-Sudoku-or-Puzzle-in-Penpa">Steps to Create a Sudoku/Puzzle</a>
-                    <a class="button" target="_blank" href="https://docs.google.com/document/d/12Mde0ogcpdtgM2nz6Z_nZYJnMJyUOMC5f3FUxzH9q74/edit">Frequently Asked Questions</a>
-                    <a class="button" target="_blank" href="https://discord.gg/BbN89j5">Discord Channel</a>
-                    <a class="button" target="_blank" href="javascript: (() => {let current_url = window.location.href;   if (current_url.includes('penpa-edit')){let current_url_parts = current_url.split('/penpa-edit/');   let new_url = 'https://swaroopg92.github.io/penpa-edit/'+ current_url_parts[1];   window.open(new_url);} else if (current_url.match(/\/puzz.link\/p\?|pzprxs\.vercel\.app\/p\?|\/pzv\.jp\/p\.html\?/)){let new_url = 'https://swaroopg92.github.io/penpa-edit/?m=edit&p='+current_url; window.open(new_url);} else{console.log('No support exist for ->', current_url)}})();">Bookmarklet to Open Puzz.Link / PZV / pzprxs / OtherPenpaFork Puzzles in Penpa+</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/blob/master/README.md">工具说明</a>
+                    <a class="button" target="_blank"
+                        href="https://www.youtube.com/channel/UCAv0bBz7MTVJOlHzINnHhYQ/videos">Youtube教程</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/blob/master/VIDEO_TUTORIALS.md">Youtube教程列表</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/wiki/Steps-to-Create-Sudoku-or-Puzzle-in-Penpa">创建一个数独的步骤</a>
+                    <a class="button" target="_blank"
+                        href="https://docs.google.com/document/d/12Mde0ogcpdtgM2nz6Z_nZYJnMJyUOMC5f3FUxzH9q74/edit">常见问题</a>
+                    <a class="button" target="_blank" href="https://discord.gg/BbN89j5">Discord频道</a>
+                    <a class="button" target="_blank"
+                        href="javascript: (() => {let current_url = window.location.href;   if (current_url.includes('penpa-edit')){let current_url_parts = current_url.split('/penpa-edit/');   let new_url = 'https://swaroopg92.github.io/penpa-edit/'+ current_url_parts[1];   window.open(new_url);} else if (current_url.match(/\/puzz.link\/p\?|pzprxs\.vercel\.app\/p\?|\/pzv\.jp\/p\.html\?/)){let new_url = 'https://swaroopg92.github.io/penpa-edit/?m=edit&p='+current_url; window.open(new_url);} else{console.log('No support exist for ->', current_url)}})();">打开Puzz.Link/PZV/pzprxs/OtherPenpaFork
+                        Puzzles in Penpa+的书签</a>
                 </div>
-                <h5 class="modal-subheader">Development</h5>
+                <h5 class="modal-subheader">开发</h5>
                 <div class="nb_button">
-                    <a class="button" target="_blank" onclick="load_feedback();">Provide Feedback</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/blob/master/CONTRIBUTING.md">Contribute to Project</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/projects/1">Ongoing TO-DO list</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/blob/master/CHANGELOG.md">Changelogs</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/blob/master/CREDITS.md">Credits</a>
-                    <a class="button" target="_blank" href="https://github.com/swaroopg92/penpa-edit/blob/master/LICENSE">License</a>
+                    <a class="button" target="_blank" onclick="load_feedback();">提供反馈</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/blob/master/CONTRIBUTING.md">参与项目</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/projects/1">正在进行的待办事项</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/blob/master/CHANGELOG.md">变更日志</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/blob/master/CREDITS.md">Credits</a>
+                    <a class="button" target="_blank"
+                        href="https://github.com/swaroopg92/penpa-edit/blob/master/LICENSE">License</a>
                 </div>
-                <h5 class="modal-subheader">Sudoku/Puzzle Rulesets</h5>
-                <p>Note: This is by no means an exhaustive list. Penpa+ is not affiliated with these sources. Please contact respective owners for any further information.</p>
+                <h5 class="modal-subheader">数独/谜题规则</h5>
+                <p>注意: 这不是一份详尽的清单。Penpa+不隶属于这些来源。
+                    请联系各自的所有者以获取更多信息。</p>
                 <div class="nb_button">
-                    <a class="button" href="https://tinyurl.com/puzzlerules" target="_blank">Eric Fox - Dictionary of Rulesets</a>
-                    <a class="button" href="https://wpcunofficial.miraheze.org/wiki/Category:Puzzle_Types" target="_blank">Ryotaro Chiba - WPC Puzzles</a>
-                    <a class="button" href="http://logicmastersindia.com/lmitests/dl.asp?attachmentid=669&v1" target="_blank">LMI - WSC IB (Sudoku Variants)</a>
-                    <a class="button" href="http://www.puzzleduel.club/archive/types" target="_blank">Puzzle Duel Club</a>
-                    <a class="button" href="http://www.logic-puzzles.ropeko.ch/php/db/search.php" target="_blank">Ropeko - Logic Puzzles List</a>
+                    <a class="button" href="https://tinyurl.com/puzzlerules" target="_blank">Eric Fox - Dictionary of
+                        Rulesets</a>
+                    <a class="button" href="https://wpcunofficial.miraheze.org/wiki/Category:Puzzle_Types"
+                        target="_blank">Ryotaro Chiba - WPC Puzzles</a>
+                    <a class="button" href="http://logicmastersindia.com/lmitests/dl.asp?attachmentid=669&v1"
+                        target="_blank">LMI - WSC IB (Sudoku Variants)</a>
+                    <a class="button" href="http://www.puzzleduel.club/archive/types" target="_blank">Puzzle Duel
+                        Club</a>
+                    <a class="button" href="http://www.logic-puzzles.ropeko.ch/php/db/search.php" target="_blank">Ropeko
+                        - Logic Puzzles List</a>
                 </div>
             </div>
         </div>

@@ -2505,16 +2505,6 @@ class Puzzle {
                 case "ms_diamond_M":
                 case "ms_diamond_S":
                 case "ms_diamond_SS":
-                case "ms_hexpoint_LL":
-                case "ms_hexpoint_L":
-                case "ms_hexpoint_M":
-                case "ms_hexpoint_S":
-                case "ms_hexpoint_SS":
-                case "ms_hexflat_LL":
-                case "ms_hexflat_L":
-                case "ms_hexflat_M":
-                case "ms_hexflat_S":
-                case "ms_hexflat_SS":
                 case "ms_star":
                 case "ms_firefly":
                 case "ms_sun_moon":
@@ -2530,7 +2520,6 @@ class Puzzle {
                     break;
                 case "ms_sudokuetc":
                 case "ms_polyomino":
-                case "ms_polyhex":
                 case "ms_neighbors":
                     $("#colorpicker_special").spectrum("set", Color.GREY_LIGHT);
                     break;
@@ -7568,7 +7557,7 @@ class Puzzle {
                                                 for (var j = 4 + j_start; j < (con.length + 2 * j_start); j++) {
                                                     this.record("numberS", side_cursor + j - 4, this.undoredo_counter);
                                                     this[this.mode.qa].numberS[side_cursor + j - 4] = [con[j - 2 * j_start], this.mode[this.mode.qa][this.mode[this.mode.qa].edit_mode][1]];
-                                                    this.record_replay("numberS", side_cursor + j - 4, this.undoredo_counter);
+                                                    this.record_play("numberS", side_cursor + j - 4, this.undoredo_counter);
                                                 }
                                             }
                                         }
