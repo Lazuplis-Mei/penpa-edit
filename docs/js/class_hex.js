@@ -472,7 +472,7 @@ class Puzzle_hex extends Puzzle {
         }
 
         if (this.mode[this.mode.qa].edit_mode === "number" || this.mode[this.mode.qa].edit_mode === "symbol") {
-            if (this.mode[this.mode.qa].edit_mode === "number" && this.mode[this.mode.qa][this.mode[this.mode.qa].edit_mode][0] === "3") {} else {
+            if (this.mode[this.mode.qa].edit_mode === "number" && this.mode[this.mode.qa][this.mode[this.mode.qa].edit_mode][0] === "3") { } else {
                 switch (c) {
                     case 0: // right to left for theta = 0
                         a = this.cursol - 1;
@@ -715,7 +715,7 @@ class Puzzle_hex extends Puzzle {
                     this.ctx.fillStyle = this[pu + "_col"].thermo[i];
                 } else {
                     this.ctx.fillStyle = Color.GREY_LIGHT;
-                }                
+                }
                 this.draw_circle(this.ctx, this.point[this[pu].thermo[i][0]].x, this.point[this[pu].thermo[i][0]].y, 0.4);
                 this.ctx.setLineDash([]);
                 this.ctx.lineCap = "square";
@@ -1121,7 +1121,7 @@ class Puzzle_hex extends Puzzle {
             if (document.getElementById("custom_color_opt").value === "2" && this[pu + "_col"].cage[i]) {
                 this.ctx.strokeStyle = this[pu + "_col"].cage[i];
             }
-            
+
             this.ctx.beginPath();
             this.ctx.moveTo(x1, y1);
             if (x3 != -1) { this.ctx.lineTo(x3, y3); }
@@ -1553,7 +1553,7 @@ class Puzzle_hex extends Puzzle {
                 this.draw_framelinesym(ctx, num, x, y, ccolor);
                 break;
 
-                //number
+            //number
             case "inequality":
                 set_circle_style(ctx, 10, ccolor);
                 this.draw_inequality(ctx, num, x, y);
@@ -1590,7 +1590,7 @@ class Puzzle_hex extends Puzzle {
                 this.draw_pills(ctx, num, x, y, ccolor);
                 break;
 
-                /* arrow */
+            /* arrow */
             case "arrow_B_B":
                 set_circle_style(ctx, 2, ccolor);
                 this.draw_arrowB(ctx, num, x, y);
@@ -1652,7 +1652,7 @@ class Puzzle_hex extends Puzzle {
                 this.draw_arroweight(ctx, num, x, y);
                 break;
 
-                /* special */
+            /* special */
             case "kakuro":
                 this.draw_kakuro(ctx, num, x, y, ccolor);
                 break;
@@ -1697,9 +1697,9 @@ class Puzzle_hex extends Puzzle {
             case "polyomino":
                 this.draw_polyomino(ctx, num, x, y, ccolor);
                 break;
-                //case "pencils":
-                //  this.draw_pencils(ctx,num,x,y);
-                //  break;
+            //case "pencils":
+            //  this.draw_pencils(ctx,num,x,y);
+            //  break;
         }
     }
 
@@ -2061,15 +2061,15 @@ class Puzzle_hex extends Puzzle {
                 ctx.fill();
                 ctx.stroke();
                 break;
-                /*//for square
-                case 5:
-                  set_circle_style(ctx,10);
-                  ctx.beginPath();
-                  ctx.moveTo(x+0.07*pu.size,y+0.2*pu.size);
-                  ctx.lineTo(x-0.07*pu.size,y+0*pu.size);
-                  ctx.lineTo(x+0.07*pu.size,y-0.2*pu.size);
-                  ctx.stroke();
-                  break;*/
+            /*//for square
+            case 5:
+              set_circle_style(ctx,10);
+              ctx.beginPath();
+              ctx.moveTo(x+0.07*pu.size,y+0.2*pu.size);
+              ctx.lineTo(x-0.07*pu.size,y+0*pu.size);
+              ctx.lineTo(x+0.07*pu.size,y-0.2*pu.size);
+              ctx.stroke();
+              break;*/
         }
     }
 

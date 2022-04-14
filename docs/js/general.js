@@ -154,7 +154,7 @@ function create_newboard() {
             title: 'Swaroop:',
             html: '显示尺寸必须在此范围:<h2 class="warn">12-90</h2>',
             icon: 'error',
-            confirmButtonText: 'ok 🙂',
+            confirmButtonText: '是',
         })
     }
 }
@@ -202,7 +202,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '行/列尺寸必须在此范围:<h2 class="warn">1-' + gridmax['square'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -218,7 +218,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['hex'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -234,7 +234,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['tri'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -250,7 +250,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['pyramid'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -263,7 +263,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['iso'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -440,7 +440,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '行列尺寸必须在此范围:<h2 class="warn">1-' + gridmax['kakuro'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -453,7 +453,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['truncated'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -466,7 +466,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['tetrakis'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -479,7 +479,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['snub'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -492,7 +492,7 @@ function make_class(gridtype, loadtype = 'new') {
                     title: 'Swaroop:',
                     html: '边长尺寸必须在此范围:<h2 class="warn">1-' + gridmax['cairo'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
             break;
@@ -763,7 +763,8 @@ function CreateCheck() {
         showCancelButton: true,
         confirmButtonColor: Color.BLUE_SKY,
         cancelButtonColor: Color.RED,
-        confirmButtonText: '是的，重置！'
+        confirmButtonText: '是的，重置！',
+        cancelButtonText: '取消'
     }).then((result) => {
         if (result.isConfirmed) {
             // Save grid size setting
@@ -1203,7 +1204,8 @@ function ResetCheck() {
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: '是的，清除！'
+                confirmButtonText: '是的，清除！',
+                cancelButtonText: '取消'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1217,7 +1219,8 @@ function ResetCheck() {
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: '是的，清除！'
+                confirmButtonText: '是的，清除！',
+                cancelButtonText: '取消'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1233,7 +1236,8 @@ function ResetCheck() {
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: '是的，清除！'
+                confirmButtonText: '是的，清除！',
+                cancelButtonText: '取消'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1247,7 +1251,8 @@ function ResetCheck() {
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: '是的，清除！'
+                confirmButtonText: '是的，清除！',
+                cancelButtonText: '取消'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1261,7 +1266,8 @@ function ResetCheck() {
                 showCancelButton: true,
                 confirmButtonColor: Color.BLUE_SKY,
                 cancelButtonColor: Color.RED,
-                confirmButtonText: '是的，清除！'
+                confirmButtonText: '是的，清除！',
+                cancelButtonText: '取消'
             }).then((result) => {
                 if (result.isConfirmed) {
                     pu.reset_selectedmode();
@@ -1276,7 +1282,8 @@ function ResetCheck() {
             showCancelButton: true,
             confirmButtonColor: Color.BLUE_SKY,
             cancelButtonColor: Color.RED,
-            confirmButtonText: '是的，清除！'
+            confirmButtonText: '是的，清除！',
+            cancelButtonText: '取消'
         }).then((result) => {
             if (result.isConfirmed) {
                 pu.reset_selectedmode();
@@ -1290,7 +1297,8 @@ function ResetCheck() {
             showCancelButton: true,
             confirmButtonColor: Color.BLUE_SKY,
             cancelButtonColor: Color.RED,
-            confirmButtonText: '是的，清除！'
+            confirmButtonText: '是的，清除！',
+            cancelButtonText: '取消'
         }).then((result) => {
             if (result.isConfirmed) {
                 pu.reset_selectedmode();
@@ -1318,7 +1326,8 @@ function ResetCheck() {
             showCancelButton: true,
             confirmButtonColor: Color.BLUE_SKY,
             cancelButtonColor: Color.RED,
-            confirmButtonText: '是的，清除！'
+            confirmButtonText: '是的，清除！',
+            cancelButtonText: '取消'
         }).then((result) => {
             if (result.isConfirmed) {
                 pu.reset_selectedmode();
@@ -1330,18 +1339,19 @@ function ResetCheck() {
 function DeleteCheck() {
     var text;
     if (document.getElementById("pu_q").checked) {
-        text = "problem";
+        text = "编辑模式";
     } else if (document.getElementById("pu_a").checked) {
-        text = "solution";
+        text = "解题模式";
     }
     Swal.fire({
-        title: '清除所有[' + cnDict[text.toUpperCase()] + ']模式的元素?',
+        title: `清除所有[${text}]模式的元素?`,
         html: '<h4 class="warn">此操作无法还原！</h4>',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: Color.BLUE_SKY,
         cancelButtonColor: Color.RED,
-        confirmButtonText: '是的，清除！'
+        confirmButtonText: '是的，清除！',
+        cancelButtonText: '取消'
     }).then((result) => {
         if (result.isConfirmed) {
             pu.reset_board(); // contains reset of undo/redo
@@ -1417,7 +1427,7 @@ function saveimage_download() {
             title: 'Swaroop:',
             html: '文件名不能出现以下字符<h2 class="warn">\\ / : * ? \" < > |</h2>',
             icon: 'error',
-            confirmButtonText: 'ok 🙂',
+            confirmButtonText: '是',
         })
     }
 }
@@ -1613,7 +1623,7 @@ function savetext_download() {
             title: 'Swaroop:',
             html: '文件名不能出现以下字符<h2 class="warn">\\ / : * ? \" < > |</h2>',
             icon: 'error',
-            confirmButtonText: 'ok 🙂',
+            confirmButtonText: '是',
         });
     }
 }
@@ -2879,7 +2889,7 @@ function decode_puzzlink(url) {
             title: 'Swaroop:',
             html: 'Penpa+不支持超过65行/列的网格大小',
             icon: 'error',
-            confirmButtonText: 'ok 🙂',
+            confirmButtonText: '是',
         })
         return;
     }
@@ -2985,7 +2995,7 @@ function decode_puzzlink(url) {
                     title: 'Swaroop:',
                     html: `抱歉，不支持大小为${cols}x${rows}的数独网格`,
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 });
                 break;
             }
@@ -4062,7 +4072,7 @@ function decode_puzzlink(url) {
                 title: 'Swaroop:',
                 html: '目前不支持谜题类型: ' + type,
                 icon: 'error',
-                confirmButtonText: 'ok 🙂',
+                confirmButtonText: '是',
             })
             break;
     }

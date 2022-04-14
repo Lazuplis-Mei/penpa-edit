@@ -956,17 +956,17 @@ class Puzzle {
         } else {
             if (sign === 1) {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Max row size reached <h2 class="warn">' + this.gridmax['square'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '超过最大行<h2 class="warn">' + this.gridmax['square'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Min row size reached <h2 class="warn">1</h2>',
+                    title: 'Swaroop:',
+                    html: '小于最小行 <h2 class="warn">1</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
         }
@@ -1227,17 +1227,17 @@ class Puzzle {
         } else {
             if (sign === 1) {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Max row size reached <h2 class="warn">' + this.gridmax['square'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '超过最大行<h2 class="warn">' + this.gridmax['square'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Min row size reached <h2 class="warn">1</h2>',
+                    title: 'Swaroop:',
+                    html: '小于最小行<h2 class="warn">1</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
         }
@@ -1609,17 +1609,17 @@ class Puzzle {
         } else {
             if (sign === 1) {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Max row size reached <h2 class="warn">' + this.gridmax['square'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '超过最大行<h2 class="warn">' + this.gridmax['square'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Min column size reached <h2 class="warn">1</h2>',
+                    title: 'Swaroop:',
+                    html: '小于最小行<h2 class="warn">1</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
         }
@@ -1990,17 +1990,17 @@ class Puzzle {
         } else {
             if (sign === 1) {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Max row size reached <h2 class="warn">' + this.gridmax['square'] + '</h2>',
+                    title: 'Swaroop:',
+                    html: '超过最大行<h2 class="warn">' + this.gridmax['square'] + '</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             } else {
                 Swal.fire({
-                    title: 'Swaroop says:',
-                    html: 'Min column size reached <h2 class="warn">1</h2>',
+                    title: 'Swaroop:',
+                    html: '小于最小行<h2 class="warn">1</h2>',
                     icon: 'error',
-                    confirmButtonText: 'ok 🙂',
+                    confirmButtonText: '是',
                 })
             }
         }
@@ -2084,12 +2084,12 @@ class Puzzle {
             var canvastext = resizedCanvas.toDataURL("image/jpeg");
         } else if (document.getElementById("nb_type3").checked) {
             var svg_canvas = new C2S(this.canvasx, this.canvasy);
-            svg_canvas.text = function(text, x, y, width = 1e4) {
+            svg_canvas.text = function (text, x, y, width = 1e4) {
                 var fontsize = parseFloat(this.font.split("px")[0]);
                 this.strokeText(text, x, y + 0.28 * fontsize, width);
                 this.fillText(text, x, y + 0.28 * fontsize, width);
             };
-            svg_canvas.arrow = function(startX, startY, endX, endY, controlPoints) {
+            svg_canvas.arrow = function (startX, startY, endX, endY, controlPoints) {
                 var dx = endX - startX;
                 var dy = endY - startY;
                 var len = Math.sqrt(dx * dx + dy * dy);
@@ -2276,9 +2276,9 @@ class Puzzle {
 
         // If panel is ON, show Mode info on header
         if (document.getElementById('panel_button').value === "1") {
-            let modes_mapping = ['Surface', 'Line', 'Edge', 'Wall', 'Number', 'Shape', 'Special', 'Cage', 'Composite', 'Sudoku', 'Box', 'Move'];
+            let modes_mapping = ['表面', '线段', '边线', '墙壁', '数字', '形状', '特殊', '线框', '综合', '数独', '格子', '移动'];
             let mode_loc = penpa_modes["square"]["mode"].indexOf(mode);
-            document.getElementById('float-key-header-lb').innerHTML = "Mode: " + modes_mapping[mode_loc];
+            document.getElementById('float-key-header-lb').innerHTML = "模式: " + modes_mapping[mode_loc];
         }
         this.redraw();
     }
@@ -2808,10 +2808,10 @@ class Puzzle {
         // Warning Long URL
         if (puzzle_data.length >= MAX_EXPORT_LENGTH) {
             Swal.fire({
-                title: 'Warning:',
-                html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
+                title: '警告:',
+                html: '<h3 class="warn">链接太长，若无法在浏览器中直接打开。请按照以下步骤操作: <br>1) 复制生成的链接 <br> 2) 打开Penpa+网站 (https://swaroopg92.github.io/penpa-edit/) <br> 3) 使用[载入]按钮加载链接</h3>',
                 icon: 'warning',
-                confirmButtonText: 'ok',
+                confirmButtonText: '是',
             })
         }
 
@@ -2988,10 +2988,10 @@ class Puzzle {
             // Warning Long URL
             if ((ba.length + ba_s.length) >= MAX_EXPORT_LENGTH) {
                 Swal.fire({
-                    title: 'Warning:',
-                    html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
+                    title: '警告:',
+                    html: '<h3 class="warn">链接太长，若无法在浏览器中直接打开。请按照以下步骤操作: <br>1) 复制生成的链接 <br> 2) 打开Penpa+网站 (https://swaroopg92.github.io/penpa-edit/) <br> 3) 使用[载入]按钮加载链接</h3>',
                     icon: 'warning',
-                    confirmButtonText: 'ok',
+                    confirmButtonText: '是',
                 })
             }
             return url + "?m=edit&p=" + ba + "&a=" + ba_s;
@@ -2999,10 +2999,10 @@ class Puzzle {
             // Warning Long URL
             if (ba.length >= MAX_EXPORT_LENGTH) {
                 Swal.fire({
-                    title: 'Warning:',
-                    html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
+                    title: '警告:',
+                    html: '<h3 class="warn">链接太长，若无法在浏览器中直接打开。请按照以下步骤操作: <br>1) 复制生成的链接 <br> 2) 打开Penpa+网站 (https://swaroopg92.github.io/penpa-edit/) <br> 3) 使用[载入]按钮加载链接</h3>',
                     icon: 'warning',
-                    confirmButtonText: 'ok',
+                    confirmButtonText: '是',
                 })
             }
             return url + "?m=edit&p=" + ba;
@@ -3122,10 +3122,10 @@ class Puzzle {
         // Warning Long URL
         if ((text_head.length + ba.length) >= MAX_EXPORT_LENGTH) {
             Swal.fire({
-                title: 'Warning:',
-                html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
+                title: '警告:',
+                html: '<h3 class="warn">链接太长，若无法在浏览器中直接打开。请按照以下步骤操作: <br>1) 复制生成的链接 <br> 2) 打开Penpa+网站 (https://swaroopg92.github.io/penpa-edit/) <br> 3) 使用[载入]按钮加载链接</h3>',
                 icon: 'warning',
-                confirmButtonText: 'ok',
+                confirmButtonText: '是',
             })
         }
         return text_head + "&a=" + ba;
@@ -3155,10 +3155,10 @@ class Puzzle {
         // Warning Long URL
         if ((text_head.length + puzzle_info.length + replay.length) >= MAX_EXPORT_LENGTH) {
             Swal.fire({
-                title: 'Warning:',
-                html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
+                title: '警告:',
+                html: '<h3 class="warn">链接太长，若无法在浏览器中直接打开。请按照以下步骤操作: <br>1) 复制生成的链接 <br> 2) 打开Penpa+网站 (https://swaroopg92.github.io/penpa-edit/) <br> 3) 使用[载入]按钮加载链接</h3>',
                 icon: 'warning',
-                confirmButtonText: 'ok',
+                confirmButtonText: '是',
             })
         }
 
@@ -3662,7 +3662,7 @@ class Puzzle {
                         case "battleship":
                             for (var i in this[pu].symbol) {
                                 if ((this[pu].symbol[i][1] === "battleship_B" &&
-                                        this[pu].symbol[i][0] >= 1 && this[pu].symbol[i][0] <= 6) ||
+                                    this[pu].symbol[i][0] >= 1 && this[pu].symbol[i][0] <= 6) ||
                                     (this[pu].symbol[i][1] === "battleship_B+" &&
                                         this[pu].symbol[i][0] >= 1 && this[pu].symbol[i][0] <= 4)) {
                                     temp_sol.push(i);
@@ -6509,7 +6509,7 @@ class Puzzle {
                             } else if (this.pu_q.symbol[i + j * (this.nx0)] && this.pu_q.symbol[i + j * (this.nx0)][0] === 2) {
                                 text += '.';
                             } else if (this.pu_a.number[i + j * (this.nx0)] && this.pu_a.number[i + j * (this.nx0)][2] !== "7" && (this.pu_q.surface[i + j * (this.nx0)] === 1 ||
-                                    this.pu_q.surface[i + j * (this.nx0)] === 8 || this.pu_q.surface[i + j * (this.nx0)] === 3)) { //Dark Grey, Grey and Light grey
+                                this.pu_q.surface[i + j * (this.nx0)] === 8 || this.pu_q.surface[i + j * (this.nx0)] === 3)) { //Dark Grey, Grey and Light grey
                                 switch (parseInt(this.pu_a.number[i + j * (this.nx0)][0])) {
                                     case 1:
                                         text += 'a';
@@ -6613,11 +6613,11 @@ class Puzzle {
                 }
                 if (a) {
                     if ((a[0] === "thermo" ||
-                            a[0] === "nobulbthermo" ||
-                            a[0] === "arrows" ||
-                            a[0] === "direction" ||
-                            a[0] === "squareframe" ||
-                            a[0] === "polygon") && a[1] === -1) {
+                        a[0] === "nobulbthermo" ||
+                        a[0] === "arrows" ||
+                        a[0] === "direction" ||
+                        a[0] === "squareframe" ||
+                        a[0] === "polygon") && a[1] === -1) {
                         if (this[pu_mode][a[0]].length > 0) {
                             this.pu_q.command_redo.push([a[0], a[1], this[pu_mode][a[0]].pop(), pu_mode]);
                             if (a_col) {
@@ -6731,12 +6731,12 @@ class Puzzle {
                         a_4 = [a[4]];
                     }
                     if ((a[0] === "thermo" ||
-                            a[0] === "nobulbthermo" ||
-                            a[0] === "arrows" ||
-                            a[0] === "direction" ||
-                            a[0] === "squareframe" ||
-                            a[0] === "polygon" ||
-                            a[0] === "killercages") && a[1] === -1) {
+                        a[0] === "nobulbthermo" ||
+                        a[0] === "arrows" ||
+                        a[0] === "direction" ||
+                        a[0] === "squareframe" ||
+                        a[0] === "polygon" ||
+                        a[0] === "killercages") && a[1] === -1) {
                         if (this[pu_mode][a[0]].length > 0) {
                             this.pu_a.command_redo.push([a[0], a[1], this[pu_mode][a[0]].pop(), pu_mode].concat(a_45));
                             if (a_col) {
@@ -6845,11 +6845,11 @@ class Puzzle {
                 }
                 if (a) {
                     if ((a[0] === "thermo" ||
-                            a[0] === "nobulbthermo" ||
-                            a[0] === "arrows" ||
-                            a[0] === "direction" ||
-                            a[0] === "squareframe" ||
-                            a[0] === "polygon") && a[1] === -1) {
+                        a[0] === "nobulbthermo" ||
+                        a[0] === "arrows" ||
+                        a[0] === "direction" ||
+                        a[0] === "squareframe" ||
+                        a[0] === "polygon") && a[1] === -1) {
                         this.pu_q.command_undo.push([a[0], a[1], null, pu_mode]);
                         this[pu_mode][a[0]].push(a[2]);
                         if (a_col) {
@@ -6955,12 +6955,12 @@ class Puzzle {
                         a_4 = [a[4]];
                     }
                     if ((a[0] === "thermo" ||
-                            a[0] === "nobulbthermo" ||
-                            a[0] === "arrows" ||
-                            a[0] === "direction" ||
-                            a[0] === "squareframe" ||
-                            a[0] === "polygon" ||
-                            a[0] === "killercages") && a[1] === -1) {
+                        a[0] === "nobulbthermo" ||
+                        a[0] === "arrows" ||
+                        a[0] === "direction" ||
+                        a[0] === "squareframe" ||
+                        a[0] === "polygon" ||
+                        a[0] === "killercages") && a[1] === -1) {
                         this.pu_a.command_undo.push([a[0], a[1], null, pu_mode].concat(a_45));
                         this[pu_mode][a[0]].push(a[2]);
                         if (a_col) {
@@ -7477,8 +7477,8 @@ class Puzzle {
 
                             for (var k of this.selection) {
                                 if ((this["pu_q"].number[k] && this["pu_q"].number[k][2] === "1" &&
-                                        Number.isInteger(parseInt(this["pu_q"].number[k][0])) &&
-                                        this.selection.length > 1) ||
+                                    Number.isInteger(parseInt(this["pu_q"].number[k][0])) &&
+                                    this.selection.length > 1) ||
                                     this["pu_a"].number[k] && this["pu_a"].number[k][2] === "1") { // if single digit is present, dont modify that cell
                                     var single_digit = true;
                                 } else if (this["pu_q"].number[k] && this["pu_q"].number[k][2] === "7" && this.selection.length > 1) {
@@ -8708,8 +8708,8 @@ class Puzzle {
         }
     }
 
-    direction_arrow8(x, y) {} //override
-    direction_arrow4(x, y) {} //override
+    direction_arrow8(x, y) { } //override
+    direction_arrow4(x, y) { } //override
 
     //////////////////////////
     // symbol
@@ -10819,11 +10819,11 @@ class Puzzle {
                     offset = 2;
                 }
                 neighbors2 = [row_num * this.nx0 + 3 * this.nx0 * this.ny0 + col_num - 1, // left middle
-                    row_num * this.nx0 + 3 * this.nx0 * this.ny0 + col_num, // right middle,
-                    4 * this.nx0 * this.ny0 + num * 2, // bottom left middle
-                    4 * this.nx0 * this.ny0 + num * 2 + 1, // bottom right middle
-                    4 * this.nx0 * this.ny0 + num * 2 - this.nx0 * 2 - 1 + offset, // top left middle
-                    4 * this.nx0 * this.ny0 + num * 2 + 1 - this.nx0 * 2 - 1 + offset // top right middle
+                row_num * this.nx0 + 3 * this.nx0 * this.ny0 + col_num, // right middle,
+                4 * this.nx0 * this.ny0 + num * 2, // bottom left middle
+                4 * this.nx0 * this.ny0 + num * 2 + 1, // bottom right middle
+                4 * this.nx0 * this.ny0 + num * 2 - this.nx0 * 2 - 1 + offset, // top left middle
+                4 * this.nx0 * this.ny0 + num * 2 + 1 - this.nx0 * 2 - 1 + offset // top right middle
                 ]
                 neighbors = neighbors2.concat(this.point[num].surround);
             } else if (this.gridtype === "tetrakis_square") {
@@ -11747,7 +11747,7 @@ class Puzzle {
                                 html: '<h2 class="wish">' + message + '</h2>',
                                 background: 'url(js/images/new_year.jpg)',
                                 icon: 'success',
-                                confirmButtonText: 'Hurray!',
+                                confirmButtonText: '你赢了!',
                                 // timer: 5000
                             })
                         }, 20);
@@ -11775,7 +11775,7 @@ class Puzzle {
                         if (user_sol === author_sol && this.sol_flag === 0) {
                             let message = document.getElementById("custom_message").value;
                             if (message == "" || message.includes("http-equiv=")) {
-                                message = "Congratulations 🙂";
+                                message = "恭喜";
                             }
                             setTimeout(() => {
                                 Swal.fire({
@@ -11783,7 +11783,7 @@ class Puzzle {
                                     html: '<h2 class="wish">' + message + '</h2>',
                                     background: 'url(js/images/new_year.jpg)',
                                     icon: 'success',
-                                    confirmButtonText: 'Hurray!',
+                                    confirmButtonText: '你赢了!',
                                 })
                             }, 20);
                             sw_timer.pause();

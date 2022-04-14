@@ -1722,7 +1722,7 @@ onload = function () {
                         title: '<h3>你的解答不正确.</h3>',
                         html: '<h2>继续尝试</h2>',
                         icon: 'error',
-                        confirmButtonText: 'ok',
+                        confirmButtonText: '是',
                     })
                     document.getElementById("pu_a_label").style.backgroundColor = Color.RED_LIGHT;
                 }

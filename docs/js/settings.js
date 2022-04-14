@@ -248,7 +248,7 @@ const UserSettings = {
                 title: 'Swaroop:',
                 html: '显示尺寸必须在<h2 class="warn">12-90</h2>范围内，已经设置为最大值。',
                 icon: 'info',
-                confirmButtonText: 'ok 🙂',
+                confirmButtonText: '是',
             })
         }
         if (valueInt < 12) {
@@ -257,7 +257,7 @@ const UserSettings = {
                 title: 'Swaroop:',
                 html: '显示尺寸必须在<h2 class="warn">12-90</h2>范围内，已经设置为最小值。',
                 icon: 'info',
-                confirmButtonText: 'ok 🙂',
+                confirmButtonText: '是',
             })
         }
 
