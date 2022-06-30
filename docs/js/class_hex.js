@@ -27,7 +27,8 @@ class Puzzle_hex extends Puzzle {
             "degital_f": 7,
             "arrow_eight": 6,
             "dice": 9,
-            "polyomino": 9
+            "polyomino": 9,
+            "polyhex": 7
         };
         this.reset();
         this.erase_buttons();
@@ -471,8 +472,95 @@ class Puzzle_hex extends Puzzle {
             cursorpos = cursorpos - 3 * this.nx - 1;
         }
 
-        if (this.mode[this.mode.qa].edit_mode === "number" || this.mode[this.mode.qa].edit_mode === "symbol") {
-            if (this.mode[this.mode.qa].edit_mode === "number" && this.mode[this.mode.qa][this.mode[this.mode.qa].edit_mode][0] === "3") { } else {
+        if (this.mode[this.mode.qa].edit_mode === "number" || this.mode[this.mode.qa].edit_mode === "symbol" || this.mode[this.mode.qa].edit_mode === "sudoku") {
+            if (this.mode[this.mode.qa].edit_mode === "number" && this.mode[this.mode.qa][this.mode[this.mode.qa].edit_mode][0] === "3") {
+
+            } else if (this.mode[this.mode.qa].edit_mode === "sudoku") {
+                if (this.selection.length >= 1) {
+                    switch (c) {
+                        case 0: // right to left for theta = 0
+                            a = this.cursol - 1;
+                            if (this.point[a].use === 1) { this.cursol = a; }
+                            break;
+                        case 1: // bottom right to top left for theta = 0
+                            if ((this.nx % 2) === 0) {
+                                if ((count % 2) === 0) {
+                                    a = this.cursol - (this.nx * 3 + 1);
+                                } else {
+                                    a = this.cursol - (this.nx * 3 + 2);
+                                }
+                            } else {
+                                if ((count % 2) === 0) {
+                                    a = this.cursol - (this.nx * 3 + 2);
+                                } else {
+                                    a = this.cursol - (this.nx * 3 + 1);
+                                }
+                            }
+                            if (this.point[a].use === 1) { this.cursol = a; }
+                            break;
+                        case 2: // left to right for theta = 0
+                            a = this.cursol + 1;
+                            if (this.point[a].use === 1) { this.cursol = a; }
+                            break;
+                        case 3: // top left to bottom right for theta = 0
+                            if ((this.nx % 2) === 0) {
+                                if ((count % 2) === 1) {
+                                    a = this.cursol + (this.nx * 3 + 1);
+                                } else {
+                                    a = this.cursol + (this.nx * 3 + 2);
+                                }
+                            } else {
+                                if ((count % 2) === 1) {
+                                    a = this.cursol + (this.nx * 3 + 2);
+                                } else {
+                                    a = this.cursol + (this.nx * 3 + 1);
+                                }
+                            }
+                            if (this.point[a].use === 1) { this.cursol = a; }
+                            break;
+                        case 4: // top right to bottom left for theta = 0
+                            if ((this.nx % 2) === 0) {
+                                if ((count % 2) === 1) {
+                                    a = this.cursol + (this.nx * 3);
+                                } else {
+                                    a = this.cursol + (this.nx * 3 + 1);
+                                }
+                            } else {
+                                if ((count % 2) === 1) {
+                                    a = this.cursol + (this.nx * 3 + 1);
+                                } else {
+                                    a = this.cursol + (this.nx * 3);
+                                }
+                            }
+                            if (this.point[a].use === 1) { this.cursol = a; }
+                            break;
+                        case 5: // bottom left to top right for theta = 0
+                            if ((this.nx % 2) === 0) {
+                                if ((count % 2) === 0) {
+                                    a = this.cursol - (this.nx * 3);
+                                } else {
+                                    a = this.cursol - (this.nx * 3 + 1);
+                                }
+                            } else {
+                                if ((count % 2) === 0) {
+                                    a = this.cursol - (this.nx * 3 + 1);
+                                } else {
+                                    a = this.cursol - (this.nx * 3);
+                                }
+                            }
+                            if (this.point[a].use === 1) { this.cursol = a; }
+                            break;
+                    }
+                    if (this.point[a].use === 1) {
+                        if (!ctrl_key) {
+                            this.selection = [];
+                        }
+                        if (!this.selection.includes(a)) {
+                            this.selection.push(a);
+                        }
+                    }
+                }
+            } else {
                 switch (c) {
                     case 0: // right to left for theta = 0
                         a = this.cursol - 1;
@@ -546,6 +634,10 @@ class Puzzle_hex extends Puzzle {
                         }
                         if (this.point[a].use === 1) { this.cursol = a; }
                         break;
+                }
+                this.selection = [];
+                if (!this.selection.includes(this.cursol)) {
+                    this.selection.push(this.cursol);
                 }
             }
         }
@@ -1501,6 +1593,46 @@ class Puzzle_hex extends Puzzle {
                 set_circle_style(ctx, num, ccolor);
                 this.draw_polygon(ctx, x, y, 0.13, 4, 0);
                 break;
+            case "hexpoint_LL":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.58, 6, 30);
+                break;
+            case "hexpoint_L":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.43, 6, 30);
+                break;
+            case "hexpoint_M":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.35, 6, 30);
+                break;
+            case "hexpoint_S":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.22, 6, 30);
+                break;
+            case "hexpoint_SS":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.13, 6, 30);
+                break;
+            case "hexflat_LL":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.58, 6, 0);
+                break;
+            case "hexflat_L":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.43, 6, 0);
+                break;
+            case "hexflat_M":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.35, 6, 0);
+                break;
+            case "hexflat_S":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.22, 6, 0);
+                break;
+            case "hexflat_SS":
+                set_circle_style(ctx, num, ccolor);
+                this.draw_polygon(ctx, x, y, 0.13, 6, 0);
+                break;
             case "ox_B":
                 ctx.setLineDash([]);
                 ctx.lineCap = "butt";
@@ -1553,7 +1685,7 @@ class Puzzle_hex extends Puzzle {
                 this.draw_framelinesym(ctx, num, x, y, ccolor);
                 break;
 
-            //number
+                //number
             case "inequality":
                 set_circle_style(ctx, 10, ccolor);
                 this.draw_inequality(ctx, num, x, y);
@@ -1590,7 +1722,7 @@ class Puzzle_hex extends Puzzle {
                 this.draw_pills(ctx, num, x, y, ccolor);
                 break;
 
-            /* arrow */
+                /* arrow */
             case "arrow_B_B":
                 set_circle_style(ctx, 2, ccolor);
                 this.draw_arrowB(ctx, num, x, y);
@@ -1652,7 +1784,7 @@ class Puzzle_hex extends Puzzle {
                 this.draw_arroweight(ctx, num, x, y);
                 break;
 
-            /* special */
+                /* special */
             case "kakuro":
                 this.draw_kakuro(ctx, num, x, y, ccolor);
                 break;
@@ -1697,9 +1829,12 @@ class Puzzle_hex extends Puzzle {
             case "polyomino":
                 this.draw_polyomino(ctx, num, x, y, ccolor);
                 break;
-            //case "pencils":
-            //  this.draw_pencils(ctx,num,x,y);
-            //  break;
+            case "polyhex":
+                this.draw_polyhex(ctx, num, x, y, ccolor);
+                break;
+                //case "pencils":
+                //  this.draw_pencils(ctx,num,x,y);
+                //  break;
         }
     }
 
@@ -2061,15 +2196,15 @@ class Puzzle_hex extends Puzzle {
                 ctx.fill();
                 ctx.stroke();
                 break;
-            /*//for square
-            case 5:
-              set_circle_style(ctx,10);
-              ctx.beginPath();
-              ctx.moveTo(x+0.07*pu.size,y+0.2*pu.size);
-              ctx.lineTo(x-0.07*pu.size,y+0*pu.size);
-              ctx.lineTo(x+0.07*pu.size,y-0.2*pu.size);
-              ctx.stroke();
-              break;*/
+                /*//for square
+                case 5:
+                  set_circle_style(ctx,10);
+                  ctx.beginPath();
+                  ctx.moveTo(x+0.07*pu.size,y+0.2*pu.size);
+                  ctx.lineTo(x-0.07*pu.size,y+0*pu.size);
+                  ctx.lineTo(x+0.07*pu.size,y-0.2*pu.size);
+                  ctx.stroke();
+                  break;*/
         }
     }
 
@@ -3071,6 +3206,29 @@ class Puzzle_hex extends Puzzle {
         for (var i = 0; i < 9; i++) {
             if (num[i] === 1) {
                 this.draw_polygon(ctx, x + (i % 3 - 1) * r * pu.size, y + ((i / 3 | 0) - 1) * r * pu.size, r * 0.5 * Math.sqrt(2), 4, 45);
+            }
+        }
+    }
+    draw_polyhex(ctx, num, x, y, ccolor = "none") {
+        ctx.setLineDash([]);
+        if (ccolor !== "none") {
+            ctx.fillStyle = ccolor;
+        } else {
+            ctx.fillStyle = Color.GREY_LIGHT;
+        }
+        ctx.strokeStyle = Color.BLACK;
+        ctx.lineWidth = 1.2;
+        ctx.lineCap = "butt";
+        var r = 0.2;
+        var degrees = [-120, -60, 180, null, 0, 120, 60];
+        var r2 = r * 1.23;
+        for (var i = 0; i < 7; i++) {
+            if (num[i] === 1) {
+                if (i == 3) {
+                    this.draw_polygon(ctx, x, y, r * 0.5 * Math.sqrt(2), 6, 30);
+                } else {
+                    this.draw_polygon(ctx, x + pu.size * r2 * Math.cos(degrees[i] * Math.PI / 180), y + pu.size * r2 * Math.sin(degrees[i] * Math.PI / 180), r * 0.5 * Math.sqrt(2), 6, 30);
+                }
             }
         }
     }

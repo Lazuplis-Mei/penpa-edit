@@ -31,7 +31,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Local styles -->
     <script>
-        var ver = "2.26.18"; // Also defined in class_p.js
+        var ver = "2.26.21"; // Also defined in class_p.js
         let style_sources = [
             "./css/light_theme.css",
             "./css/base-structure.css",
@@ -70,7 +70,9 @@
             "./js/libs/zlib.js",
             "./js/libs/spectrum.js",
             "./js/libs/canvas2svg.js",
-            "./js/libs/select2.full.js"
+            "./js/libs/select2.full.js",
+            "./js/libs/gif.js",
+            "./js/libs/gif.worker.js"
         ];
         for (let i = 0; i < library_sources.length; i++) {
             let script = document.createElement("script");
@@ -145,7 +147,7 @@
                     <button id="saveimage">保存截图</button>
                     <button id="savetext">分享</button>
                     <a id="download_link"></a>
-                    <button id="duplicate" onclick="duplicate();">复制</button>
+                    <button id="duplicate" onclick="duplicate();">克隆</button>
                     <button id="input_sudoku">导入/导出数独</button>
                     <button id="input_url">载入链接</button>
                     <button id="page_settings">设置</button>
@@ -154,15 +156,15 @@
                     <div id="edit_button" class="mode_button">
                         <label class="label_mode" id="edit_txt">编辑:</label>
                         <input type="radio" name="mode_qa" id="pu_q" value=1 checked="checked" />
-                        <label for="pu_q" class="label" id="pu_q_label">编辑模式</label>
+                        <label for="pu_q" class="label" id="pu_q_label">出题模式</label>
                         <input type="radio" name="mode_qa" id="pu_a" value=2 />
                         <label for="pu_a" class="label" id="pu_a_label">解题模式</label>
-                        <label class="label_mode" id="constraints">约束(测试版):</label>
+                        <label class="label_mode" id="constraints">限制(测试版):</label>
                         <select name="constraints_settings" id="constraints_settings_opt"> </select>
-                        <span id="visibility_button0" class="label_mode">不同模式下可见:</span>
+                        <span id="visibility_button0" class="label_mode">题解可见:</span>
                         <span id="visibility_button" class="label">开启</span>
                         <br id="visibility_break">
-                        <span id="edge_button0" class="label_mode">绘制边缘:</span>
+                        <span id="edge_button0" class="label_mode">在边缘绘制:</span>
                         <span id="edge_button" class="label">关闭</span>
                     </div>
                     <div id="mode_button" class="mode_button">
@@ -203,31 +205,31 @@
                     <div id="submode_button">
                         <span id="div_sub">
                             <label class="label_mode tooltip" id="sub_txt">子模式:&nbsp;&nbsp;<span id="sub_text"
-                                    class="tooltiptext">在适当的情况下选择一种子模式</span></label>
+                                    class="tooltiptext">选择一种合适的子模式</span></label>
                         </span>
                         <span id="mode_line" style="display:none;">
                             <input type="radio" name="mode_line" value="1" id="sub_line1" checked="checked">
-                            <label for="sub_line1" class="label" id="sub_line1_lb">普通</label>
+                            <label for="sub_line1" class="labelL" id="sub_line1_lb">普通</label>
                             <input type="radio" name="mode_line" value="2" id="sub_line2">
-                            <label for="sub_line2" class="label" id="sub_line2_lb">对角线</label>
+                            <label for="sub_line2" class="labelL" id="sub_line2_lb">对角线</label>
                             <input type="radio" name="mode_line" value="3" id="sub_line3">
-                            <label for="sub_line3" class="label" id="sub_line3_lb">自由</label>
+                            <label for="sub_line3" class="labelL" id="sub_line3_lb">自由</label>
                             <input type="radio" name="mode_line" value="5" id="sub_line5">
-                            <label for="sub_line5" class="label" id="sub_line5_lb">半截</label>
+                            <label for="sub_line5" class="labelL" id="sub_line5_lb">半截</label>
                             <input type="radio" name="mode_line" value="4" id="sub_line4">
-                            <label for="sub_line4" class="label" id="sub_line4_lb">辅助标记(x)</label>
+                            <label for="sub_line4" class="labelL" id="sub_line4_lb">辅助标记(x)</label>
                         </span>
                         <span id="mode_lineE" style="display:none;">
                             <input type="radio" name="mode_lineE" value="1" id="sub_lineE1" checked="checked">
-                            <label for="sub_lineE1" class="label" id="sub_lineE1_lb">普通</label>
+                            <label for="sub_lineE1" class="labelL" id="sub_lineE1_lb">普通</label>
                             <input type="radio" name="mode_lineE" value="2" id="sub_lineE2">
-                            <label for="sub_lineE2" class="label" id="sub_lineE2_lb">对角线</label>
+                            <label for="sub_lineE2" class="labelL" id="sub_lineE2_lb">对角线</label>
                             <input type="radio" name="mode_lineE" value="3" id="sub_lineE3">
-                            <label for="sub_lineE3" class="label" id="sub_lineE3_lb">自由</label>
+                            <label for="sub_lineE3" class="labelL" id="sub_lineE3_lb">自由</label>
                             <input type="radio" name="mode_lineE" value="4" id="sub_lineE4">
-                            <label for="sub_lineE4" class="label" id="sub_lineE4_lb">辅助标记(x)</label>
+                            <label for="sub_lineE4" class="labelL" id="sub_lineE4_lb">辅助标记(x)</label>
                             <input type="radio" name="mode_lineE" value="5" id="sub_lineE5">
-                            <label for="sub_lineE5" class="label" id="sub_lineE5_lb">擦除器</label>
+                            <label for="sub_lineE5" class="labelL" id="sub_lineE5_lb">擦除</label>
                         </span>
                         <span id="mode_number" style="display:none;">
                             <input type="radio" name="mode_number" value="1" id="sub_number1" checked="checked">
@@ -251,7 +253,7 @@
                             <input type="radio" name="mode_number" value="8" id="sub_number8">
                             <label for="sub_number8" class="labelL" id="sub_number8_lb">超长数字</label>
                             <input type="radio" name="mode_number" value="11" id="sub_number11">
-                            <label for="sub_number11" class="labelL" id="sub_number11_lb">杀手数字</label>
+                            <label for="sub_number11" class="labelL" id="sub_number11_lb">杀手数子</label>
                         </span>
                         <span id="mode_symbol" style="display:none;">
                             <ul class="nav">
@@ -319,6 +321,24 @@
                                                 <li><span id="ms_diamond_M">中</span></li>
                                                 <li><span id="ms_diamond_S">小</span></li>
                                                 <li><span id="ms_diamond_SS">超小</span></li>
+                                            </ul>
+                                        </li>
+                                        <li id="li_hexpoint"><span id="ms1_hexpoint">六边形(竖放)</span>
+                                            <ul>
+                                                <li><span id="ms_hexpoint_LL">超大</span></li>
+                                                <li><span id="ms_hexpoint_L">大</span></li>
+                                                <li><span id="ms_hexpoint_M">中</span></li>
+                                                <li><span id="ms_hexpoint_S">小</span></li>
+                                                <li><span id="ms_hexpoint_SS">超小</span></li>
+                                            </ul>
+                                        </li>
+                                        <li id="li_hexflat"><span id="ms1_hexflat">六边形(平放)</span>
+                                            <ul>
+                                                <li><span id="ms_hexflat_LL">超大</span></li>
+                                                <li><span id="ms_hexflat_L">大</span></li>
+                                                <li><span id="ms_hexflat_M">中</span></li>
+                                                <li><span id="ms_hexflat_S">小</span></li>
+                                                <li><span id="ms_hexflat_SS">超小</span></li>
                                             </ul>
                                         </li>
                                         <li id="li_ox"><span id="ms1_ox">○△□×</span>
@@ -427,6 +447,7 @@
                                         <li id="li_sudokuetc"><span id="ms_sudokuetc">数独</span></li>
                                         <li id="li_sudokumore"><span id="ms_sudokumore">箭头和</span></li>
                                         <li id="li_polyomino"><span id="ms_polyomino">多联骨牌</span></li>
+                                        <li id="li_polyhex"><span id="ms_polyhex">六边形骨牌</span></li>
                                     </ul>
                                 </li>
                                 <li><span id="ms5" class="labelS">特殊2</span>
@@ -447,32 +468,33 @@
                         <span id="mode_special" style="display:none;">
                             <input type="radio" name="mode_special" value="thermo" id="sub_specialthermo"
                                 checked="checked">
-                            <label for="sub_specialthermo" class="label" id="sub_specialthermo_lb">温度计</label>
+                            <label for="sub_specialthermo" class="labelL" id="sub_specialthermo_lb">温度计</label>
                             <input type="radio" name="mode_special" value="nobulbthermo" id="sub_specialnobulbthermo">
-                            <label for="sub_specialnobulbthermo" class="label"
+                            <label for="sub_specialnobulbthermo" class="labelL"
                                 id="sub_specialnobulbthermo_lb">无泡温度计</label>
                             <input type="radio" name="mode_special" value="arrows" id="sub_specialarrows">
-                            <label for="sub_specialarrows" class="label" id="sub_specialarrows_lb">数独箭头</label>
+                            <label for="sub_specialarrows" class="labelL" id="sub_specialarrows_lb">数独箭头</label>
                             <input type="radio" name="mode_special" value="direction" id="sub_specialdirection">
-                            <label for="sub_specialdirection" class="label" id="sub_specialdirection_lb">箭头</label>
+                            <label for="sub_specialdirection" class="labelL" id="sub_specialdirection_lb">箭头</label>
                             <input type="radio" name="mode_special" value="squareframe" id="sub_specialsquareframe">
-                            <label for="sub_specialsquareframe" class="label" id="sub_specialsquareframe_lb">矩形框</label>
+                            <label for="sub_specialsquareframe" class="labelL"
+                                id="sub_specialsquareframe_lb">矩形框</label>
                             <input type="radio" name="mode_special" value="polygon" id="sub_specialpolygon">
-                            <label for="sub_specialpolygon" class="label" id="sub_specialpolygon_lb">多边形</label>
+                            <label for="sub_specialpolygon" class="labelL" id="sub_specialpolygon_lb">多边形</label>
                         </span>
                         <span id="mode_cage" style="display:none;">
                             <input type="radio" name="mode_cage" value="1" id="sub_cage1" checked="checked">
-                            <label for="sub_cage1" class="label" id="sub_cage1_lb">杀手框</label>
+                            <label for="sub_cage1" class="labelL" id="sub_cage1_lb">杀手框</label>
                             <input type="radio" name="mode_cage" value="2" id="sub_cage2">
-                            <label for="sub_cage2" class="label" id="sub_cage2_lb">自由模式</label>
+                            <label for="sub_cage2" class="labelL" id="sub_cage2_lb">自由模式</label>
                         </span>
                         <span id="mode_move" style="display:none;">
                             <input type="radio" name="mode_move" value="1" id="sub_move1" checked="checked">
-                            <label for="sub_move1" class="label" id="sub_move1_lb">所有</label>
+                            <label for="sub_move1" class="labelL" id="sub_move1_lb">所有</label>
                             <input type="radio" name="mode_move" value="2" id="sub_move2">
-                            <label for="sub_move2" class="label" id="sub_move2_lb">数字</label>
+                            <label for="sub_move2" class="labelL" id="sub_move2_lb">数字</label>
                             <input type="radio" name="mode_move" value="3" id="sub_move3">
-                            <label for="sub_move3" class="label" id="sub_move3_lb">形状</label>
+                            <label for="sub_move3" class="labelL" id="sub_move3_lb">形状</label>
                         </span>
                         <span id="mode_combi" style="display:none;">
                             <ul class="nav">
@@ -488,10 +510,10 @@
                                         <li id="li_linex"><span id="combisub_linex">线段(x)</span></li>
                                         <li id="li_lineox"><span id="combisub_lineox">线段(OX)</span></li>
                                         <li id="li_edgex"><span id="combisub_edgex">边线(x)</span></li>
-                                        <li id="li_edgexoi"><span id="combisub_edgexoi">边线(IO)</span></li>
+                                        <li id="li_edgexoi"><span id="combisub_edgexoi">边线(涂色)</span></li>
                                         <li id="li_yajilin"><span id="combisub_yajilin">仙人指路</span></li>
-                                        <li id="li_hashi"><span id="combisub_hashi">Hashi</span></li>
-                                        <li id="li_rassisillai"><span id="combisub_rassisillai">RassiSillai</span></li>
+                                        <li id="li_hashi"><span id="combisub_hashi">搭桥</span></li>
+                                        <li id="li_rassisillai"><span id="combisub_rassisillai">穿针引线</span></li>
                                     </ul>
                                 </li>
                                 <li><span id="subc3" class="labelS">区域</span>
@@ -513,21 +535,21 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><span id="subc5" class="labelS">Number logic</span>
+                                <li><span id="subc5" class="labelS">数字逻辑</span>
                                     <ul>
-                                        <li><span id="combisub_numfl">Number flick</span></li>
-                                        <li><span id="combisub_alfl">Alphabet flick</span></li>
+                                        <li><span id="combisub_numfl">轻拂填写数字</span></li>
+                                        <li><span id="combisub_alfl">轻拂填写字母</span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </span>
                         <span id="mode_sudoku" style="display:none;">
                             <input type="radio" name="mode_sudoku" value="1" id="sub_sudoku1" checked="checked">
-                            <label for="sub_sudoku1" class="label" id="sub_sudoku1_lb">普通</label>
+                            <label for="sub_sudoku1" class="labelSu" id="sub_sudoku1_lb">普通</label>
                             <input type="radio" name="mode_sudoku" value="2" id="sub_sudoku2">
-                            <label for="sub_sudoku2" class="label" id="sub_sudoku2_lb">角落</label>
+                            <label for="sub_sudoku2" class="labelSu" id="sub_sudoku2_lb">角落</label>
                             <input type="radio" name="mode_sudoku" value="3" id="sub_sudoku3">
-                            <label for="sub_sudoku3" class="label" id="sub_sudoku3_lb">中间</label>
+                            <label for="sub_sudoku3" class="labelSu" id="sub_sudoku3_lb">中间</label>
                         </span>
                     </div>
                     <div id="stylemode_button">
@@ -682,27 +704,27 @@
                         </span>
                         <span id="style_cage" style="display:none;">
                             <input type="radio" name="style_cage" value="10" id="st_cage10" checked="checked">
-                            <label for="st_cage10" class="label" id="st_cage10_lb">虚线</label>
+                            <label for="st_cage10" class="labelL" id="st_cage10_lb">虚线</label>
                             <input type="radio" name="style_cage" value="7" id="st_cage7">
-                            <label for="st_cage7" class="label" id="st_cage7_lb">灰线</label>
+                            <label for="st_cage7" class="labelL" id="st_cage7_lb">灰线</label>
                             <input type="radio" name="style_cage" value="15" id="st_cage15">
-                            <label for="st_cage15" class="label" id="st_cage15_lb">灰虚线</label>
+                            <label for="st_cage15" class="labelL" id="st_cage15_lb">灰虚线</label>
                             <input type="radio" name="style_cage" value="16" id="st_cage16">
-                            <label for="st_cage16" class="label" id="st_cage16_lb">实线</label>
+                            <label for="st_cage16" class="labelL" id="st_cage16_lb">实线</label>
                         </span>
                         <span id="style_sudoku" style="display:none;">
                             <input type="radio" name="style_sudoku" value="1" id="st_sudoku1" checked="checked">
-                            <label for="st_sudoku1" class="label" id="st_sudoku1_lb">黑</label>
+                            <label for="st_sudoku1" class="labelL" id="st_sudoku1_lb">黑</label>
                             <input type="radio" name="style_sudoku" value="2" id="st_sudoku2">
-                            <label for="st_sudoku2" class="label" id="st_sudoku2_lb">绿</label>
+                            <label for="st_sudoku2" class="labelL" id="st_sudoku2_lb">绿</label>
                             <input type="radio" name="style_sudoku" value="8" id="st_sudoku8">
-                            <label for="st_sudoku8" class="label" id="st_sudoku8_lb">蓝</label>
+                            <label for="st_sudoku8" class="labelL" id="st_sudoku8_lb">蓝</label>
                             <input type="radio" name="style_sudoku" value="3" id="st_sudoku3">
-                            <label for="st_sudoku3" class="label" id="st_sudoku3_lb">灰</label>
+                            <label for="st_sudoku3" class="labelL" id="st_sudoku3_lb">灰</label>
                             <input type="radio" name="style_sudoku" value="9" id="st_sudoku9">
-                            <label for="st_sudoku9" class="label" id="st_sudoku9_lb">深蓝</label>
+                            <label for="st_sudoku9" class="labelL" id="st_sudoku9_lb">深蓝</label>
                             <input type="radio" name="style_sudoku" value="10" id="st_sudoku10">
-                            <label for="st_sudoku10" class="label" id="st_sudoku10_lb">红</label>
+                            <label for="st_sudoku10" class="labelL" id="st_sudoku10_lb">红</label>
                         </span>
                         <span id="style_special" style="display:none;">
                             <input type="text" name="style_special" id="colorpicker_special" />
@@ -731,11 +753,11 @@
             <div id="bottom_button">
                 <span class="tooltip">
                     <button id="tb_undo" class="button" disabled>撤销</button>
-                    <span id="undo_text" class="tooltiptext">CTRL + z</span>
+                    <span id="undo_text" class="tooltiptext">Ctrl + Z</span>
                 </span>
                 <span class="tooltip">
                     <button id="tb_redo" class="button" disabled>重做</button>
-                    <span id="redo_text" class="tooltiptext">CTRL + y</span>
+                    <span id="redo_text" class="tooltiptext">Ctrl + Y</span>
                 </span>
                 <span class="tooltip">
                     <button id="tb_reset" class="button">清除当前选定模式</button>
@@ -813,8 +835,8 @@
                     <option value="sudoku" id="nb_gridtype6_lb">数独</option>
                     <option value="kakuro" id="nb_gridtype7_lb">数和</option>
                     <option value="tetrakis_square" id="nb_gridtype8_lb">四联方块</option>
-                    <option value="truncated_square" id="nb_gridtype9_lb">截顶方块</option>
-                    <option value="snub_square" id="nb_gridtype10_lb">Snub密铺</option>
+                    <option value="truncated_square" id="nb_gridtype9_lb">金字塔棱台</option>
+                    <option value="snub_square" id="nb_gridtype10_lb">变棱四角密铺(Snub square)</option>
                     <option value="cairo_pentagonal" id="nb_gridtype11_lb">开罗五边形密铺</option>
                 </select>
             </span><br>
@@ -1563,10 +1585,11 @@
         <div id="modal-help-content" class="modal-content">
             <h3 class="modal-header">欢迎使用 Penpa+</h3>
             <div id="modal-help-body">
-                <p>它是一个 Web应用程序与通用纸上谜题的编辑器，能够绘制许多不同类型的纸上谜题。
+                <p>这是一个 Web应用程序与通用纸上谜题的编辑器，能够绘制许多不同类型的纸上谜题。
                     你可以将谜题下载为图像，并以地址的形式保存拼图链接与他人共享。</p>
                 <h5 class="modal-subheader">用法</h5>
                 <div class="nb_button">
+                    <a class="button" onclick="show_shortcuts();">快捷键</a>
                     <a class="button" target="_blank"
                         href="https://github.com/swaroopg92/penpa-edit/blob/master/README.md">工具说明</a>
                     <a class="button" target="_blank"
