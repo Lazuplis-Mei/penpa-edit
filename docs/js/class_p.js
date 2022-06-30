@@ -160,7 +160,7 @@ class Puzzle {
             ["\"__a\"", "z_"],
             ["null", "zO"],
         ];
-        this.version = [2, 26, 18]; // Also defined in HTML Script Loading in header tag to avoid Browser Cache Problems
+        this.version = [2, 26, 21]; // Also defined in HTML Script Loading in header tag to avoid Browser Cache Problems
         this.undoredo_disable = false;
         this.comp = false;
         this.multisolution = false;
@@ -178,6 +178,8 @@ class Puzzle {
             13: 1 // Fat dots
         };
         this.replaycutoff = 60 * 60 * 1000; // 60 minutes
+        this.surface_2_edge_types = ['pentominous', 'araf', 'spiralgalaxies', 'fillomino'];
+        this.isReplay = false;
     }
 
     reset() {
@@ -385,7 +387,7 @@ class Puzzle {
         // pause-unpause layer
         let pause_canvas = document.getElementById("pause_canvas");
         let pause_ctx = pause_canvas.getContext("2d");
-        let factor = this.resol * 5;
+        let factor = this.resol * 4;
         pause_canvas.style.width = (this.canvasx - factor).toString() + "px";
         pause_canvas.style.height = (this.canvasy - factor).toString() + "px";
         pause_canvas.width = this.resol * this.canvasx;
@@ -398,7 +400,11 @@ class Puzzle {
         this.reset_pause_layer();
 
         // set the style and font
-        pause_ctx.filleStyle = Color.BLUE;
+        if (UserSettings.color_theme == 1) {
+            pause_ctx.fillStyle = Color.BLUE;
+        } else {
+            pause_ctx.fillStyle = Color.WHITE;
+        }
         let font_size = 0.09 * pause_canvas.height; // 9 % of display size/ height of canvas
         pause_ctx.font = font_size + 'px sans-serif';
         let lineheight = 1.2 * font_size;
@@ -2814,18 +2820,6 @@ class Puzzle {
 
     __export_finalize_shared(text) {
         var puzzle_data = encrypt_data(text);
-        // console.log("save",text.length,"=>",compressed.length,"=>",ba.length); //Github ba.length max MAX_EXPORT_LENGTH
-
-        // Warning Long URL
-        if (puzzle_data.length >= MAX_EXPORT_LENGTH) {
-            Swal.fire({
-                title: 'Warning:',
-                html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
-                icon: 'warning',
-                confirmButtonText: 'ok',
-            })
-        }
-
         return puzzle_data;
     }
 
@@ -2848,6 +2842,10 @@ class Puzzle {
             this.pu_a.command_redo.__a = [];
             this.pu_a.command_undo.__a = [];
         }
+
+        // No need to save replay information in edit link
+        this.pu_a.command_replay.__a = [];
+        this.pu_a_col.command_replay.__a;
 
         text += JSON.stringify(this.pu_q) + "\n";
         text += JSON.stringify(this.pu_a) + "\n";
@@ -2898,10 +2896,17 @@ class Puzzle {
             text = text.split(this.replace[i][0]).join(this.replace[i][1]);
         }
 
-        var url = location.href.split('?')[0];
+        // This is to account for old links and new links together
+        var url;
+        if (location.hash) {
+            url = location.href.split('#')[0];
+        } else {
+            url = location.href.split('?')[0];
+        }
+
         var ba = this.__export_finalize_shared(text);
 
-        return url + "?m=edit&p=" + ba;
+        return url + "#m=edit&p=" + ba;
     }
 
     maketext_duplicate() {
@@ -2923,6 +2928,7 @@ class Puzzle {
         var qu = this.pu_q.command_undo.__a;
         var ar = this.pu_a.command_redo.__a;
         var au = this.pu_a.command_undo.__a;
+        var are = this.pu_a.command_replay.__a;
         this.pu_q.command_redo.__a = [];
         this.pu_q.command_undo.__a = [];
         this.pu_a.command_redo.__a = [];
@@ -2930,6 +2936,7 @@ class Puzzle {
             // Retain undo in solve mode
         } else {
             this.pu_a.command_undo.__a = [];
+            this.pu_a.command_replay.__a = [];
         }
         text += JSON.stringify(this.pu_q) + "\n";
         text += JSON.stringify(this.pu_a) + "\n";
@@ -2937,6 +2944,7 @@ class Puzzle {
         this.pu_q.command_undo.__a = qu;
         this.pu_a.command_redo.__a = ar;
         this.pu_a.command_undo.__a = au;
+        this.pu_a.command_replay.__a = are;
 
         text += this.__export_list_tab_shared();
 
@@ -2960,16 +2968,24 @@ class Puzzle {
         qu = this.pu_q_col.command_undo.__a;
         ar = this.pu_a_col.command_redo.__a;
         au = this.pu_a_col.command_undo.__a;
+        are = this.pu_a_col.command_replay.__a;
         this.pu_q_col.command_redo.__a = [];
         this.pu_q_col.command_undo.__a = [];
         this.pu_a_col.command_redo.__a = [];
-        this.pu_a_col.command_undo.__a = [];
+
+        if (this.mmode === "solve") {
+            // Retain undo in solve mode
+        } else {
+            this.pu_a_col.command_undo.__a = [];
+            this.pu_a_col.command_replay.__a = [];
+        }
         text += JSON.stringify(this.pu_q_col) + "\n";
         text += JSON.stringify(this.pu_a_col) + "\n";
         this.pu_q_col.command_redo.__a = qr;
         this.pu_q_col.command_undo.__a = qu;
         this.pu_a_col.command_redo.__a = ar;
         this.pu_a_col.command_undo.__a = au;
+        this.pu_a_col.command_replay.__a = are;
 
         text += this.__export_checker_shared();
 
@@ -2986,7 +3002,15 @@ class Puzzle {
         }
 
         var ba = encrypt_data(text);
-        var url = location.href.split('?')[0];
+
+        // This is to account for old links and new links together
+        var url;
+        if (location.hash) {
+            url = location.href.split('#')[0];
+        } else {
+            url = location.href.split('?')[0];
+        }
+
         let solution_clone;
         // if solution exist then copy the solution as well
         if (this.solution) {
@@ -2996,27 +3020,9 @@ class Puzzle {
                 solution_clone = this.solution;
             }
             var ba_s = encrypt_data(solution_clone);
-            // Warning Long URL
-            if ((ba.length + ba_s.length) >= MAX_EXPORT_LENGTH) {
-                Swal.fire({
-                    title: 'Warning:',
-                    html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
-                    icon: 'warning',
-                    confirmButtonText: 'ok',
-                })
-            }
-            return url + "?m=edit&p=" + ba + "&a=" + ba_s;
+            return url + "#m=edit&p=" + ba + "&a=" + ba_s;
         } else {
-            // Warning Long URL
-            if (ba.length >= MAX_EXPORT_LENGTH) {
-                Swal.fire({
-                    title: 'Warning:',
-                    html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
-                    icon: 'warning',
-                    confirmButtonText: 'ok',
-                })
-            }
-            return url + "?m=edit&p=" + ba;
+            return url + "#m=edit&p=" + ba;
         }
     }
 
@@ -3070,10 +3076,16 @@ class Puzzle {
             text = text.split(this.replace[i][0]).join(this.replace[i][1]);
         }
 
-        var url = location.href.split('?')[0];
+        // This is to account for old links and new links together
+        var url;
+        if (location.hash) {
+            url = location.href.split('#')[0];
+        } else {
+            url = location.href.split('?')[0];
+        }
         var ba = this.__export_finalize_shared(text);
 
-        return url + "?m=solve&p=" + ba;
+        return url + "#m=solve&p=" + ba;
     }
 
     maketext_compsolve() {
@@ -3116,10 +3128,16 @@ class Puzzle {
             text = text.split(this.replace[i][0]).join(this.replace[i][1]);
         }
 
-        var url = location.href.split('?')[0];
+        // This is to account for old links and new links together
+        var url;
+        if (location.hash) {
+            url = location.href.split('#')[0];
+        } else {
+            url = location.href.split('?')[0];
+        }
         var ba = this.__export_finalize_shared(text);
 
-        return url + "?m=solve&p=" + ba;
+        return url + "#m=solve&p=" + ba;
     }
 
     maketext_solve_solution() {
@@ -3128,17 +3146,6 @@ class Puzzle {
         text = JSON.stringify(this.make_solution());
 
         var ba = encrypt_data(text);
-        //console.log("save",text.length,"=>",compressed.length,"=>",ba.length);
-
-        // Warning Long URL
-        if ((text_head.length + ba.length) >= MAX_EXPORT_LENGTH) {
-            Swal.fire({
-                title: 'Warning:',
-                html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
-                icon: 'warning',
-                confirmButtonText: 'ok',
-            })
-        }
         return text_head + "&a=" + ba;
     }
 
@@ -3162,16 +3169,6 @@ class Puzzle {
             'sname': document.getElementById('saveinfosolver').value,
             'stime': sw_timer.getTimeValues().toString(['days', 'hours', 'minutes', 'seconds', 'secondTenths'])
         }));
-
-        // Warning Long URL
-        if ((text_head.length + puzzle_info.length + replay.length) >= MAX_EXPORT_LENGTH) {
-            Swal.fire({
-                title: 'Warning:',
-                html: '<h3 class="warn">URL too long and will not open directly in the browser. Follow the following steps: <br>1) Copy the generated URL <br> 2) Open Penpa+ site (https://swaroopg92.github.io/penpa-edit/) <br> 3) Use "Load" button to load the URL</h3>',
-                icon: 'warning',
-                confirmButtonText: 'ok',
-            })
-        }
 
         return text_head + "&q=" + puzzle_info + "&r=" + replay;
     }
@@ -3304,6 +3301,13 @@ class Puzzle {
             if (document.getElementById("sol_loopedge").checked === true ||
                 document.getElementById("sol_ignoreborder").checked === true ||
                 checkall) {
+
+                // for newer links, if loop edge is selected, automatically ignore the given border/edge elements
+                if ((this.version[0] > 2) || (this.version[0] == 2 && this.version[1] > 26) || (this.version[0] == 2 && this.version[1] == 26 && this.version[2] > 20)) {
+                    if (!document.getElementById("sol_ignoreborder").checked) {
+                        document.getElementById("sol_ignoreborder").checked = true;
+                    }
+                }
                 if (document.getElementById("sol_ignoreborder").checked === true) {
                     for (var i in this[pu].lineE) {
                         if ((this.frame[i] && this.frame[i] === 2) ||
@@ -3328,7 +3332,7 @@ class Puzzle {
                 }
 
                 if (document.getElementById("sol_ignoreborder").checked === true) {
-                    for (var i in this[pu].lineE) {
+                    for (var i in this[pu].freelineE) {
                         if ((this.frame[i] && this.frame[i] === 2) ||
                             (this["pu_q"].freelineE[i] && this["pu_q"].freelineE[i] === 2)) {
                             // ignore the edge if its on the border (suitable for araf, pentominous type of puzzles)
@@ -3349,6 +3353,70 @@ class Puzzle {
                         }
                     }
                 }
+
+                let found = $('#genre_tags_opt').select2("val").some(r => this.surface_2_edge_types.includes(r));
+                if (found && this.gridtype === 'square') {
+                    // find out the grid position using the frame data
+                    // Note this section of code will work only if thick border frame exists
+                    if (typeof this.row_start == "undefined") {
+                        // Find top left corner and bottom right corner
+                        let topleft = 9999,
+                            bottomright = 0,
+                            numbers;
+                        for (var i in this.frame) {
+                            numbers = i.split(",");
+                            if (topleft >= parseInt(numbers[0])) {
+                                topleft = parseInt(numbers[0]);
+                            }
+                            if (bottomright <= parseInt(numbers[1])) {
+                                bottomright = parseInt(numbers[1]);
+                            }
+                        }
+                        // finding row and column indices
+                        let pointA, pointB;
+                        pointA = topleft - (this.nx0 * this.ny0);
+                        this.col_start = (pointA % this.nx0) - 1; //column
+                        this.row_start = parseInt(pointA / this.nx0) - 1; //row
+                        pointB = bottomright - (this.nx0 * this.ny0);
+                        this.col_end = (pointB % this.nx0) - 1; //column
+                        this.row_end = parseInt(pointB / this.nx0) - 1; //row
+                    }
+
+                    let present_cell, right_cell, down_cell;
+                    for (var j = 2 + this.row_start; j < this.row_end + 2; j++) {
+                        for (var i = 2 + this.col_start; i < this.col_end + 2; i++) {
+                            present_cell = i + j * (this.nx0);
+                            right_cell = present_cell + 1;
+                            down_cell = Math.max(...this.point[present_cell].adjacent);
+                            if (i != this.col_end + 1) {
+                                if (this[pu].surface[present_cell] &&
+                                    this[pu].surface[right_cell] &&
+                                    (this[pu].surface[present_cell] !== this[pu].surface[right_cell])) {
+                                    let imp_edge = this.point[present_cell].surround[1] + ',' + this.point[present_cell].surround[2];
+                                    if (this["pu_q"].lineE[imp_edge] && this["pu_q"].lineE[imp_edge] === 2) {
+                                        // ignore given edges
+                                    } else {
+                                        sol[2].push(imp_edge + ',1');
+                                    }
+                                }
+                            }
+                            if (j != this.row_end + 1) {
+                                if (this[pu].surface[present_cell] &&
+                                    this[pu].surface[down_cell] &&
+                                    (this[pu].surface[present_cell] !== this[pu].surface[down_cell])) {
+                                    let imp_edge = this.point[present_cell].surround[3] + ',' + this.point[present_cell].surround[2];
+                                    if (this["pu_q"].lineE[imp_edge] && this["pu_q"].lineE[imp_edge] === 2) {
+                                        // ignore given edges
+                                    } else {
+                                        sol[2].push(imp_edge + ',1');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                let unique_sol2 = [...new Set(sol[2])];
+                sol[2] = unique_sol2;
             }
 
             if (document.getElementById("sol_wall").checked === true || checkall) {
@@ -3609,8 +3677,71 @@ class Puzzle {
                                     }
                                 }
                             }
+
+                            let found = $('#genre_tags_opt').select2("val").some(r => this.surface_2_edge_types.includes(r));
+                            if (found && this.gridtype === 'square') {
+                                // find out the grid position using the frame data
+                                // Note this section of code will work only if thick border frame exists
+                                if (typeof this.row_start == "undefined") {
+                                    // Find top left corner and bottom right corner
+                                    let topleft = 9999,
+                                        bottomright = 0,
+                                        numbers;
+                                    for (var i in this.frame) {
+                                        numbers = i.split(",");
+                                        if (topleft >= parseInt(numbers[0])) {
+                                            topleft = parseInt(numbers[0]);
+                                        }
+                                        if (bottomright <= parseInt(numbers[1])) {
+                                            bottomright = parseInt(numbers[1]);
+                                        }
+                                    }
+                                    // finding row and column indices
+                                    let pointA, pointB;
+                                    pointA = topleft - (this.nx0 * this.ny0);
+                                    this.col_start = (pointA % this.nx0) - 1; //column
+                                    this.row_start = parseInt(pointA / this.nx0) - 1; //row
+                                    pointB = bottomright - (this.nx0 * this.ny0);
+                                    this.col_end = (pointB % this.nx0) - 1; //column
+                                    this.row_end = parseInt(pointB / this.nx0) - 1; //row
+                                }
+
+                                let present_cell, right_cell, down_cell;
+                                for (var j = 2 + this.row_start; j < this.row_end + 2; j++) {
+                                    for (var i = 2 + this.col_start; i < this.col_end + 2; i++) {
+                                        present_cell = i + j * (this.nx0);
+                                        right_cell = present_cell + 1;
+                                        down_cell = Math.max(...this.point[present_cell].adjacent);
+                                        if (i != this.col_end + 1) {
+                                            if (this[pu].surface[present_cell] &&
+                                                this[pu].surface[right_cell] &&
+                                                (this[pu].surface[present_cell] !== this[pu].surface[right_cell])) {
+                                                let imp_edge = this.point[present_cell].surround[1] + ',' + this.point[present_cell].surround[2];
+                                                if (this["pu_q"].lineE[imp_edge] && this["pu_q"].lineE[imp_edge] === 2) {
+                                                    // ignore given edges
+                                                } else {
+                                                    temp_sol.push(imp_edge + ',1');
+                                                }
+                                            }
+                                        }
+                                        if (j != this.row_end + 1) {
+                                            if (this[pu].surface[present_cell] &&
+                                                this[pu].surface[down_cell] &&
+                                                (this[pu].surface[present_cell] !== this[pu].surface[down_cell])) {
+                                                let imp_edge = this.point[present_cell].surround[3] + ',' + this.point[present_cell].surround[2];
+                                                if (this["pu_q"].lineE[imp_edge] && this["pu_q"].lineE[imp_edge] === 2) {
+                                                    // ignore given edges
+                                                } else {
+                                                    temp_sol.push(imp_edge + ',1');
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             temp_sol.sort();
-                            sol[sol_count] = temp_sol;
+                            let unique_temp_sol = [...new Set(temp_sol)];
+                            sol[sol_count] = unique_temp_sol;
                             break;
                         case "wall":
                             for (var i in this[pu].wall) {
@@ -4999,7 +5130,8 @@ class Puzzle {
                     for (var j = 2; j < this.ny0 - 2; j++) {
                         for (var i = 2; i < this.nx0 - 2; i++) {
                             // any shades of grey including black
-                            if (this.pu_a.surface[i + j * (this.nx0)] &&
+                            if (!this.pu_q.number[i + j * (this.nx0)] &&
+                                this.pu_a.surface[i + j * (this.nx0)] &&
                                 (this.pu_a.surface[i + j * (this.nx0)] === 1 ||
                                     this.pu_a.surface[i + j * (this.nx0)] === 8 ||
                                     this.pu_a.surface[i + j * (this.nx0)] === 3 ||
@@ -8058,7 +8190,9 @@ class Puzzle {
             this.re_surfacemove(num);
             this.last = num;
         } else if (this.mouse_mode === "up") {
-            this.cursol = this.last;
+            if (this.last > 0) {
+                this.cursol = this.last;
+            }
             this.drawing = false;
             this.drawing_mode = -1;
             this.last = -1;
