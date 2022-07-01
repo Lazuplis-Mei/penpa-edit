@@ -178,8 +178,8 @@ const UserSettings = {
 
     _reload_button: 2,
     set reload_button(newValue) {
-        if (newValue === "ON") { newValue = 1; }
-        if (newValue === "OFF") { newValue = 2; }
+        if (newValue === "开启") { newValue = 1; }
+        if (newValue === "关闭") { newValue = 2; }
 
         const valueInt = newValue ? parseInt(newValue, 10) : 2;
         this._reload_button = valueInt;

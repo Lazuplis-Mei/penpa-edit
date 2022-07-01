@@ -2735,11 +2735,11 @@ class Puzzle {
 
         // Puzzle title
         let titleinfo = document.getElementById("saveinfotitle").value;
-        text += "," + "Title: " + titleinfo.replace(/,/g, '%2C');
+        text += "," + "标题: " + titleinfo.replace(/,/g, '%2C');
 
         // Puzzle author
         let authorinfo = document.getElementById("saveinfoauthor").value;
-        text += "," + "Author: " + authorinfo.replace(/,/g, '%2C');
+        text += "," + "作者: " + authorinfo.replace(/,/g, '%2C');
 
         // Puzzle Source
         text += "," + document.getElementById("saveinfosource").value;
@@ -2749,7 +2749,7 @@ class Puzzle {
         text += "," + ruleinfo.replace(/\n/g, '%2D').replace(/,/g, '%2C').replace(/&/g, '%2E').replace(/=/g, '%2F');
 
         // Border button status
-        let border_status = UserSettings.draw_edges ? 'ON' : 'OFF';
+        let border_status = UserSettings.draw_edges ? '开启' : '关闭';
         text += "," + border_status;
 
         return text;
