@@ -2481,7 +2481,7 @@ function load(urlParam, type = 'url', origurl = null) {
         document.getElementById("puzzlerules").style.display = 'none';
 
         // Update title
-        document.getElementById("title").innerHTML = "Replay Mode"
+        document.getElementById("title").innerHTML = "回放模式"
 
         // Show Solver Name and his time
         if (paramArray.q) {
@@ -2489,16 +2489,16 @@ function load(urlParam, type = 'url', origurl = null) {
             pu.puzzleinfo = qstr;
             let disptext = '';
             if (document.getElementById("saveinfotitle").value) {
-                disptext += 'Title: ' + document.getElementById("saveinfotitle").value + ' | ';
+                disptext += '标题: ' + document.getElementById("saveinfotitle").value + ' | ';
             }
             if (document.getElementById("saveinfoauthor").value) {
-                disptext += 'Author: ' + document.getElementById("saveinfoauthor").value + ' | ';
+                disptext += '作者: ' + document.getElementById("saveinfoauthor").value + ' | ';
             }
             if (qstr.sname) {
-                disptext += 'Solver: ' + qstr.sname + ' | ';
+                disptext += '解答者: ' + qstr.sname + ' | ';
             }
             if (qstr.stime) {
-                disptext += 'Time: ' + qstr.stime + " (d:h:m:s:ts)";
+                disptext += '用时: ' + qstr.stime + " (d:h:m:s:ts)";
             }
             document.getElementById("puzzletitle").innerHTML = disptext;
             document.getElementById("puzzletitle").style.display = '';
